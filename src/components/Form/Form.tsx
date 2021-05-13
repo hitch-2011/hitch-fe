@@ -21,18 +21,25 @@ const Form: React.FC<FormProps> = ({ header, page, setPage, inputs }): JSX.Eleme
         value={input.property}
         placeholder={input.placeholder}
         onChange={event => input.method(event.target.value)}
+        required
       />
     )
   })
 
+  const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setPage(page + 1)
+  }
+
   return (
-    <div>
+    <form onSubmit={e => handleSubmit(e)}>
       <h1>{header}</h1>
       {allInputs}
       <button
-        onClick={() => setPage(page + 1)}
+        // onClick={() => setPage(page + 1)}
+        type='submit'
       >Next</button>
-    </div>
+    </form>
   )
 }
 
