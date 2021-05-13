@@ -2,6 +2,8 @@ import React from 'react'
 
 interface FormProps {
   header: string
+  page: number
+  setPage: React.Dispatch<React.SetStateAction<number>>
   inputs: Array<Inputs>
 }
 
@@ -11,7 +13,7 @@ interface Inputs {
   placeholder: string
 }
 
-const Form: React.FC<FormProps> = ({ header, inputs}): JSX.Element => {
+const Form: React.FC<FormProps> = ({ header, page, setPage, inputs }): JSX.Element => {
   const allInputs = inputs.map((input, index) => {
     return (
       <input
@@ -25,8 +27,11 @@ const Form: React.FC<FormProps> = ({ header, inputs}): JSX.Element => {
 
   return (
     <div>
-      <h1>{ header }</h1>
-      { allInputs }
+      <h1>{header}</h1>
+      {allInputs}
+      <button
+        onClick={() => setPage(page + 1)}
+      >Next</button>
     </div>
   )
 }
