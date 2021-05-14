@@ -37,3 +37,17 @@ code {
     cursor: pointer;
   }
 }
+
+input[type="text"],
+input[type="email"],
+textarea {
+  font-family: "futuramedium";
+  font-size: 16px;
+  padding: 0 0 10px 5px;
+  border: unset;
+  border-bottom: 2px solid #000;
+  transition: all 0.2s ease-in;
+  width: 85%;
+  margin-bottom: 20px;
+  outline: none;
+}

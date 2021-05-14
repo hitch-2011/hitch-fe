@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 interface FormProps {
   header: string
@@ -22,7 +22,7 @@ const Form: React.FC<FormProps> = ({ header, page, setPage, inputs }): JSX.Eleme
         placeholder={input.placeholder}
         onChange={event => input.method(event.target.value)}
         type={input.placeholder === 'email' ? 'email' : 'text'}
-        required
+        // required
       />
     )
   })
@@ -35,19 +35,24 @@ const Form: React.FC<FormProps> = ({ header, page, setPage, inputs }): JSX.Eleme
   
 
   const progress = {
-      background: `linear-gradient(to right, #ffd000 ${page * 25}%, #c1121f ${page * 25}%)`
+//       background: `linear-gradient(to right, #128fc1
+//  ${page * 25}%, #4f2dc7 ${page * 25}%)`
+    transform: `scaleX(.${page * 25})`,
+    animationName: `progress${page * 25}`
+      
   };
 
   return (
     <form onSubmit={e => handleSubmit(e)} className="register-form">
       <h1 className="register-form__header">{header}</h1>
       <div className="register-form__inputs">{allInputs}</div>
-      <div className="register-form__progress" style={progress}>
-        <button
-        className="register-form__button btn"
-        type='submit'
-        >Next</button>
-      </div>
+        <div className="register-form__progress">
+          <div className='test' style={progress}/>
+          <button
+          className="register-form__button btn"
+          type='submit'
+          >Next</button>
+        </div>
     </form>
   )
 }
