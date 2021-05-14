@@ -14,7 +14,8 @@ const App = () => {
   const [destination, setDestination] = useState('')
 
   return (
-    <div className="App">
+    <div className="app">
+      <h1 className="app__header">HITCH</h1>
       {page === 0 && 
         <Form 
           header="name"

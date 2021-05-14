@@ -21,6 +21,7 @@ const Form: React.FC<FormProps> = ({ header, page, setPage, inputs }): JSX.Eleme
         value={input.property}
         placeholder={input.placeholder}
         onChange={event => input.method(event.target.value)}
+        type={input.placeholder === 'email' ? 'email' : 'text'}
         required
       />
     )
@@ -32,11 +33,11 @@ const Form: React.FC<FormProps> = ({ header, page, setPage, inputs }): JSX.Eleme
   }
 
   return (
-    <form onSubmit={e => handleSubmit(e)}>
-      <h1>{header}</h1>
-      {allInputs}
+    <form onSubmit={e => handleSubmit(e)} className="register-form">
+      <h1 className="register-form__header">{header}</h1>
+      <div className="register-form__inputs">{allInputs}</div>
       <button
-        // onClick={() => setPage(page + 1)}
+        className="register-form__button btn"
         type='submit'
       >Next</button>
     </form>
