@@ -32,14 +32,22 @@ const Form: React.FC<FormProps> = ({ header, page, setPage, inputs }): JSX.Eleme
     setPage(page + 1)
   }
 
+  
+
+  const progress = {
+      background: `linear-gradient(to right, #ffd000 ${page * 25}%, #c1121f ${page * 25}%)`
+  };
+
   return (
     <form onSubmit={e => handleSubmit(e)} className="register-form">
       <h1 className="register-form__header">{header}</h1>
       <div className="register-form__inputs">{allInputs}</div>
-      <button
+      <div className="register-form__progress" style={progress}>
+        <button
         className="register-form__button btn"
         type='submit'
-      >Next</button>
+        >Next</button>
+      </div>
     </form>
   )
 }
