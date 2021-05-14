@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import Form from '../Form/Form'
-// import logo from './logo.svg';
-import './App.css';
 
 const App = () => {
 
@@ -16,42 +14,43 @@ const App = () => {
   const [destination, setDestination] = useState('')
 
   return (
-    <div className="App">
+    <div className="app">
+      <h1 className="app__header">HITCH</h1>
       {page === 0 && 
         <Form 
-          header="name"
+          header="Name"
           page={page}
           setPage={setPage}
-          inputs={[{property: name, method: setName, placeholder: 'name'}, 
-          {property: username, method: setUsername, placeholder: 'username'}, 
-          {property: email, method: setEmail, placeholder: 'email'}]} 
+          inputs={[{property: name, method: setName, placeholder: 'Name'}, 
+          {property: username, method: setUsername, placeholder: 'Username'}, 
+          {property: email, method: setEmail, placeholder: 'Email'}]} 
         />
       }
       {page === 1 &&
         <Form 
-          header="car"
+          header="Car Details"
           page={page}
           setPage={setPage}
-          inputs={[{property: make, method: setMake, placeholder: 'make'}, 
-          {property: model, method: setModel, placeholder: 'model'}, 
-          {property: year, method: setYear, placeholder: 'year'}]} 
+          inputs={[{property: make, method: setMake, placeholder: 'Make'}, 
+          {property: model, method: setModel, placeholder: 'Model'}, 
+          {property: year, method: setYear, placeholder: 'Year'}]} 
         />
       }
       {page === 2 &&
         <Form 
-          header="origin and destination"
+          header="Origin and Destination"
           page={page}
           setPage={setPage}
-          inputs={[{property: origin, method: setOrigin, placeholder: 'origin'}, 
-          {property: destination, method: setDestination, placeholder: 'destination'}]} 
+          inputs={[{property: origin, method: setOrigin, placeholder: 'Origin'}, 
+          {property: destination, method: setDestination, placeholder: 'Destination'}]} 
         />
       }
       {page === 3 &&
         <Form 
-          header="days and time"
+          header="Days and Time"
           page={page}
           setPage={setPage}
-          inputs={[{property: destination, method: setDestination, placeholder: 'destination'}]} 
+          inputs={[{property: destination, method: setDestination, placeholder: 'Destination'}]} 
         />
       }
     </div>

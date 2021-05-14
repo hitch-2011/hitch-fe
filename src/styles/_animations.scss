@@ -1,0 +1,35 @@
+@keyframes progress25 {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(0.25);
+  }
+}
+
+@keyframes progress50 {
+  from {
+    transform: scaleX(0.25);
+  }
+  to {
+    transform: scaleX(0.5);
+  }
+}
+
+@keyframes progress75 {
+  from {
+    transform: scaleX(0.5);
+  }
+  to {
+    transform: scaleX(0.75);
+  }
+}
+
+@keyframes progress100 {
+  from {
+    transform: scaleX(0.75);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

@@ -1,0 +1,59 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: "futuramedium", "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.btn {
+  font-family: "futuramedium";
+  border: 0;
+  outline: 0;
+  border-radius: 0;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  font-family: "futuramedium";
+  font-size: 16px;
+  padding: 0 0 10px 5px;
+  border: unset;
+  border-bottom: 2px solid #000;
+  transition: all 0.2s ease-in;
+  width: 85%;
+  margin-bottom: 25px;
+  outline: none;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border-color: $darkAccent;
+}

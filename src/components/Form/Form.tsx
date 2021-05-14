@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 interface FormProps {
   header: string
@@ -21,6 +21,7 @@ const Form: React.FC<FormProps> = ({ header, page, setPage, inputs }): JSX.Eleme
         value={input.property}
         placeholder={input.placeholder}
         onChange={event => input.method(event.target.value)}
+        type={input.placeholder === 'email' ? 'email' : 'text'}
         required
       />
     )
@@ -31,14 +32,24 @@ const Form: React.FC<FormProps> = ({ header, page, setPage, inputs }): JSX.Eleme
     setPage(page + 1)
   }
 
+  
+
+  const progress = {
+    transform: `scaleX(.${page * 25})`,
+    animationName: `progress${page * 25}`   
+  };
+
   return (
-    <form onSubmit={e => handleSubmit(e)}>
-      <h1>{header}</h1>
-      {allInputs}
-      <button
-        // onClick={() => setPage(page + 1)}
-        type='submit'
-      >Next</button>
+    <form onSubmit={e => handleSubmit(e)} className="register-form">
+      <h1 className="register-form__header">{header}</h1>
+      <div className="register-form__inputs">{allInputs}</div>
+        <div className="register-form__progress">
+          <div className='test' style={progress}/>
+          <button
+          className="register-form__button btn"
+          type='submit'
+          >Next</button>
+        </div>
     </form>
   )
 }
