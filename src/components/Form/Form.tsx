@@ -22,7 +22,7 @@ const Form: React.FC<FormProps> = ({ header, page, setPage, inputs }): JSX.Eleme
         placeholder={input.placeholder}
         onChange={event => input.method(event.target.value)}
         type={input.placeholder === 'email' ? 'email' : 'text'}
-        // required
+        required
       />
     )
   })
@@ -35,11 +35,8 @@ const Form: React.FC<FormProps> = ({ header, page, setPage, inputs }): JSX.Eleme
   
 
   const progress = {
-//       background: `linear-gradient(to right, #128fc1
-//  ${page * 25}%, #4f2dc7 ${page * 25}%)`
     transform: `scaleX(.${page * 25})`,
-    animationName: `progress${page * 25}`
-      
+    animationName: `progress${page * 25}`   
   };
 
   return (

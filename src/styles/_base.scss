@@ -7,7 +7,6 @@
 }
 
 html {
-  // font-size: 62.5%;
   height: 100%;
 }
 
@@ -48,6 +47,13 @@ textarea {
   border-bottom: 2px solid #000;
   transition: all 0.2s ease-in;
   width: 85%;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   outline: none;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border-color: $darkAccent;
 }
