@@ -102,13 +102,65 @@ describe.only('User name input sad paths', () => {
 
   it('should not be able to click \'next\' button and move to next page if name input is missing', () => {
 
-    cy.get('input').should('have.length', 4);
-
     cy.get('[type="submit"]').click()
     cy.get('input:invalid').eq(0).should('have.length', 1)
     cy.get('input').eq(0).then(($input) => {
       expect($input[0].validationMessage).to.eq('Please fill out this field.')
     })
+  });
+
+  it('should not be able to click \'next\' button and move to next page if username input is missing', () => {
+
+    cy.get('input').eq(0)
+      .type('Billy')
+      .should('have.value', 'Billy')
+
+    cy.get('[type="submit"]').click()
+    cy.get('input:invalid').eq(1).should('have.length', 1)
+    cy.get('input').eq(1).then(($input) => {
+      expect($input[0].validationMessage).to.eq('Please fill out this field.')
+    })
+  });
+
+  it('should not be able to click \'next\' button and move to next page if email input is missing', () => {
+
+    cy.get('input').eq(0)
+      .type('Billy')
+      .should('have.value', 'Billy')
+    cy.get('input').eq(1)
+      .type('BillyBob33')
+      .should('have.value', 'BillyBob33')
+
+    cy.get('[type="submit"]').click()
+    cy.get('input:invalid').eq(0).should('have.length', 1)
+    cy.get('input').eq(2).then(($input) => {
+      expect($input[0].validationMessage).to.eq('Please fill out this field.')
+    })
+  });
+
+  it('should not be able to click \'next\' button and move to next page if password input is missing', () => {
+
+    cy.get('input').eq(0)
+      .type('Billy')
+      .should('have.value', 'Billy')
+    cy.get('input').eq(1)
+      .type('BillyBob33')
+      .should('have.value', 'BillyBob33')
+    cy.get('input').eq(2)
+      .type('BillyBob33@gmail.com')
+      .should('have.value', 'BillyBob33@gmail.com')
+
+    cy.get('[type="submit"]').click()
+    cy.get('input:invalid').eq(0).should('have.length', 1)
+    cy.get('input').eq(3).then(($input) => {
+      expect($input[0].validationMessage).to.eq('Please fill out this field.')
+    })
+  });
+
+  it('should only be able to input a properly formatted e-mail address', () => {
+    cy.get('input').eq(2)
+      .type('billy')
+      .should('have.value', 'billy')
   });
 
 
