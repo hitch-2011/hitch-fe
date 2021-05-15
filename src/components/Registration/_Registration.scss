@@ -1,0 +1,29 @@
+.registration {
+  height: calc(100% - 118px);
+  display: flex;
+  flex-direction: column;
+
+  &__progress {
+    position: relative;
+  }
+
+  &__button {
+    font-size: 25px;
+    color: white;
+    background: linear-gradient(to right, $darkAccent 20%, $lightAccent 300%);
+    width: 100%;
+    height: 80px;
+  }
+}
+
+.progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: $lightAccent;
+  transform-origin: left;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+}

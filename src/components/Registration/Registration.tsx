@@ -23,28 +23,17 @@ interface RegistrationProps {
 }
 
 const Registration: FC<RegistrationProps> = (props) => {
-  const {
-    name,
-    setName,
-    username, 
-    setUsername,
-    email, 
-    setEmail,
-    page, 
-    setPage,
-    make, 
-    setMake,
-    model, 
-    setModel,
-    year, 
-    setYear,
-    origin, 
-    setOrigin,
-    destination,
-    setDestination
-  } = props
+  const { name, setName, username, setUsername, email, setEmail,
+    page, setPage, make, setMake, model, setModel, year, setYear, origin, 
+    setOrigin, destination, setDestination } = props;
+
+    const progress = {
+    transform: `scaleX(.${page * 25})`,
+    animationName: `progress${page * 25}`   
+  };
+
   return(
-    <div>
+    <div className="registration">
       {page === 0 && 
           <Form 
             header="Name"
@@ -82,6 +71,13 @@ const Registration: FC<RegistrationProps> = (props) => {
             inputs={[{property: destination, method: setDestination, placeholder: 'Destination'}]} 
           />
         }
+        <div className="registration__progress">
+          <div className='test' style={progress}/>
+          <button
+          className="registration__button btn"
+          type='submit'
+          >Next</button>
+        </div>
       </div>
   )
 }

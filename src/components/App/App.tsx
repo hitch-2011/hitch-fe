@@ -50,46 +50,7 @@ const App = () => {
             exact path="/register"
             render={() => {
               return (
-                <>
-                <Registration {...formProps}/> 
-                  {page === 0 && 
-                    <Form 
-                      header="Name"
-                      page={page}
-                      setPage={setPage}
-                      inputs={[{property: name, method: setName, placeholder: 'Name'}, 
-                      {property: username, method: setUsername, placeholder: 'Username'}, 
-                      {property: email, method: setEmail, placeholder: 'Email'}]} 
-                    />
-                  }
-                  {page === 1 &&
-                    <Form 
-                      header="Car Details"
-                      page={page}
-                      setPage={setPage}
-                      inputs={[{property: make, method: setMake, placeholder: 'Make'}, 
-                      {property: model, method: setModel, placeholder: 'Model'}, 
-                      {property: year, method: setYear, placeholder: 'Year'}]} 
-                    />
-                  }
-                  {page === 2 &&
-                    <Form 
-                      header="Origin and Destination"
-                      page={page}
-                      setPage={setPage}
-                      inputs={[{property: origin, method: setOrigin, placeholder: 'Origin'}, 
-                      {property: destination, method: setDestination, placeholder: 'Destination'}]} 
-                    />
-                  }
-                  {page === 3 &&
-                    <Form 
-                      header="Days and Time"
-                      page={page}
-                      setPage={setPage}
-                      inputs={[{property: destination, method: setDestination, placeholder: 'Destination'}]} 
-                    />
-                  }
-                </>
+                <Registration {...formProps}/>                 
               )
             }}
           />
