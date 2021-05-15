@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Registration from '../Registration/Registration';
 
 const App = () => {
-
   const [name, setName] = useState('')
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
@@ -15,27 +14,21 @@ const App = () => {
   const [year, setYear] = useState('')
   const [origin, setOrigin] = useState('')
   const [destination, setDestination] = useState('')
+  const [departTime, setDepartTime] = useState('')
+  const [days, setDays] = useState({
+    sunday: false,
+    monday: false,
+    tuesday: false,
+    wednesday: false,
+    thursday: false,
+    friday: false,
+    saturday: false
+  })
 
-  const formProps = {
-    name,
-    setName,
-    username, 
-    setUsername,
-    email, 
-    setEmail,
-    page, 
-    setPage,
-    make, 
-    setMake,
-    model, 
-    setModel,
-    year, 
-    setYear,
-    origin, 
-    setOrigin,
-    destination,
-    setDestination
-  }
+  const formProps = {name, setName, username, setUsername, email, 
+    setEmail, page, setPage, make, setMake, model, setModel, year, setYear, origin, setOrigin,
+    destination, setDestination, days, setDays, departTime, setDepartTime
+  };
 
   return (
     <div className="app">
