@@ -1,4 +1,5 @@
 import React, {Dispatch, SetStateAction, FC} from 'react';
+import Form from '../Form/Form';
 
 interface RegistrationProps {
   name: string;
@@ -43,7 +44,45 @@ const Registration: FC<RegistrationProps> = (props) => {
     setDestination
   } = props
   return(
-    <h1>yeaaaas</h1>
+    <div>
+      {page === 0 && 
+          <Form 
+            header="Name"
+            page={page}
+            setPage={setPage}
+            inputs={[{property: name, method: setName, placeholder: 'Name'}, 
+            {property: username, method: setUsername, placeholder: 'Username'}, 
+            {property: email, method: setEmail, placeholder: 'Email'}]} 
+          />
+        }
+        {page === 1 &&
+          <Form 
+            header="Car Details"
+            page={page}
+            setPage={setPage}
+            inputs={[{property: make, method: setMake, placeholder: 'Make'}, 
+            {property: model, method: setModel, placeholder: 'Model'}, 
+            {property: year, method: setYear, placeholder: 'Year'}]} 
+          />
+        }
+        {page === 2 &&
+          <Form 
+            header="Origin and Destination"
+            page={page}
+            setPage={setPage}
+            inputs={[{property: origin, method: setOrigin, placeholder: 'Origin'}, 
+            {property: destination, method: setDestination, placeholder: 'Destination'}]} 
+          />
+        }
+        {page === 3 &&
+          <Form 
+            header="Days and Time"
+            page={page}
+            setPage={setPage}
+            inputs={[{property: destination, method: setDestination, placeholder: 'Destination'}]} 
+          />
+        }
+      </div>
   )
 }
 
