@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: $darkGradient;
+    background: $lightGradient;
     color: white;
     height: 40px;
     width: 40px;
@@ -29,6 +29,17 @@
   display: none;
 }
 
-.days input[type="checkbox"]:checked {
-  background: black;
+input[type="checkbox"]:checked + label {
+  background: $darkGradient;
+}
+
+.time-input {
+  width: 200px;
+  height: 40px;
+}
+
+input[type="time"] {
+  font-family: "futuramedium";
+  border-radius: 6px;
+  background-color: white;
 }

@@ -10,19 +10,22 @@ interface DaysAndTimeProps {
 
 const DaysAndTime: FC<DaysAndTimeProps> = ({property, method, setDays, days}) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const key = e.target.id
-    // setDays({...days, [e.target.id]: days[e.target.id]})
+    const { id, checked } = e.target
+    setDays({...days, [id]: checked})
   }
   return (
     <div className='days-and-time'>
       <h1 className="days-and-time__header">Days and Time</h1>
-      <input
+      <input 
+        type="time" 
+        id="time" 
+        name="time" 
+        className="time-input"
         value={property}
-        placeholder="Time and Days"
-        onChange={event => method(event.target.value)}
-        type='text'
+        onChange={e => method(e.target.value)}
         // required
       />
+      
       <div className='days'>
         <input 
           id="sunday"
@@ -37,7 +40,7 @@ const DaysAndTime: FC<DaysAndTimeProps> = ({property, method, setDays, days}) =>
           id="monday"
           type="checkbox"
           value="monday"
-          checked={days['sunday']}
+          checked={days['monday']}
           onChange={handleChange}
         />
         <label className="days__label" htmlFor="monday">M
@@ -46,7 +49,7 @@ const DaysAndTime: FC<DaysAndTimeProps> = ({property, method, setDays, days}) =>
           id="tuesday"
           type="checkbox"
           value="tuesday"
-          checked={days['sunday']}
+          checked={days['tuesday']}
           onChange={handleChange}
         />
         <label className="days__label" htmlFor="tuesday">T
@@ -55,7 +58,7 @@ const DaysAndTime: FC<DaysAndTimeProps> = ({property, method, setDays, days}) =>
           id="wednesday"
           type="checkbox"
           value="wednesday"
-          checked={days['sunday']}
+          checked={days['wednesday']}
           onChange={handleChange}
         />
         <label className="days__label" htmlFor="wednesday">W
@@ -64,7 +67,7 @@ const DaysAndTime: FC<DaysAndTimeProps> = ({property, method, setDays, days}) =>
           id="thursday"
           type="checkbox"
           value="thursday"
-          checked={days['sunday']}
+          checked={days['thursday']}
           onChange={handleChange}
         />
         <label className="days__label" htmlFor="thursday">T
@@ -73,7 +76,7 @@ const DaysAndTime: FC<DaysAndTimeProps> = ({property, method, setDays, days}) =>
           id="friday"
           type="checkbox"
           value="friday"
-          checked={days['sunday']}
+          checked={days['friday']}
           onChange={handleChange}
         />
         <label className="days__label" htmlFor="friday">F
@@ -82,7 +85,7 @@ const DaysAndTime: FC<DaysAndTimeProps> = ({property, method, setDays, days}) =>
           id="saturday"
           type="checkbox"
           value="saturday"
-          checked={days['sunday']}
+          checked={days['saturday']}
           onChange={handleChange}
         />
         <label className="days__label" htmlFor="saturday">S

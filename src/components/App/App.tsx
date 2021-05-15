@@ -8,13 +8,14 @@ const App = () => {
   const [name, setName] = useState('')
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('');
   const [page, setPage] = useState(0)
   const [make, setMake] = useState('')
   const [model, setModel] = useState('')
   const [year, setYear] = useState('')
   const [origin, setOrigin] = useState('')
   const [destination, setDestination] = useState('')
-  const [departTime, setDepartTime] = useState('')
+  const [departTime, setDepartTime] = useState('08:00')
   const [days, setDays] = useState({
     sunday: false,
     monday: false,
@@ -26,7 +27,7 @@ const App = () => {
   })
 
   const formProps = {name, setName, username, setUsername, email, 
-    setEmail, page, setPage, make, setMake, model, setModel, year, setYear, origin, setOrigin, destination, setDestination, days, setDays, departTime, setDepartTime
+    setEmail, page, setPage, make, setMake, model, setModel, year, setYear, origin, setOrigin, destination, setDestination, days, setDays, departTime, setDepartTime, password, setPassword
   };
 
   return (

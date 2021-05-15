@@ -9,6 +9,7 @@ interface Inputs {
   property: string
   method: Dispatch<SetStateAction<string>>
   placeholder: string
+  type?: string
 }
 
 const Form: FC<FormProps> = ({ header, inputs }): JSX.Element => {
@@ -19,7 +20,8 @@ const Form: FC<FormProps> = ({ header, inputs }): JSX.Element => {
         value={input.property}
         placeholder={input.placeholder}
         onChange={event => input.method(event.target.value)}
-        type={input.placeholder === 'Email' ? 'email' : 'text'}
+        type={input.type ? input.type : 'text'}
+        autoComplete='off'
         // required
       />
     )

@@ -8,7 +8,8 @@ import { RegistrationProps } from '../../interfaces/interfaces'
 const Registration: FC<RegistrationProps> = (props) => {
   const { name, setName, username, setUsername, email, setEmail,
     page, setPage, make, setMake, model, setModel, year, setYear, origin, 
-    setOrigin, destination, setDestination, departTime, setDepartTime, days, setDays } = props;
+    setOrigin, destination, setDestination, departTime, setDepartTime, days, setDays,
+    password, setPassword } = props;
 
   const progress = {
     transform: `scaleX(.${page * 25})`
@@ -26,7 +27,8 @@ const Registration: FC<RegistrationProps> = (props) => {
             header="Name"
             inputs={[{property: name, method: setName, placeholder: 'Name'}, 
             {property: username, method: setUsername, placeholder: 'Username'}, 
-            {property: email, method: setEmail, placeholder: 'Email'}]} 
+            {property: email, method: setEmail, placeholder: 'Email', type: 'email'},
+            {property: password, method: setPassword, placeholder: 'Password', type: 'password'}]} 
           />
         }
         {page === 1 &&
@@ -46,6 +48,14 @@ const Registration: FC<RegistrationProps> = (props) => {
         }
         {page === 3 &&
           <DaysAndTime property={departTime} method={setDepartTime} setDays={setDays} days={days}/>
+        }
+        {page === 4 && 
+          <div className="bio">
+            <h1 className="bio__header">About Me</h1>
+            <textarea placeholder='Write your about me here' className="bio__text">
+
+            </textarea>
+          </div>
         }
         <div className="registration__progress">
           <div className='progress-bar' style={progress}/>

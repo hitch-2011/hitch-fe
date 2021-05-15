@@ -2,3 +2,4 @@ $darkAccent: #4f2dc7;
 $lightAccent: #0077ff;
 
 $darkGradient: linear-gradient(to right, $darkAccent 20%, $lightAccent 300%);
+$lightGradient: linear-gradient(to right, $lightAccent 20%, $darkAccent 300%);

@@ -22,7 +22,9 @@ export interface RegistrationProps {
   departTime: string;
   setDepartTime: Dispatch<SetStateAction<string>>;
   days: DayPicker;
-  setDays: Dispatch<SetStateAction<DayPicker>>
+  setDays: Dispatch<SetStateAction<DayPicker>>;
+  password: string;
+  setPassword: Dispatch<SetStateAction<string>>;
 }
 
 export interface DayPicker {

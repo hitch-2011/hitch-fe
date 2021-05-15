@@ -27,3 +27,15 @@
   transition: all 0.3s ease-out;
   transform-origin: left;
 }
+
+.bio {
+  height: 100%;
+
+  &__header {
+    margin-bottom: 30px;
+  }
+
+  &__text {
+    height: 200px;
+  }
+}
