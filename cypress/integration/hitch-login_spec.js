@@ -42,5 +42,30 @@ describe.only('User name input', () => {
       .should('have.value', 'Billy')
   });
 
+  it('should allow users to select username input and type a username', () => {
+    cy.get('input').eq(1)
+      .type('BillyBob33')
+      .should('have.value', 'BillyBob33')
+  });
+
+  it('should allow users to select email input and type a valid email address', () => {
+    cy.get('input').eq(2)
+      .type('BillyBob33@gmail.com')
+      .should('have.value', 'BillyBob33@gmail.com')
+  });
+
+  it('should allow users to select password input and type a password', () => {
+    cy.get('input').eq(3)
+      .type('billyB')
+      .should('have.value', 'billyB')
+  });
+
+  it('should have a next button to move to next login page', () => {
+    cy.get('button').contains('Next');
+  });
+
+  it('should be able to click \'next\' button and move to next page', () => {
+    cy.get('button').click();
+  });
 
 })
