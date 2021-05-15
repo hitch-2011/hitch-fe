@@ -65,7 +65,27 @@ describe.only('User name input', () => {
   });
 
   it('should be able to click \'next\' button and move to next page', () => {
+
+    cy.get('input').should('have.length', 4);
+    cy.get('.register-form__header').contains('Name');
+
+    cy.get('input').eq(0)
+      .type('Billy')
+      .should('have.value', 'Billy')
+    cy.get('input').eq(1)
+      .type('BillyBob33')
+      .should('have.value', 'BillyBob33')
+    cy.get('input').eq(2)
+      .type('BillyBob33@gmail.com')
+      .should('have.value', 'BillyBob33@gmail.com')
+    cy.get('input').eq(3)
+      .type('billyB')
+      .should('have.value', 'billyB')
+
     cy.get('button').click();
+
+    cy.get('input').should('have.length', 3);
+    cy.get('.register-form__header').contains('Car Details');
   });
 
 })
