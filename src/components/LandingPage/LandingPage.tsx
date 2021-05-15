@@ -1,9 +1,8 @@
-
 const LandingPage = () => {
   return (
-    <div>
-
-    </div>
+    <>
+      <button></button>  
+    </>
   )
 
 }
