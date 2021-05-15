@@ -1,0 +1,45 @@
+.days-and-time {
+  height: 100%;
+
+  &__header {
+    margin-bottom: 30px;
+  }
+}
+
+.days {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+
+  &__label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $lightGradient;
+    color: white;
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    background-clip: unset;
+  }
+}
+
+.days input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]:checked + label {
+  background: $darkGradient;
+}
+
+.time-input {
+  width: 200px;
+  height: 40px;
+}
+
+input[type="time"] {
+  font-family: "futuramedium";
+  border-radius: 6px;
+  background-color: white;
+}

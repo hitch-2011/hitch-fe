@@ -39,6 +39,7 @@ code {
 
 input[type="text"],
 input[type="email"],
+input[type="password"],
 textarea {
   font-family: "futuramedium";
   font-size: 16px;
@@ -54,6 +55,19 @@ textarea {
 input[type="text"]:hover,
 input[type="email"]:hover,
 input[type="text"]:focus,
-input[type="email"]:focus {
+input[type="email"]:focus,
+textarea:focus {
   border-color: $darkAccent;
+}
+
+textarea:focus {
+  box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.226);
+}
+textarea {
+  padding: 5px;
+  border-left: 1px solid rgba(0, 0, 0, 0.521);
+  border-top: 1px solid rgba(0, 0, 0, 0.521);
+  border-right: 1px solid rgba(0, 0, 0, 0.521);
+  border-bottom: 1px solid #000;
+  border-radius: 3px;
 }

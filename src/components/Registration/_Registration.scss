@@ -1,0 +1,41 @@
+.registration {
+  height: calc(100% - 118px);
+  display: flex;
+  flex-direction: column;
+
+  &__progress {
+    position: relative;
+  }
+
+  &__button {
+    font-size: 25px;
+    color: white;
+    background: $darkGradient;
+    width: 100%;
+    height: 80px;
+  }
+}
+
+.progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(0);
+  width: 100%;
+  height: 8px;
+  background: #3694ff;
+  transition: all 0.3s ease-out;
+  transform-origin: left;
+}
+
+.bio {
+  height: 100%;
+
+  &__header {
+    margin-bottom: 30px;
+  }
+
+  &__text {
+    height: 200px;
+  }
+}

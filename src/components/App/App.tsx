@@ -1,19 +1,36 @@
 import React, { useState } from 'react';
-import Form from '../Form/Form';
 import LandingPage from '../LandingPage/LandingPage'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Registration from '../Registration/Registration';
 
 const App = () => {
-
   const [name, setName] = useState('')
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('');
   const [page, setPage] = useState(0)
   const [make, setMake] = useState('')
   const [model, setModel] = useState('')
   const [year, setYear] = useState('')
   const [origin, setOrigin] = useState('')
   const [destination, setDestination] = useState('')
+  const [departTime, setDepartTime] = useState('08:00')
+  const [days, setDays] = useState({
+    sunday: false,
+    monday: false,
+    tuesday: false,
+    wednesday: false,
+    thursday: false,
+    friday: false,
+    saturday: false
+  })
+  const [bio, setBio] = useState('');
+
+  const formProps = {name, setName, username, setUsername, email, 
+    setEmail, page, setPage, make, setMake, model, setModel, year, setYear, origin, 
+    setOrigin, destination, setDestination, days, setDays, departTime, setDepartTime, 
+    password, setPassword, bio, setBio
+  };
 
   return (
     <div className="app">
@@ -26,54 +43,11 @@ const App = () => {
           />
           <Route
             exact path="/register"
-            render={() => {
-              return (
-                <>
-                {page === 0 && 
-                  <Form 
-                    header="Name"
-                    page={page}
-                    setPage={setPage}
-                    inputs={[{property: name, method: setName, placeholder: 'Name'}, 
-                    {property: username, method: setUsername, placeholder: 'Username'}, 
-                    {property: email, method: setEmail, placeholder: 'Email'}]} 
-                  />
-                }
-                {page === 1 &&
-                  <Form 
-                    header="Car Details"
-                    page={page}
-                    setPage={setPage}
-                    inputs={[{property: make, method: setMake, placeholder: 'Make'}, 
-                    {property: model, method: setModel, placeholder: 'Model'}, 
-                    {property: year, method: setYear, placeholder: 'Year'}]} 
-                  />
-                }
-                {page === 2 &&
-                  <Form 
-                    header="Origin and Destination"
-                    page={page}
-                    setPage={setPage}
-                    inputs={[{property: origin, method: setOrigin, placeholder: 'Origin'}, 
-                    {property: destination, method: setDestination, placeholder: 'Destination'}]} 
-                  />
-                }
-                {page === 3 &&
-                  <Form 
-                    header="Days and Time"
-                    page={page}
-                    setPage={setPage}
-                    inputs={[{property: destination, method: setDestination, placeholder: 'Destination'}]} 
-                  />
-                }
-                </>
-              )
-            }}
+            render={() =>  <Registration {...formProps}/> }
           />
         </Switch>
       </BrowserRouter>
     </div>
   );
 }
-
 export default App;
