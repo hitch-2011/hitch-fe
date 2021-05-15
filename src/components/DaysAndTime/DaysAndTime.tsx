@@ -9,8 +9,9 @@ interface DaysAndTimeProps {
 }
 
 const DaysAndTime: FC<DaysAndTimeProps> = ({property, method, setDays, days}) => {
-  const handleChange = () => {
-    
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const key = e.target.id
+    // setDays({...days, [e.target.id]: days[e.target.id]})
   }
   return (
     <div className='days-and-time'>
