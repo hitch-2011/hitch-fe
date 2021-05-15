@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction, FC} from 'react';
+import React, {Dispatch, SetStateAction, FC, FormEvent} from 'react';
 import Form from '../Form/Form';
 
 interface RegistrationProps {
@@ -32,8 +32,13 @@ const Registration: FC<RegistrationProps> = (props) => {
     animationName: `progress${page * 25}`   
   };
 
+  const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setPage(page + 1)
+  }
+
   return(
-    <div className="registration">
+    <form onSubmit={e => handleSubmit(e)} className="registration">
       {page === 0 && 
           <Form 
             header="Name"
@@ -78,7 +83,7 @@ const Registration: FC<RegistrationProps> = (props) => {
           type='submit'
           >Next</button>
         </div>
-      </div>
+      </form>
   )
 }
 
