@@ -13,3 +13,5 @@ deploy:
   provider: heroku
   app: hitch-a-ride-app
   skip_cleanup: true
+  on:
+    branch: main
