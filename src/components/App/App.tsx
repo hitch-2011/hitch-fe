@@ -28,7 +28,9 @@ const App = () => {
   const [bio, setBio] = useState('');
 
   const formProps = {name, setName, username, setUsername, email, 
-    setEmail, page, setPage, make, setMake, model, setModel, year, setYear, origin, setOrigin, destination, setDestination, days, setDays, departTime, setDepartTime, password, setPassword, bio, setBio
+    setEmail, page, setPage, make, setMake, model, setModel, year, setYear, origin, 
+    setOrigin, destination, setDestination, days, setDays, departTime, setDepartTime, 
+    password, setPassword, bio, setBio
   };
 
   return (

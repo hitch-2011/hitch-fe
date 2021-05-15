@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction, FC, FormEvent} from 'react';
+import React, { FC, FormEvent } from 'react';
 import Form from '../Form/Form';
 import DaysAndTime from '../DaysAndTime/DaysAndTime';
 import { RegistrationProps } from '../../interfaces/interfaces'
