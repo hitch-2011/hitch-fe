@@ -28,8 +28,18 @@ describe.only('User name input', () => {
     cy.get('h1').contains('HITCH');
   });
 
-  it('should have a form title ', () => {
+  it('should have a form title', () => {
     cy.get('.register-form__header').contains('Name');
+  });
+
+  it('should contain an input for name, username, email, and password', () => {
+    cy.get('input').should('have.length', 4);
+  });
+
+  it('should allow users to select name input and type a name', () => {
+    cy.get('input').eq(0)
+      .type('Billy')
+      .should('have.value', 'Billy')
   });
 
 
