@@ -2,8 +2,6 @@ import React, { Dispatch, FC, SetStateAction, FormEvent} from 'react';
 
 interface FormProps {
   header: string
-  page: number
-  setPage: Dispatch<SetStateAction<number>>
   inputs: Array<Inputs>
 }
 
@@ -13,7 +11,7 @@ interface Inputs {
   placeholder: string
 }
 
-const Form: FC<FormProps> = ({ header, page, setPage, inputs }): JSX.Element => {
+const Form: FC<FormProps> = ({ header, inputs }): JSX.Element => {
   const allInputs = inputs.map((input, index) => {
     return (
       <input
@@ -22,15 +20,10 @@ const Form: FC<FormProps> = ({ header, page, setPage, inputs }): JSX.Element => 
         placeholder={input.placeholder}
         onChange={event => input.method(event.target.value)}
         type={input.placeholder === 'Email' ? 'email' : 'text'}
-        required
+        // required
       />
     )
   })
-
-  // const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault()
-  //   setPage(page + 1)
-  // }
 
   return (
     <div className="register-form">

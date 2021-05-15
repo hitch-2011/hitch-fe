@@ -20,10 +20,10 @@
   position: absolute;
   top: 0;
   left: 0;
+  transform: translateX(0);
   width: 100%;
-  height: 5px;
-  background: $lightAccent;
+  height: 8px;
+  background: #3694ff;
+  transition: all 0.3s ease-out;
   transform-origin: left;
-  animation-duration: 0.3s;
-  animation-timing-function: ease-out;
 }
