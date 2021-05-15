@@ -1,0 +1,12 @@
+.signup {
+  // position: fixed;
+  // bottom: 0;
+  height: 100%;
+
+  &__btn {
+    @extend .registration__button;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}

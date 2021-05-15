@@ -44,11 +44,7 @@ const App = () => {
           />
           <Route
             exact path="/register"
-            render={() => {
-              return (
-                <Registration {...formProps}/>                 
-              )
-            }}
+            render={() =>  <Registration {...formProps}/> }
           />
         </Switch>
       </BrowserRouter>
