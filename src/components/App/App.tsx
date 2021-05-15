@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Form from '../Form/Form';
 import LandingPage from '../LandingPage/LandingPage'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Registration from '../Registration/Registration';
