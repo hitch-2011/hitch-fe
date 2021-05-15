@@ -4,7 +4,11 @@ describe('Login User Flow', () => {
     cy.visit('http://localhost:3000/');
   });
 
-  it('should be a passing test', () => {
-    expect(true).to.equal(true);
-  })
+  it('should have an app title', () => {
+    cy.get('h1').contains('HITCH');
+  });
+
+  it('should have button to sign up', () => {
+    cy.get('button').contains('Sign up now');
+  });
 })
