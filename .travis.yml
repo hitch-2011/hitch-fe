@@ -3,13 +3,15 @@ node_js:
   - "node"
 
 script:
-  - npm test 
+  - npm test
   - npm run build
 
 notifications:
   email: false
-  
+
 deploy:
   provider: heroku
   app: hitch-a-ride-app
   skip_cleanup: true
+  on:
+    branch: main
