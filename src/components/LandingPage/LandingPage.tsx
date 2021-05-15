@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
+
 const LandingPage = () => {
   return (
-    <>
-      <button></button>  
-    </>
+    <Link to="/register">
+      <button>Sign up now</button> 
+    </Link>
   )
 
 }
