@@ -9,10 +9,10 @@ const Registration: FC<RegistrationProps> = (props) => {
   const { name, setName, username, setUsername, email, setEmail,
     page, setPage, make, setMake, model, setModel, year, setYear, origin, 
     setOrigin, destination, setDestination, departTime, setDepartTime, days, setDays,
-    password, setPassword } = props;
+    password, setPassword, bio, setBio } = props;
 
   const progress = {
-    transform: `scaleX(.${page * 25})`
+    transform: `scaleX(.${page * 20})`
   };
 
   const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
@@ -52,9 +52,12 @@ const Registration: FC<RegistrationProps> = (props) => {
         {page === 4 && 
           <div className="bio">
             <h1 className="bio__header">About Me</h1>
-            <textarea placeholder='Write your about me here' className="bio__text">
-
-            </textarea>
+            <textarea 
+              placeholder='Add bio here'
+              className="bio__text" 
+              value={bio}
+              onChange={event => setBio(event.target.value)}
+            />
           </div>
         }
         <div className="registration__progress">

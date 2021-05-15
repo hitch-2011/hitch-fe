@@ -25,6 +25,8 @@ export interface RegistrationProps {
   setDays: Dispatch<SetStateAction<DayPicker>>;
   password: string;
   setPassword: Dispatch<SetStateAction<string>>;
+  bio: string;
+  setBio: Dispatch<SetStateAction<string>>;
 }
 
 export interface DayPicker {
