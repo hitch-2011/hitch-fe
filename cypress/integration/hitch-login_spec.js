@@ -18,7 +18,7 @@ describe('Sign up user flow', () => {
   });
 });
 
-describe.only('User name input', () => {
+describe('User name input', () => {
 
   beforeEach(() => {
     cy.visit('http://localhost:3000/register');
@@ -64,7 +64,7 @@ describe.only('User name input', () => {
     cy.get('button').contains('Next');
   });
 
-  it('should be able to click \'next\' button and move to next page', () => {
+  it('should be able to click \'next\' button and move to next page after completing all inputs', () => {
 
     cy.get('input').should('have.length', 4);
     cy.get('.register-form__header').contains('Name');
@@ -87,5 +87,29 @@ describe.only('User name input', () => {
     cy.get('input').should('have.length', 3);
     cy.get('.register-form__header').contains('Car Details');
   });
+});
 
-})
+describe.only('User name input sad paths', () => {
+
+  beforeEach(() => {
+    cy.visit('http://localhost:3000/register');
+  });
+
+  it('should have an app title and form title', () => {
+    cy.get('h1').contains('HITCH');
+    cy.get('.register-form__header').contains('Name');
+  });
+
+  it('should not be able to click \'next\' button and move to next page if name input is missing', () => {
+
+    cy.get('input').should('have.length', 4);
+
+    cy.get('[type="submit"]').click()
+    cy.get('input:invalid').eq(0).should('have.length', 1)
+    cy.get('input').eq(0).then(($input) => {
+      expect($input[0].validationMessage).to.eq('Please fill out this field.')
+    })
+  });
+
+
+});
