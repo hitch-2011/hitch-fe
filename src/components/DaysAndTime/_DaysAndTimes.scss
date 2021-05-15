@@ -1,0 +1,33 @@
+.days-and-time {
+  height: 100%;
+
+  &__header {
+    margin-bottom: 30px;
+  }
+}
+.days {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+
+  &__label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $darkGradient;
+    color: white;
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    background-clip: unset;
+  }
+}
+
+.days input[type="checkbox"] {
+  display: none;
+}
+
+.days input[type="checkbox"]:checked {
+  background: black;
+}

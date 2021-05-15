@@ -1,34 +1,14 @@
 import React, {Dispatch, SetStateAction, FC, FormEvent} from 'react';
 import Form from '../Form/Form';
 import DaysAndTime from '../DaysAndTime/DaysAndTime';
+import { RegistrationProps } from '../../interfaces/interfaces'
 
-interface RegistrationProps {
-  name: string;
-  setName: Dispatch<SetStateAction<string>>;
-  username: string;
-  setUsername: Dispatch<SetStateAction<string>>;
-  email: string; 
-  setEmail: Dispatch<SetStateAction<string>>;
-  page: number; 
-  setPage: Dispatch<SetStateAction<number>>;
-  make: string; 
-  setMake: Dispatch<SetStateAction<string>>;
-  model: string; 
-  setModel: Dispatch<SetStateAction<string>>;
-  year: string; 
-  setYear: Dispatch<SetStateAction<string>>;
-  origin: string; 
-  setOrigin: Dispatch<SetStateAction<string>>;
-  destination: string;
-  setDestination: Dispatch<SetStateAction<string>>;
-  departTime: string;
-  setDepartTime: Dispatch<SetStateAction<string>>;
-}
+
 
 const Registration: FC<RegistrationProps> = (props) => {
   const { name, setName, username, setUsername, email, setEmail,
     page, setPage, make, setMake, model, setModel, year, setYear, origin, 
-    setOrigin, destination, setDestination, departTime, setDepartTime } = props;
+    setOrigin, destination, setDestination, departTime, setDepartTime, days, setDays } = props;
 
   const progress = {
     transform: `scaleX(.${page * 25})`
@@ -65,11 +45,7 @@ const Registration: FC<RegistrationProps> = (props) => {
           />
         }
         {page === 3 &&
-          // <Form 
-          //   header="Days and Time"
-          //   inputs={[{property: destination, method: setDestination, placeholder: 'Destination'}]} 
-          // />
-          <DaysAndTime property={departTime} method={setDepartTime}/>
+          <DaysAndTime property={departTime} method={setDepartTime} setDays={setDays} days={days}/>
         }
         <div className="registration__progress">
           <div className='progress-bar' style={progress}/>

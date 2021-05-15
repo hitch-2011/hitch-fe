@@ -10,7 +10,7 @@
   &__button {
     font-size: 25px;
     color: white;
-    background: linear-gradient(to right, $darkAccent 20%, $lightAccent 300%);
+    background: $darkGradient;
     width: 100%;
     height: 80px;
   }
