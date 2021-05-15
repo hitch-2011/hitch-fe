@@ -157,10 +157,46 @@ describe.only('User name input sad paths', () => {
     })
   });
 
-  it('should only be able to input a properly formatted e-mail address', () => {
+  it('should only be able to input a properly formatted e-mail address with an \'@\'', () => {
+    cy.get('input').eq(0)
+      .type('Billy')
+      .should('have.value', 'Billy')
+    cy.get('input').eq(1)
+      .type('BillyBob33')
+      .should('have.value', 'BillyBob33')
     cy.get('input').eq(2)
       .type('billy')
       .should('have.value', 'billy')
+    cy.get('input').eq(3)
+      .type('billyB')
+      .should('have.value', 'billyB')
+
+    cy.get('[type="submit"]').click()
+    cy.get('input:invalid').eq(0).should('have.length', 1)
+    cy.get('input').eq(2).then(($input) => {
+      expect($input[0].validationMessage).to.eq('Please include an \'@\' in the email address. \'billy\' is missing an \'@\'.')
+    });
+  });
+
+  it('should only be able to input a properly formatted e-mail address with text following the \'@\'', () => {
+    cy.get('input').eq(0)
+      .type('Billy')
+      .should('have.value', 'Billy')
+    cy.get('input').eq(1)
+      .type('BillyBob33')
+      .should('have.value', 'BillyBob33')
+    cy.get('input').eq(2)
+      .type('billy@')
+      .should('have.value', 'billy@')
+    cy.get('input').eq(3)
+      .type('billyB')
+      .should('have.value', 'billyB')
+
+    cy.get('[type="submit"]').click()
+    cy.get('input:invalid').eq(0).should('have.length', 1)
+    cy.get('input').eq(2).then(($input) => {
+      expect($input[0].validationMessage).to.eq('Please enter a part following \'@\'. \'billy@\' is incomplete.')
+    });
   });
 
 
