@@ -1,7 +1,8 @@
 import React, {FC, Dispatch, SetStateAction} from 'react';
 import { Link } from 'react-router-dom';
 import { detailedRouteData } from '../../mockData';
-import userPhoto from '../../assets/images/man.png'
+import userPhoto from '../../assets/images/man.png';
+import exampleMapOne from '../../assets/images/Example Map.png'
 import './_DetailedRoute.scss'
 
 // interface DetailedRouteProps {
@@ -48,9 +49,17 @@ const DetailedRoute = () => {
       </section>
       <hr></hr>
       <section>
-        // origin map 
-        // destination map 
+        <img src={exampleMapOne}/>
+        <div>
+          <h3>Distance from origin: </h3>
+          <p>{detailedRouteData.route.distanceFromOrigin}</p>
+        </div>
+        <hr></hr>
+        <img />
+        <h3>Distance from destination: </h3>
+        <p>{detailedRouteData.route.distanceFromDestination}</p>
       </section>
+      <hr></hr>
       <button>
         // Link to user profile? 
         // request a hitch
