@@ -46,6 +46,7 @@ const DetailedRoute = () => {
           <p className='user-details__days'>{days}</p>
         </article>
       </section>
+      <hr></hr>
       <section>
         // origin map 
         // destination map 

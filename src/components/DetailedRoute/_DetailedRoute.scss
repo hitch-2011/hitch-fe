@@ -10,9 +10,9 @@
 }
 
 .user-details {
+  height: 120px;
   display: flex;
   flex-direction: row;
-  // justify-content: space-around;
 
   &__driver-bio {
     align-self: center;
@@ -22,6 +22,8 @@
 
   &__route-details {
     width: 50%;
+    align-self: center;
+    justify-self: center;
   }
 
   &__days {
