@@ -1,7 +1,27 @@
 .registration {
-  height: calc(100% - 118px);
+  height: calc(100% - 98px);
   display: flex;
   flex-direction: column;
+
+  &__back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: 20px;
+    font-size: 14px;
+    padding: 10px;
+    margin-left: 7.5%;
+    background: transparent;
+
+    &__hidden {
+      visibility: hidden;
+    }
+
+    &:hover {
+      color: darken($lightAccent, 10%);
+    }
+  }
 
   &__progress {
     position: relative;
@@ -30,6 +50,7 @@
 
 .bio {
   height: 100%;
+  margin-top: 20px;
 
   &__header {
     margin-bottom: 30px;

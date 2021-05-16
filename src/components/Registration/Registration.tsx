@@ -1,12 +1,13 @@
 import React, { FC, FormEvent } from 'react';
 import Form from '../Form/Form';
 import DaysAndTime from '../DaysAndTime/DaysAndTime';
-import { RegistrationProps } from '../../interfaces/interfaces'
+import { RegistrationProps } from '../../interfaces/interfaces';
+import { IoArrowBackSharp } from 'react-icons/io5';
 
 
 
 const Registration: FC<RegistrationProps> = (props) => {
-  const { name, setName, username, setUsername, email, setEmail,
+  const { name, setName, email, setEmail,
     page, setPage, make, setMake, model, setModel, year, setYear, origin, 
     setOrigin, destination, setDestination, departTime, setDepartTime, days, setDays,
     password, setPassword, bio, setBio } = props;
@@ -16,17 +17,21 @@ const Registration: FC<RegistrationProps> = (props) => {
   };
 
   const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setPage(page + 1)
+    e.preventDefault();
+    setPage(page + 1);
   }
 
+  const toggleView = page > 0 ? 'registration__back-btn btn' : 'registration__back-btn__hidden btn';
+
   return(
-    <form onSubmit={e => handleSubmit(e)} className="registration">
+    <form className="registration" onSubmit={e => handleSubmit(e)}>
+      <button className={toggleView} type="button" onClick={() => setPage(page - 1)}>
+        <IoArrowBackSharp /> Back 
+      </button>
       {page === 0 && 
           <Form 
             header="Name"
             inputs={[{property: name, method: setName, placeholder: 'Name'}, 
-            {property: username, method: setUsername, placeholder: 'Username'}, 
             {property: email, method: setEmail, placeholder: 'Email', type: 'email'},
             {property: password, method: setPassword, placeholder: 'Password', type: 'password'}]} 
           />
@@ -53,7 +58,7 @@ const Registration: FC<RegistrationProps> = (props) => {
           <div className="bio">
             <h1 className="bio__header">About Me</h1>
             <textarea 
-              placeholder='Add bio here'
+              placeholder="Add bio here"
               className="bio__text" 
               value={bio}
               onChange={event => setBio(event.target.value)}
@@ -61,11 +66,11 @@ const Registration: FC<RegistrationProps> = (props) => {
           </div>
         }
         <div className="registration__progress">
-          <div className='progress-bar' style={progress}/>
+          <div className="progress-bar" style={progress}/>
           <button
           className="registration__button btn"
-          type='submit'
-          >Next</button>
+          type="submit"
+          >{page === 4 ? 'Submit' : 'Next'}</button>
         </div>
       </form>
   )

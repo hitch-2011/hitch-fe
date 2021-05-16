@@ -5,7 +5,6 @@ import Registration from '../Registration/Registration';
 
 const App = () => {
   const [name, setName] = useState('')
-  const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
   const [page, setPage] = useState(0)
@@ -26,7 +25,7 @@ const App = () => {
   })
   const [bio, setBio] = useState('');
 
-  const formProps = {name, setName, username, setUsername, email, 
+  const formProps = {name, setName, email, 
     setEmail, page, setPage, make, setMake, model, setModel, year, setYear, origin, 
     setOrigin, destination, setDestination, days, setDays, departTime, setDepartTime, 
     password, setPassword, bio, setBio
@@ -43,7 +42,7 @@ const App = () => {
           />
           <Route
             exact path="/register"
-            render={() =>  <Registration {...formProps}/> }
+            render={() =>  <Registration {...formProps}/>}
           />
         </Switch>
       </BrowserRouter>
