@@ -1,7 +1,7 @@
 .header {
   display: flex;
   flex-direction: row;
-  height: 150px;
+  height: 140px;
 
   &__photo {
     height: 120px;
@@ -10,7 +10,7 @@
 }
 
 .user-details {
-  height: 120px;
+  height: 140px;
   display: flex;
   flex-direction: row;
 
@@ -37,7 +37,6 @@
 
   &__map {
     width: 50%;
-    height: 150px;
   }
 
   &__distance {

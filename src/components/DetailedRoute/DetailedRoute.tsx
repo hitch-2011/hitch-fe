@@ -66,7 +66,7 @@ const DetailedRoute = () => {
         </section>
       </section>
       <hr></hr>
-      <button>
+      <button className="registration__button btn">
         Request a hitch
       </button>
     </div>
