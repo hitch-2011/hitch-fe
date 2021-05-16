@@ -200,7 +200,7 @@ describe('User name input sad paths', () => {
   });
 });
 
-describe.only('User car details input', () => {
+describe('User car details input', () => {
 
   beforeEach(() => {
     cy.visit('http://localhost:3000/register');
@@ -274,5 +274,79 @@ describe.only('User car details input', () => {
 
     cy.get('input').should('have.length', 2);
     cy.get('.register-form__header').contains('Origin and Destination');
+  });
+});
+
+describe('User car details input sad paths', () => {
+
+  beforeEach(() => {
+    cy.visit('http://localhost:3000/register');
+
+    cy.get('input').should('have.length', 4);
+    cy.get('.register-form__header').contains('Name');
+
+    cy.get('input').eq(0)
+      .type('Billy')
+      .should('have.value', 'Billy')
+    cy.get('input').eq(1)
+      .type('BillyBob33')
+      .should('have.value', 'BillyBob33')
+    cy.get('input').eq(2)
+      .type('BillyBob33@gmail.com')
+      .should('have.value', 'BillyBob33@gmail.com')
+    cy.get('input').eq(3)
+      .type('billyB')
+      .should('have.value', 'billyB')
+
+    cy.get('button').click();
+  });
+
+  it('should have an app form title, and car details inputs', () => {
+    cy.get('h1').contains('HITCH');
+    cy.get('.register-form__header').contains('Car Details');
+    cy.get('input').should('have.length', 3);
+  });
+
+  it('should not be able to click \'next\' button and move to next page if make input is missing', () => {
+
+    cy.get('[type="submit"]').click()
+    cy.get('input:invalid').eq(0).should('have.length', 1)
+    cy.get('input').eq(0).then(($input) => {
+      expect($input[0].validationMessage).to.eq('Please fill out this field.')
+    })
+    cy.get('.register-form__header').contains('Origin and Destination').should('not.exist')
+  });
+
+  it('should not be able to click \'next\' button and move to next page if model input is missing', () => {
+
+    cy.get('input').eq(0)
+      .type('Toyota')
+      .should('have.value', 'Toyota')
+
+    cy.get('[type="submit"]').click()
+    cy.get('input:invalid').eq(1).should('have.length', 1)
+    cy.get('input').eq(1).then(($input) => {
+      expect($input[0].validationMessage).to.eq('Please fill out this field.')
+    })
+
+    cy.get('.register-form__header').contains('Origin and Destination').should('not.exist')
+  });
+
+  it('should not be able to click \'next\' button and move to next page if year input is missing', () => {
+
+    cy.get('input').eq(0)
+      .type('Toyota')
+      .should('have.value', 'Toyota')
+    cy.get('input').eq(1)
+      .type('Tacoma')
+      .should('have.value', 'Tacoma')
+
+    cy.get('[type="submit"]').click()
+    cy.get('input:invalid').eq(0).should('have.length', 1)
+    cy.get('input').eq(2).then(($input) => {
+      expect($input[0].validationMessage).to.eq('Please fill out this field.')
+    })
+
+    cy.get('.register-form__header').contains('Origin and Destination').should('not.exist')
   });
 });
