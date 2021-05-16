@@ -497,7 +497,7 @@ describe('User origin and destination sad paths', () => {
 });
 
 
-describe.only('User time and day input, and about me section', () => {
+describe('User time and day input, and about me section', () => {
 
   beforeEach(() => {
     cy.visit('http://localhost:3000/register');
@@ -584,7 +584,7 @@ describe.only('User time and day input, and about me section', () => {
     cy.get('.bio__header').contains('About Me');
   });
 
-  it.only('should be able view about me section, and add to bio', () => {
+  it('should be able view about me section, and add to bio', () => {
 
     cy.get('input').eq(0)
       .type('09:30')
