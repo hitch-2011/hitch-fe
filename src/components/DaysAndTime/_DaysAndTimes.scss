@@ -14,9 +14,7 @@
   justify-content: space-evenly;
 
   &__label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include justifyCenter;
     background: $lightGradient;
     color: white;
     height: 40px;

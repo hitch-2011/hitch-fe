@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import LandingPage from '../LandingPage/LandingPage'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Registration from '../Registration/Registration';
+import { HiOutlineMenuAlt2 } from 'react-icons/hi';
 
 const App = () => {
   const [name, setName] = useState('')
@@ -34,6 +35,7 @@ const App = () => {
   return (
     <div className="app">
       <h1 className="app__header">HITCH</h1>
+      <div className="hamburger"><HiOutlineMenuAlt2 /></div>
       <BrowserRouter>
         <Switch>
           <Route 

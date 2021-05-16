@@ -4,9 +4,7 @@
   flex-direction: column;
 
   &__back-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include justifyCenter;
     width: fit-content;
     height: 20px;
     font-size: 14px;
