@@ -8,3 +8,24 @@
     align-self: center;
   }
 }
+
+.user-details {
+  display: flex;
+  flex-direction: row;
+  // justify-content: space-around;
+
+  &__driver-bio {
+    align-self: center;
+    justify-self: center;
+    width: 50%;
+  }
+
+  &__route-details {
+    width: 50%;
+  }
+
+  &__days {
+    display: flex;
+    justify-content: center;
+  }
+}

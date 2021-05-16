@@ -34,14 +34,16 @@ const DetailedRoute = () => {
         <img className='header__photo' src={userPhoto} />
       </section>
       <hr></hr>
-      <section>
-        <article>
+      <section className='user-details'>
+        <article className='user-details__driver-bio'>
           <h3>Driver Details</h3>
           <p>{detailedRouteData.user.bio}</p>
         </article>
-        <article>
+        <article className='user-details__route-details'>
           <h3>Time: </h3>
-          <p>{days}</p>
+          <p>{detailedRouteData.route.time}</p>
+          <h3>Days: </h3>
+          <p className='user-details__days'>{days}</p>
         </article>
       </section>
       <section>
