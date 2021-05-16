@@ -31,3 +31,11 @@
     justify-content: center;
   }
 }
+
+.route-details {
+  display: flex;
+
+  &__map {
+    height: 150px;
+  }
+}
