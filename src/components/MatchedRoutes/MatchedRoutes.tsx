@@ -21,17 +21,21 @@ const MatchedRoutes: FC<MatchedProps> = ({ routes }) => {
 
     return (
       <section className='route-card' key={route.routeId}>
-        <div className='route-card__info'>
+        <div className='route-card__name'>
           <p>Name</p>
-          <p>Time</p>
-          <p>Dist. from Org.</p>
-          <p>Dist from Dest.</p>
-        </div>
-        <div className='route-card__stats'>
           <p>{route.name}</p>
+        </div>
+        <div className='route-card__time'>
+          <p>Time</p>
           <p>{route.time}</p>
-          <p>{route.distanceFromOrigin}</p>
-          <p>{route.distanceFromDestination}</p>
+        </div>
+        <div className='route-card__origin'>
+          <p>from orgin</p>
+          <p>{route.distanceFromOrigin} mi</p>
+        </div>
+        <div className='route-card__destination'>
+          <p>from destin.</p>
+          <p>{route.distanceFromDestination} mi</p>
         </div>
       </section>
     )
