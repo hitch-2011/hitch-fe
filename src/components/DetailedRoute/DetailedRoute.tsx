@@ -10,6 +10,21 @@ import './_DetailedRoute.scss'
 
 // const DetailedRoute: FC<DetailedRouteProps> = () => {
 const DetailedRoute = () => {
+
+  const days = detailedRouteData.route.days.map((day, index) => {
+    let formattedDay
+    if (day === 'tuesday' || day === 'thursday') {
+      formattedDay = day.charAt(0).toUpperCase() + day.slice(1,2)
+    } else {
+      formattedDay = day.substring(0, 1).toUpperCase()
+    }
+    return (
+      <div>
+        {formattedDay}
+      </div>
+    )
+  })
+
   return (
     <div>
       <section className='header'>
@@ -20,6 +35,14 @@ const DetailedRoute = () => {
       </section>
       <hr></hr>
       <section>
+        <article>
+          <h3>Driver Details</h3>
+          <p>{detailedRouteData.user.bio}</p>
+        </article>
+        <article>
+          <h3>Time: </h3>
+          <p>{days}</p>
+        </article>
       </section>
       <section>
         // origin map 
