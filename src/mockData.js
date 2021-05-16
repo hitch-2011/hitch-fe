@@ -1,4 +1,4 @@
-let userData = {
+export const userData = {
   user: {
     name: '',
     email: '',
@@ -18,7 +18,7 @@ let userData = {
   }
 }
 
-let routeData = {
+export const routeData = {
   allRoutes: [
     {
       routeId: 1,
@@ -39,7 +39,7 @@ let routeData = {
   ]
 }
 
-let detailedRouteData = {
+export const detailedRouteData = {
   user: {
     name: 'Paige V',
     email: 'paigev@gmail.com',
@@ -61,3 +61,4 @@ let detailedRouteData = {
     days: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday']
   }
 }
+
