@@ -17,24 +17,33 @@ interface MatchedProps {
 
 const MatchedRoutes: FC<MatchedProps> = ({ routes }) => {
 
+  const formatTime = (time: string): string => {
+    const hour: string | any = time.split(':').shift();
+    if (parseInt(hour) >= 12) {
+      return 'pm'
+    } else {
+      return 'am'
+    }
+  }
+
   const routeCards = routes.map(route => {
 
     return (
       <section className='route-card' key={route.routeId}>
         <div className='route-card__name'>
-          <p>Name</p>
+          <p className='route-card__detail'>Name</p>
           <p>{route.name}</p>
         </div>
         <div className='route-card__time'>
-          <p>Time</p>
-          <p>{route.time}</p>
+          <p className='route-card__detail'>Time</p>
+          <p>{route.time} {formatTime(route.time)}</p>
         </div>
         <div className='route-card__origin'>
-          <p>from orgin</p>
+          <p className='route-card__detail'>from orgin</p>
           <p>{route.distanceFromOrigin} mi</p>
         </div>
         <div className='route-card__destination'>
-          <p>from destin.</p>
+          <p className='route-card__detail'>from destin.</p>
           <p>{route.distanceFromDestination} mi</p>
         </div>
       </section>
@@ -42,8 +51,8 @@ const MatchedRoutes: FC<MatchedProps> = ({ routes }) => {
   })
 
   return (
-    <section className='route-card-view'>
-      <h1>Matched Routes</h1>
+    <section className='route-view'>
+      <h1 className='route-view__title'>Matched Routes ({routes.length})</h1>
       {routeCards}
     </section>
   )
