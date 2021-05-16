@@ -4,7 +4,6 @@ import { detailedRouteData } from '../../mockData';
 import userPhoto from '../../assets/images/man.png';
 import exampleMapOne from '../../assets/images/exampleMapOne.png'
 import exampleMapTwo from '../../assets/images/exampleMapTwo.png'
-import './_DetailedRoute.scss'
 
 // interface DetailedRouteProps {
 //   id: string
@@ -52,22 +51,23 @@ const DetailedRoute = () => {
       <section>
         <section className='route-details'>
           <img className='route-details__map'src={exampleMapOne}/>
-          <div>
-            <h3>Distance from origin: </h3>
+          <div className='route-details__distance'>
+            <h3>Distance away from Origin: </h3>
             <p>{detailedRouteData.route.distanceFromOrigin}</p>
           </div>
         </section>
         <hr></hr>
         <section className='route-details'>
           <img className='route-details__map'src={exampleMapTwo}/>
-          <h3>Distance from destination: </h3>
-          <p>{detailedRouteData.route.distanceFromDestination}</p>
+          <div className='route-details__distance'>
+            <h3>Distance from Destination: </h3>
+            <p>{detailedRouteData.route.distanceFromDestination}</p>
+          </div>
         </section>
       </section>
       <hr></hr>
       <button>
-        // Link to user profile? 
-        // request a hitch
+        Request a hitch
       </button>
     </div>
   )

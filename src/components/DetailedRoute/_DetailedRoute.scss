@@ -36,6 +36,15 @@
   display: flex;
 
   &__map {
+    width: 50%;
     height: 150px;
+  }
+
+  &__distance {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    padding: 10px;
   }
 }
