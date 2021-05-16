@@ -4,6 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 import Registration from '../Registration/Registration';
 import { HiOutlineMenuAlt2 } from 'react-icons/hi';
 import Menu from '../Menu/Menu';
+import MatchedRoutes from '../MatchedRoutes/MatchedRoutes';
+import { routeData } from '../../mockData';
 
 const App = () => {
   const [name, setName] = useState('');
@@ -28,9 +30,10 @@ const App = () => {
   const [bio, setBio] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const formProps = {name, setName, email, 
-    setEmail, page, setPage, make, setMake, model, setModel, year, setYear, origin, 
-    setOrigin, destination, setDestination, days, setDays, departTime, setDepartTime, 
+  const formProps = {
+    name, setName, email,
+    setEmail, page, setPage, make, setMake, model, setModel, year, setYear, origin,
+    setOrigin, destination, setDestination, days, setDays, departTime, setDepartTime,
     password, setPassword, bio, setBio
   };
 
@@ -43,16 +46,20 @@ const App = () => {
     <div className="app">
       <h1 className="app__header">HITCH</h1>
       <div className="hamburger" onClick={toggleMenu}><HiOutlineMenuAlt2 /></div>
-      <Menu menuOpen={menuOpen} toggleMenu={toggleMenu}/>
+      <Menu menuOpen={menuOpen} toggleMenu={toggleMenu} />
       <Switch>
-        <Route 
+        <Route
           exact path="/"
           render={() => <LandingPage />}
-          />
+        />
+        <Route
+          exact path="/matched-routes"
+          render={() => <MatchedRoutes routes={routeData.allRoutes} />}
+        />
         <Route
           exact path="/register"
-          render={() =>  <Registration {...formProps}/>}
-          />
+          render={() => <Registration {...formProps} />}
+        />
       </Switch>
     </div>
   );

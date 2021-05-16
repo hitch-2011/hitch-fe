@@ -7,21 +7,17 @@ interface RouteData {
   distanceFromOrigin: string;
   distanceFromDestination: string;
   time: string;
-  days: Days[];
-}
-
-interface Days {
-  day: string;
+  days: string[];
 }
 
 interface MatchedProps {
-  allRoutes: Array<RouteData>
+  routes: Array<RouteData>
 }
 
 
-const MatchedRoutes: FC<MatchedProps> = ({ allRoutes }) => {
+const MatchedRoutes: FC<MatchedProps> = ({ routes }) => {
 
-  const routeCards = allRoutes.map(route => {
+  const routeCards = routes.map(route => {
 
     return (
       <section className='route-card' key={route.routeId}>
