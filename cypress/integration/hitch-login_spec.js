@@ -350,3 +350,148 @@ describe('User car details input sad paths', () => {
     cy.get('.register-form__header').contains('Origin and Destination').should('not.exist')
   });
 });
+
+describe('User origin and destination input', () => {
+
+  beforeEach(() => {
+    cy.visit('http://localhost:3000/register');
+
+    cy.get('input').should('have.length', 4);
+    cy.get('.register-form__header').contains('Name');
+
+    cy.get('input').eq(0)
+      .type('Billy')
+      .should('have.value', 'Billy')
+    cy.get('input').eq(1)
+      .type('BillyBob33')
+      .should('have.value', 'BillyBob33')
+    cy.get('input').eq(2)
+      .type('BillyBob33@gmail.com')
+      .should('have.value', 'BillyBob33@gmail.com')
+    cy.get('input').eq(3)
+      .type('billyB')
+      .should('have.value', 'billyB')
+
+    cy.get('button').click();
+
+    cy.get('input').eq(0)
+      .type('Toyota')
+      .should('have.value', 'Toyota')
+    cy.get('input').eq(1)
+      .type('Tacoma')
+      .should('have.value', 'Tacoma')
+    cy.get('input').eq(2)
+      .type('2001')
+      .should('have.value', '2001')
+
+    cy.get('button').click();
+  });
+
+  it('should have an app and form title', () => {
+    cy.get('h1').contains('HITCH');
+    cy.get('.register-form__header').contains('Origin and Destination');
+  });
+
+  it('should contain an input for a user\'s origin and destination', () => {
+    cy.get('input').should('have.length', 2);
+  });
+
+  it('should allow users to select origin input and type an origin', () => {
+    cy.get('input').eq(0)
+      .type('2199 S University Blvd, Denver, CO 80208')
+      .should('have.value', '2199 S University Blvd, Denver, CO 80208')
+  });
+
+  it('should allow users to select destination input and type a destination', () => {
+    cy.get('input').eq(1)
+      .type('1850 Table Mesa Dr, Boulder, CO 80305')
+      .should('have.value', '1850 Table Mesa Dr, Boulder, CO 80305')
+  });
+
+  it('should have a next button to move to next login page', () => {
+    cy.get('button').contains('Next');
+  });
+
+  it('should be able to click \'next\' button and move to next page after completing all inputs', () => {
+
+    cy.get('input').should('have.length', 2);
+    cy.get('.register-form__header').contains('Origin and Destination');
+
+    cy.get('input').eq(0)
+      .type('2199 S University Blvd, Denver, CO 80208')
+      .should('have.value', '2199 S University Blvd, Denver, CO 80208')
+    cy.get('input').eq(1)
+      .type('1850 Table Mesa Dr, Boulder, CO 80305')
+      .should('have.value', '1850 Table Mesa Dr, Boulder, CO 80305')
+
+    cy.get('button').click();
+
+    cy.get('input').should('have.length', 8);
+    cy.get('.days-and-time__header').contains('Days and Time');
+  });
+});
+
+describe.only('User origin and destination sad paths', () => {
+
+  beforeEach(() => {
+    cy.visit('http://localhost:3000/register');
+
+    cy.get('input').should('have.length', 4);
+    cy.get('.register-form__header').contains('Name');
+
+    cy.get('input').eq(0)
+      .type('Billy')
+      .should('have.value', 'Billy')
+    cy.get('input').eq(1)
+      .type('BillyBob33')
+      .should('have.value', 'BillyBob33')
+    cy.get('input').eq(2)
+      .type('BillyBob33@gmail.com')
+      .should('have.value', 'BillyBob33@gmail.com')
+    cy.get('input').eq(3)
+      .type('billyB')
+      .should('have.value', 'billyB')
+
+    cy.get('button').click();
+
+    cy.get('input').eq(0)
+      .type('Toyota')
+      .should('have.value', 'Toyota')
+    cy.get('input').eq(1)
+      .type('Tacoma')
+      .should('have.value', 'Tacoma')
+    cy.get('input').eq(2)
+      .type('2001')
+      .should('have.value', '2001')
+
+    cy.get('button').click();
+  });
+
+  it('should have an app and form title, and inputs', () => {
+    cy.get('h1').contains('HITCH');
+    cy.get('.register-form__header').contains('Origin and Destination');
+    cy.get('input').should('have.length', 2);
+  });
+
+  it('should not be able to click \'next\' button and move to next page if origin input is missing', () => {
+
+    cy.get('[type="submit"]').click()
+    cy.get('input:invalid').eq(0).should('have.length', 1)
+    cy.get('input').eq(0).then(($input) => {
+      expect($input[0].validationMessage).to.eq('Please fill out this field.')
+    })
+  });
+
+  it('should not be able to click \'next\' button and move to next page if year input is missing', () => {
+
+    cy.get('input').eq(0)
+      .type('2199 S University Blvd, Denver, CO 80208')
+      .should('have.value', '2199 S University Blvd, Denver, CO 80208')
+
+    cy.get('[type="submit"]').click()
+    cy.get('input:invalid').eq(0).should('have.length', 1)
+    cy.get('input').eq(1).then(($input) => {
+      expect($input[0].validationMessage).to.eq('Please fill out this field.')
+    })
+  });
+});
