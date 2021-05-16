@@ -41,23 +41,23 @@ let routeData = {
 
 let detailedRouteData = {
   user: {
-    name: '',
-    email: '',
-    password: '',
-    bio: '',
-    photo: ''
+    name: 'Paige V',
+    email: 'paigev@gmail.com',
+    password: 'password',
+    bio: 'This is an example bio.',
+    photo: 'url'
   },
   car: {
-    make: '',
-    model: '',
-    year: ''
+    make: 'Honda',
+    model: 'Civic',
+    year: '2011'
   },
   route: {
-    origin: '',
-    destination: '',
-    distanceFromOrigin: '',
-    distanceFromDestination: '',
-    time: '',
-    days: ['']
+    origin: '2199 S University Blvd, Denver, CO 80208',
+    destination: '1850 Table Mesa Dr, Boulder, CO 80305',
+    distanceFromOrigin: '0.5',
+    distanceFromDestination: '1.2',
+    time: '08:15',
+    days: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday']
   }
 }
