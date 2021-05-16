@@ -24,7 +24,7 @@ const MatchedRoutes: FC<MatchedProps> = ({ allRoutes }) => {
   const routeCards = allRoutes.map(route => {
 
     return (
-      <section className='route-card'>
+      <section className='route-card' key={route.routeId}>
         <div>
           <p>{route.name}</p>
           <p>{route.time}</p>
@@ -36,7 +36,7 @@ const MatchedRoutes: FC<MatchedProps> = ({ allRoutes }) => {
   })
 
   return (
-    <h1>hello</h1>
+    <section className='route-card-view'>{routeCards}</section>
   )
 }
 
