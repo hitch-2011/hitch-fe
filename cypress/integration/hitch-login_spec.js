@@ -89,7 +89,7 @@ describe('User name input', () => {
   });
 });
 
-describe.only('User name input sad paths', () => {
+describe('User name input sad paths', () => {
 
   beforeEach(() => {
     cy.visit('http://localhost:3000/register');
@@ -198,6 +198,61 @@ describe.only('User name input sad paths', () => {
       expect($input[0].validationMessage).to.eq('Please enter a part following \'@\'. \'billy@\' is incomplete.')
     });
   });
+});
 
+describe.only('User car details input', () => {
+
+  beforeEach(() => {
+    cy.visit('http://localhost:3000/register');
+
+    cy.get('input').should('have.length', 4);
+    cy.get('.register-form__header').contains('Name');
+
+    cy.get('input').eq(0)
+      .type('Billy')
+      .should('have.value', 'Billy')
+    cy.get('input').eq(1)
+      .type('BillyBob33')
+      .should('have.value', 'BillyBob33')
+    cy.get('input').eq(2)
+      .type('BillyBob33@gmail.com')
+      .should('have.value', 'BillyBob33@gmail.com')
+    cy.get('input').eq(3)
+      .type('billyB')
+      .should('have.value', 'billyB')
+
+    cy.get('button').click();
+  });
+
+  it('should have an app and form title', () => {
+    cy.get('h1').contains('HITCH');
+    cy.get('.register-form__header').contains('Car Details');
+  });
+
+  it('should contain an input for a user\'s vehicle car, model, and make', () => {
+    cy.get('input').should('have.length', 3);
+  });
+
+  it('should allow users to select make input and type a make', () => {
+    cy.get('input').eq(0)
+      .type('Toyota')
+      .should('have.value', 'Toyota')
+  });
+
+  it('should allow users to select model input and type a model', () => {
+    cy.get('input').eq(1)
+      .type('Tacoma')
+      .should('have.value', 'Tacoma')
+  });
+
+  it('should allow users to select year input and type a year', () => {
+    cy.get('input').eq(2)
+      .type('2001')
+      .should('have.value', '2001')
+  });
+
+  it('should have a next button to move to next login page', () => {
+    cy.get('button').contains('Next');
+  });
 
 });
