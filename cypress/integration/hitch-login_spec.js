@@ -255,4 +255,24 @@ describe.only('User car details input', () => {
     cy.get('button').contains('Next');
   });
 
+  it('should be able to click \'next\' button and move to next page after completing all inputs', () => {
+
+    cy.get('input').should('have.length', 3);
+    cy.get('.register-form__header').contains('Car Details');
+
+    cy.get('input').eq(0)
+      .type('Toyota')
+      .should('have.value', 'Toyota')
+    cy.get('input').eq(1)
+      .type('Tacoma')
+      .should('have.value', 'Tacoma')
+    cy.get('input').eq(2)
+      .type('2001')
+      .should('have.value', '2001')
+
+    cy.get('button').click();
+
+    cy.get('input').should('have.length', 2);
+    cy.get('.register-form__header').contains('Origin and Destination');
+  });
 });
