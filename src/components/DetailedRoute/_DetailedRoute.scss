@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  height: 150px;
+
+  &__photo {
+    height: 120px;
+    align-self: center;
+  }
+}
