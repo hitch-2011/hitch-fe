@@ -29,7 +29,7 @@ const DetailedRoute = () => {
   return (
     <div>
       <section className='header'>
-        <Link to='matches'>
+        <Link className='header__back' to='matches'>
           <p> back </p>
         </Link>
         <img className='header__photo' src={userPhoto} />
@@ -67,7 +67,7 @@ const DetailedRoute = () => {
       </section>
       <hr></hr>
       <button className="registration__button btn">
-        Request a hitch
+        Request a Hitch
       </button>
     </div>
   )
