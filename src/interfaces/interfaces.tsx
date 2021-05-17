@@ -3,8 +3,6 @@ import {Dispatch, SetStateAction} from 'react';
 export interface RegistrationProps {
   name: string;
   setName: Dispatch<SetStateAction<string>>;
-  username: string;
-  setUsername: Dispatch<SetStateAction<string>>;
   email: string; 
   setEmail: Dispatch<SetStateAction<string>>;
   page: number; 

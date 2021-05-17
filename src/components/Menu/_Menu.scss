@@ -1,0 +1,70 @@
+.menu {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in;
+
+  &__bar {
+    position: absolute;
+    height: 100%;
+    width: 225px;
+    background: white;
+    z-index: 20;
+    animation: menuOpen 0.2s ease-in;
+  }
+
+  &__bar-closed {
+    @extend .menu__bar;
+  }
+}
+
+.menu-closed {
+  @extend .menu;
+  background: transparent;
+  visibility: hidden;
+  transition: all 0.3s ease-out;
+}
+
+.menu__bar-closed {
+  animation: menuClose 0.2s ease-out;
+  visibility: hidden;
+  transition: all 0.2s ease-out;
+}
+
+.menu__bar__profile {
+  @include justifyCenter;
+  flex-direction: column;
+  width: 100%;
+  height: 200px;
+  border-bottom: 1px solid rgb(148, 148, 148);
+
+  &__img {
+    border: 1px solid rgb(148, 148, 148);
+    height: 90px;
+    width: 90px;
+    border-radius: 100%;
+  }
+
+  &__name {
+    margin: 5px 0;
+  }
+}
+
+.profile-link {
+  color: $darkAccent;
+
+  &:hover {
+    color: $lightAccent;
+  }
+}
+
+.menu__bar__links {
+  text-align: left;
+  padding-left: 30px;
+}
+
+.menu__bar__links p {
+  margin-top: 15px;
+}

@@ -1,35 +1,35 @@
-@keyframes progress25 {
+@keyframes fadeIn {
   from {
-    transform: scaleX(0);
+    opacity: 0;
   }
   to {
-    transform: scaleX(0.25);
+    opacity: 1;
   }
 }
 
-@keyframes progress50 {
+@keyframes fadeOut {
   from {
-    transform: scaleX(0.25);
+    opacity: 1;
   }
   to {
-    transform: scaleX(0.5);
+    opacity: 0;
   }
 }
 
-@keyframes progress75 {
+@keyframes menuOpen {
   from {
-    transform: scaleX(0.5);
+    transform: translateX(-100%);
   }
   to {
-    transform: scaleX(0.75);
+    transform: translateX(0);
   }
 }
 
-@keyframes progress100 {
+@keyframes menuClose {
   from {
-    transform: scaleX(0.75);
+    transform: translateX(0);
   }
   to {
-    transform: scaleX(1);
+    transform: translateX(-100%);
   }
 }
