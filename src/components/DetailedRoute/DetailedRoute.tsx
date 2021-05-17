@@ -1,4 +1,4 @@
-import React, {FC, Dispatch, SetStateAction} from 'react';
+// import React, {FC, Dispatch, SetStateAction} from 'react';
 import { Link } from 'react-router-dom';
 import { detailedRouteData } from '../../mockData';
 import userPhoto from '../../assets/images/man.png';
@@ -26,7 +26,7 @@ const DetailedRoute = () => {
         <Link className='header__back' to='matches'>
           <p> back </p>
         </Link>
-        <img className='header__photo' src={userPhoto} />
+        <img className='header__photo' src={userPhoto} alt='user-photo/>
       </section>
       <section className='user-details'>
         <article className='user-details__driver-bio'>
@@ -42,14 +42,14 @@ const DetailedRoute = () => {
       </section>
       <section>
         <section className='route-details'>
-          <img className='route-details__map'src={exampleMapOne}/>
+          <img className='route-details__map'src={exampleMapOne} alt='origin-map'/>
           <div className='route-details__distance'>
             <h3>Distance away from Origin: </h3>
             <p>{detailedRouteData.route.distanceFromOrigin}</p>
           </div>
         </section>
         <section className='route-details'>
-          <img className='route-details__map'src={exampleMapTwo}/>
+          <img className='route-details__map'src={exampleMapTwo} alt='destination-map'/>
           <div className='route-details__distance'>
             <h3>Distance from Destination: </h3>
             <p className='route-details__miles'>{detailedRouteData.route.distanceFromDestination}</p>
