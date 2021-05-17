@@ -1,0 +1,20 @@
+.route-card {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 3px solid #3694ff;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  font-size: 16px;
+
+  &__detail {
+    padding-bottom: 5px;
+  }
+}
+
+.route-view {
+
+  &__title {
+    padding: 10px 0;
+    border-bottom: 3px solid $darkAccent;
+  }
+}
