@@ -14,4 +14,53 @@
     z-index: 20;
     animation: menuOpen 0.2s ease-out;
   }
+
+  &__bar-closed {
+    @extend .menu__bar;
+  }
+}
+
+.menu-closed {
+  @extend .menu;
+}
+
+// .menu::after {
+//   position: absolute;
+//   content: "";
+//   top: 0;
+//   height: 100%;
+//   width: 100%;
+//   background: rgba(0, 0, 0, 0.2);
+//   animation: fadeIn 0.2s ease-out;
+// }
+
+.menu-closed {
+  animation: fadeOut 0.3s ease-in;
+  visibility: hidden;
+  transition: all 0.3s ease-in;
+}
+
+.menu__bar-closed {
+  animation: menuClose 0.2s ease-in;
+  visibility: hidden;
+  transition: all 0.2s ease-in;
+}
+
+.menu__bar__profile {
+  @include justifyCenter;
+  flex-direction: column;
+  width: 100%;
+  height: 200px;
+  border-bottom: 2px solid red;
+
+  &__img {
+    border: 2px solid red;
+    height: 90px;
+    width: 90px;
+    border-radius: 100%;
+  }
+
+  &__name {
+    margin: 5px 0;
+  }
 }

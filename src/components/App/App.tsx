@@ -43,19 +43,17 @@ const App = () => {
     <div className="app">
       <h1 className="app__header">HITCH</h1>
       <div className="hamburger" onClick={toggleMenu}><HiOutlineMenuAlt2 /></div>
-      <BrowserRouter>
-        <Switch>
-          <Route 
-            exact path="/"
-            render={() => <LandingPage />}
-            />
-          <Route
-            exact path="/register"
-            render={() =>  <Registration {...formProps}/>}
-            />
-        </Switch>
-      </BrowserRouter>
-            {menuOpen && <Menu toggleMenu={toggleMenu}/>}
+      <Switch>
+        <Route 
+          exact path="/"
+          render={() => <LandingPage />}
+          />
+        <Route
+          exact path="/register"
+          render={() =>  <Registration {...formProps}/>}
+          />
+      </Switch>
+      <Menu menuOpen={menuOpen} toggleMenu={toggleMenu}/>
     </div>
   );
 }
