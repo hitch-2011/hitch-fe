@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import LandingPage from '../LandingPage/LandingPage';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Registration from '../Registration/Registration';
 import { HiOutlineMenuAlt2 } from 'react-icons/hi';
 import Menu from '../Menu/Menu';
