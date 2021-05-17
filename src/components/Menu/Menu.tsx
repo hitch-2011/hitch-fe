@@ -16,7 +16,9 @@ const Menu: FC<MenuProps> = ({ menuOpen, toggleMenu }) => {
               {/* //an image will go here */}
             </div>
             <p className="menu__bar__profile__name">Name</p>
-            <Link to="/profile"><p>View Profile</p></Link>
+            <Link to="/profile" className="profile-link link">
+              <p>View Profile</p>
+            </Link>
         </div>
       </div>  
     </div>

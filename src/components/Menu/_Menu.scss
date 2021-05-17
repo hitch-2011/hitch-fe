@@ -4,7 +4,7 @@
   height: 100vh;
   width: 100%;
   background: rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.2s ease-out;
+  transition: all 0.2s ease-in;
 
   &__bar {
     position: absolute;
@@ -12,7 +12,7 @@
     width: 225px;
     background: white;
     z-index: 20;
-    animation: menuOpen 0.2s ease-out;
+    animation: menuOpen 0.2s ease-in;
   }
 
   &__bar-closed {
@@ -22,6 +22,9 @@
 
 .menu-closed {
   @extend .menu;
+  background: transparent;
+  visibility: hidden;
+  transition: all 0.3s ease-out;
 }
 
 // .menu::after {
@@ -34,16 +37,10 @@
 //   animation: fadeIn 0.2s ease-out;
 // }
 
-.menu-closed {
-  animation: fadeOut 0.3s ease-in;
-  visibility: hidden;
-  transition: all 0.3s ease-in;
-}
-
 .menu__bar-closed {
-  animation: menuClose 0.2s ease-in;
+  animation: menuClose 0.2s ease-out;
   visibility: hidden;
-  transition: all 0.2s ease-in;
+  transition: all 0.2s ease-out;
 }
 
 .menu__bar__profile {
