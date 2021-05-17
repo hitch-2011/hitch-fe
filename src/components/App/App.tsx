@@ -6,6 +6,7 @@ import { HiOutlineMenuAlt2 } from 'react-icons/hi';
 import Menu from '../Menu/Menu';
 import MatchedRoutes from '../MatchedRoutes/MatchedRoutes';
 import { routeData } from '../../mockData';
+import DetailedRoute from '../DetailedRoute/DetailedRoute';
 
 const App = () => {
   const [name, setName] = useState('');
@@ -60,6 +61,14 @@ const App = () => {
           exact path="/register"
           render={() => <Registration {...formProps} />}
         />
+        <Route
+            exact path='/:id'
+            render={({ match }) => {
+              return (
+                <DetailedRoute />
+              )
+            }}
+          />
       </Switch>
     </div>
   );
