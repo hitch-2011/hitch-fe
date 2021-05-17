@@ -28,7 +28,6 @@ const DetailedRoute = () => {
         </Link>
         <img className='header__photo' src={userPhoto} />
       </section>
-      <hr></hr>
       <section className='user-details'>
         <article className='user-details__driver-bio'>
           <h3>Driver Details</h3>
@@ -41,7 +40,6 @@ const DetailedRoute = () => {
           <p className='user-details__days'>{days}</p>
         </article>
       </section>
-      <hr></hr>
       <section>
         <section className='route-details'>
           <img className='route-details__map'src={exampleMapOne}/>
@@ -50,7 +48,6 @@ const DetailedRoute = () => {
             <p>{detailedRouteData.route.distanceFromOrigin}</p>
           </div>
         </section>
-        <hr></hr>
         <section className='route-details'>
           <img className='route-details__map'src={exampleMapTwo}/>
           <div className='route-details__distance'>
@@ -59,7 +56,6 @@ const DetailedRoute = () => {
           </div>
         </section>
       </section>
-      <hr></hr>
       <button className="registration__button btn">
         Request a Hitch
       </button>

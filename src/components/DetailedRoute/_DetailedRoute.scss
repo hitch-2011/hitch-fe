@@ -3,6 +3,7 @@
   flex-direction: row;
   height: 150px;
   justify-content: center;
+  border-bottom: 2px solid $darkAccent;
 
   &__back{
     position: fixed;
@@ -19,6 +20,7 @@
   height: 150px;
   display: flex;
   flex-direction: row;
+  border-bottom: 2px solid $darkAccent;
 
   &__driver-bio {
     align-self: center;
@@ -51,6 +53,7 @@
 .route-details {
   display: flex;
   height: 175px;
+  border-bottom: 2px solid $darkAccent;
 
   &__map {
     width: 50%;
