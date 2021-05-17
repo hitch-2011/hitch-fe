@@ -26,7 +26,7 @@ const DetailedRoute = () => {
         <Link className='header__back' to='matches'>
           <p> back </p>
         </Link>
-        <img className='header__photo' src={userPhoto} alt='user-photo'/>
+        <img className='header__photo' src={userPhoto} alt={detailedRouteData.user.name}/>
       </section>
       <section className='user-details'>
         <article className='user-details__driver-bio'>
