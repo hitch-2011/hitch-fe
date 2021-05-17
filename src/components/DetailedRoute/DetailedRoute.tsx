@@ -12,16 +12,10 @@ import exampleMapTwo from '../../assets/images/exampleMapTwo.png'
 // const DetailedRoute: FC<DetailedRouteProps> = () => {
 const DetailedRoute = () => {
 
-  const days = detailedRouteData.route.days.map((day, index) => {
-    let formattedDay
-    if (day === 'tuesday' || day === 'thursday') {
-      formattedDay = day.charAt(0).toUpperCase() + day.slice(1,2)
-    } else {
-      formattedDay = day.substring(0, 1).toUpperCase()
-    }
+  const days = detailedRouteData.route.days.map(day => {
     return (
       <div className='day'>
-        {formattedDay}
+        {(day === 'tuesday' || day === 'thursday') ? day.charAt(0).toUpperCase() + day.slice(1,2) : day.substring(0, 1).toUpperCase()}
       </div>
     )
   })

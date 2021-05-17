@@ -65,12 +65,10 @@
   }
 
   &__miles {
-    background-color: $darkAccent;
-    color: white;
-    height: 25px;
-    width: 25px;
-    margin: 2px;
-    padding: 1px;
-    border-radius: 50%;
+    @extend .day;
+    height: 35px;
+    width: 35px;
+    margin: 4px;
+    padding: 5px;
   }
 }
