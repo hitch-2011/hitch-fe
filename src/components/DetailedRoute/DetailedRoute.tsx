@@ -20,7 +20,7 @@ const DetailedRoute = () => {
       formattedDay = day.substring(0, 1).toUpperCase()
     }
     return (
-      <div>
+      <div className='day'>
         {formattedDay}
       </div>
     )
@@ -61,7 +61,7 @@ const DetailedRoute = () => {
           <img className='route-details__map'src={exampleMapTwo}/>
           <div className='route-details__distance'>
             <h3>Distance from Destination: </h3>
-            <p>{detailedRouteData.route.distanceFromDestination}</p>
+            <p className='route-details__miles'>{detailedRouteData.route.distanceFromDestination}</p>
           </div>
         </section>
       </section>

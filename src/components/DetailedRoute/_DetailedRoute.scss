@@ -3,16 +3,14 @@
   flex-direction: row;
   height: 150px;
   justify-content: center;
-  // width: 100%
 
   &__back{
     position: fixed;
-    left: 0
+    left: 0;
   }
 
   &__photo {
     height: 120px;
-    // width:
     align-self: center;
   }
 }
@@ -40,6 +38,16 @@
   }
 }
 
+.day {
+  background-color: $darkAccent;
+  color: white;
+  height: 25px;
+  width: 25px;
+  margin: 2px;
+  padding: 1px;
+  border-radius: 50%;
+}
+
 .route-details {
   display: flex;
   height: 175px;
@@ -54,5 +62,15 @@
     align-content: center;
     justify-content: center;
     padding: 10px;
+  }
+
+  &__miles {
+    background-color: $darkAccent;
+    color: white;
+    height: 25px;
+    width: 25px;
+    margin: 2px;
+    padding: 1px;
+    border-radius: 50%;
   }
 }
