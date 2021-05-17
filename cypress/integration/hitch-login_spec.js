@@ -32,8 +32,8 @@ describe('User name input', () => {
     cy.get('.register-form__header').contains('Name');
   });
 
-  it('should contain an input for name, username, email, and password', () => {
-    cy.get('input').should('have.length', 4);
+  it('should contain an input for name, email, and password', () => {
+    cy.get('input').should('have.length', 3);
   });
 
   it('should allow users to select name input and type a name', () => {
@@ -42,20 +42,14 @@ describe('User name input', () => {
       .should('have.value', 'Billy')
   });
 
-  it('should allow users to select username input and type a username', () => {
-    cy.get('input').eq(1)
-      .type('BillyBob33')
-      .should('have.value', 'BillyBob33')
-  });
-
   it('should allow users to select email input and type a valid email address', () => {
-    cy.get('input').eq(2)
+    cy.get('input').eq(1)
       .type('BillyBob33@gmail.com')
       .should('have.value', 'BillyBob33@gmail.com')
   });
 
   it('should allow users to select password input and type a password', () => {
-    cy.get('input').eq(3)
+    cy.get('input').eq(2)
       .type('billyB')
       .should('have.value', 'billyB')
   });
@@ -66,23 +60,20 @@ describe('User name input', () => {
 
   it('should be able to click \'next\' button and move to next page after completing all inputs', () => {
 
-    cy.get('input').should('have.length', 4);
+    cy.get('input').should('have.length', 3);
     cy.get('.register-form__header').contains('Name');
 
     cy.get('input').eq(0)
       .type('Billy')
       .should('have.value', 'Billy')
     cy.get('input').eq(1)
-      .type('BillyBob33')
-      .should('have.value', 'BillyBob33')
-    cy.get('input').eq(2)
       .type('BillyBob33@gmail.com')
       .should('have.value', 'BillyBob33@gmail.com')
-    cy.get('input').eq(3)
+    cy.get('input').eq(2)
       .type('billyB')
       .should('have.value', 'billyB')
 
-    cy.get('button').click();
+    cy.get('button').eq(1).click();
 
     cy.get('input').should('have.length', 3);
     cy.get('.register-form__header').contains('Car Details');
@@ -127,9 +118,6 @@ describe('User name input sad paths', () => {
     cy.get('input').eq(0)
       .type('Billy')
       .should('have.value', 'Billy')
-    cy.get('input').eq(1)
-      .type('BillyBob33')
-      .should('have.value', 'BillyBob33')
 
     cy.get('[type="submit"]').click()
     cy.get('input:invalid').eq(0).should('have.length', 1)
@@ -144,15 +132,12 @@ describe('User name input sad paths', () => {
       .type('Billy')
       .should('have.value', 'Billy')
     cy.get('input').eq(1)
-      .type('BillyBob33')
-      .should('have.value', 'BillyBob33')
-    cy.get('input').eq(2)
       .type('BillyBob33@gmail.com')
       .should('have.value', 'BillyBob33@gmail.com')
 
     cy.get('[type="submit"]').click()
     cy.get('input:invalid').eq(0).should('have.length', 1)
-    cy.get('input').eq(3).then(($input) => {
+    cy.get('input').eq(2).then(($input) => {
       expect($input[0].validationMessage).to.eq('Please fill out this field.')
     })
   });
@@ -162,18 +147,15 @@ describe('User name input sad paths', () => {
       .type('Billy')
       .should('have.value', 'Billy')
     cy.get('input').eq(1)
-      .type('BillyBob33')
-      .should('have.value', 'BillyBob33')
-    cy.get('input').eq(2)
       .type('billy')
       .should('have.value', 'billy')
-    cy.get('input').eq(3)
+    cy.get('input').eq(2)
       .type('billyB')
       .should('have.value', 'billyB')
 
     cy.get('[type="submit"]').click()
     cy.get('input:invalid').eq(0).should('have.length', 1)
-    cy.get('input').eq(2).then(($input) => {
+    cy.get('input').eq(1).then(($input) => {
       expect($input[0].validationMessage).to.eq('Please include an \'@\' in the email address. \'billy\' is missing an \'@\'.')
     });
   });
@@ -183,18 +165,15 @@ describe('User name input sad paths', () => {
       .type('Billy')
       .should('have.value', 'Billy')
     cy.get('input').eq(1)
-      .type('BillyBob33')
-      .should('have.value', 'BillyBob33')
-    cy.get('input').eq(2)
       .type('billy@')
       .should('have.value', 'billy@')
-    cy.get('input').eq(3)
+    cy.get('input').eq(2)
       .type('billyB')
       .should('have.value', 'billyB')
 
     cy.get('[type="submit"]').click()
     cy.get('input:invalid').eq(0).should('have.length', 1)
-    cy.get('input').eq(2).then(($input) => {
+    cy.get('input').eq(1).then(($input) => {
       expect($input[0].validationMessage).to.eq('Please enter a part following \'@\'. \'billy@\' is incomplete.')
     });
   });
@@ -205,23 +184,20 @@ describe('User car details input', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/register');
 
-    cy.get('input').should('have.length', 4);
+    cy.get('input').should('have.length', 3);
     cy.get('.register-form__header').contains('Name');
 
     cy.get('input').eq(0)
       .type('Billy')
       .should('have.value', 'Billy')
     cy.get('input').eq(1)
-      .type('BillyBob33')
-      .should('have.value', 'BillyBob33')
-    cy.get('input').eq(2)
       .type('BillyBob33@gmail.com')
       .should('have.value', 'BillyBob33@gmail.com')
-    cy.get('input').eq(3)
+    cy.get('input').eq(2)
       .type('billyB')
       .should('have.value', 'billyB')
 
-    cy.get('button').click();
+    cy.get('button').eq(1).click();
   });
 
   it('should have an app and form title', () => {
@@ -270,7 +246,7 @@ describe('User car details input', () => {
       .type('2001')
       .should('have.value', '2001')
 
-    cy.get('button').click();
+    cy.get('button').eq(1).click();
 
     cy.get('input').should('have.length', 2);
     cy.get('.register-form__header').contains('Origin and Destination');
@@ -282,23 +258,20 @@ describe('User car details input sad paths', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/register');
 
-    cy.get('input').should('have.length', 4);
+    cy.get('input').should('have.length', 3);
     cy.get('.register-form__header').contains('Name');
 
     cy.get('input').eq(0)
       .type('Billy')
       .should('have.value', 'Billy')
     cy.get('input').eq(1)
-      .type('BillyBob33')
-      .should('have.value', 'BillyBob33')
-    cy.get('input').eq(2)
       .type('BillyBob33@gmail.com')
       .should('have.value', 'BillyBob33@gmail.com')
-    cy.get('input').eq(3)
+    cy.get('input').eq(2)
       .type('billyB')
       .should('have.value', 'billyB')
 
-    cy.get('button').click();
+    cy.get('button').eq(1).click();
   });
 
   it('should have an app form title, and car details inputs', () => {
@@ -356,23 +329,20 @@ describe('User origin and destination input', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/register');
 
-    cy.get('input').should('have.length', 4);
+    cy.get('input').should('have.length', 3);
     cy.get('.register-form__header').contains('Name');
 
     cy.get('input').eq(0)
       .type('Billy')
       .should('have.value', 'Billy')
     cy.get('input').eq(1)
-      .type('BillyBob33')
-      .should('have.value', 'BillyBob33')
-    cy.get('input').eq(2)
       .type('BillyBob33@gmail.com')
       .should('have.value', 'BillyBob33@gmail.com')
-    cy.get('input').eq(3)
+    cy.get('input').eq(2)
       .type('billyB')
       .should('have.value', 'billyB')
 
-    cy.get('button').click();
+    cy.get('button').eq(1).click();
 
     cy.get('input').eq(0)
       .type('Toyota')
@@ -384,7 +354,7 @@ describe('User origin and destination input', () => {
       .type('2001')
       .should('have.value', '2001')
 
-    cy.get('button').click();
+    cy.get('button').eq(1).click();
   });
 
   it('should have an app and form title', () => {
@@ -424,7 +394,7 @@ describe('User origin and destination input', () => {
       .type('1850 Table Mesa Dr, Boulder, CO 80305')
       .should('have.value', '1850 Table Mesa Dr, Boulder, CO 80305')
 
-    cy.get('button').click();
+    cy.get('button').eq(1).click();
 
     cy.get('input').should('have.length', 8);
     cy.get('.days-and-time__header').contains('Days and Time');
@@ -436,23 +406,20 @@ describe('User origin and destination sad paths', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/register');
 
-    cy.get('input').should('have.length', 4);
+    cy.get('input').should('have.length', 3);
     cy.get('.register-form__header').contains('Name');
 
     cy.get('input').eq(0)
       .type('Billy')
       .should('have.value', 'Billy')
     cy.get('input').eq(1)
-      .type('BillyBob33')
-      .should('have.value', 'BillyBob33')
-    cy.get('input').eq(2)
       .type('BillyBob33@gmail.com')
       .should('have.value', 'BillyBob33@gmail.com')
-    cy.get('input').eq(3)
+    cy.get('input').eq(2)
       .type('billyB')
       .should('have.value', 'billyB')
 
-    cy.get('button').click();
+    cy.get('button').eq(1).click();
 
     cy.get('input').eq(0)
       .type('Toyota')
@@ -464,7 +431,7 @@ describe('User origin and destination sad paths', () => {
       .type('2001')
       .should('have.value', '2001')
 
-    cy.get('button').click();
+    cy.get('button').eq(1).click();
   });
 
   it('should have an app and form title, and inputs', () => {
@@ -502,23 +469,20 @@ describe('User time and day input, and about me section', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/register');
 
-    cy.get('input').should('have.length', 4);
+    cy.get('input').should('have.length', 3);
     cy.get('.register-form__header').contains('Name');
 
     cy.get('input').eq(0)
       .type('Billy')
       .should('have.value', 'Billy')
     cy.get('input').eq(1)
-      .type('BillyBob33')
-      .should('have.value', 'BillyBob33')
-    cy.get('input').eq(2)
       .type('BillyBob33@gmail.com')
       .should('have.value', 'BillyBob33@gmail.com')
-    cy.get('input').eq(3)
+    cy.get('input').eq(2)
       .type('billyB')
       .should('have.value', 'billyB')
 
-    cy.get('button').click();
+    cy.get('button').eq(1).click();
 
     cy.get('input').eq(0)
       .type('Toyota')
@@ -530,7 +494,7 @@ describe('User time and day input, and about me section', () => {
       .type('2001')
       .should('have.value', '2001')
 
-    cy.get('button').click();
+    cy.get('button').eq(1).click();
 
     cy.get('input').eq(0)
       .type('2199 S University Blvd, Denver, CO 80208')
@@ -539,7 +503,7 @@ describe('User time and day input, and about me section', () => {
       .type('1850 Table Mesa Dr, Boulder, CO 80305')
       .should('have.value', '1850 Table Mesa Dr, Boulder, CO 80305')
 
-    cy.get('button').click();
+    cy.get('button').eq(1).click();
   });
 
   it('should have an app and form title', () => {
@@ -578,7 +542,7 @@ describe('User time and day input, and about me section', () => {
 
     cy.get('[type="checkbox"]').eq(0).check({ force: true }).and('have.value', 'sunday');
 
-    cy.get('button').click();
+    cy.get('button').eq(1).click();
 
     cy.get('input').should('not.exist')
     cy.get('.bio__header').contains('About Me');
@@ -592,7 +556,7 @@ describe('User time and day input, and about me section', () => {
 
     cy.get('[type="checkbox"]').eq(0).check({ force: true }).and('have.value', 'sunday');
 
-    cy.get('button').click();
+    cy.get('button').eq(1).click();
 
     cy.get('input').should('not.exist')
     cy.get('.bio__header').contains('About Me');
@@ -600,6 +564,42 @@ describe('User time and day input, and about me section', () => {
     cy.get('textarea').type('Hello world');
     cy.get('textarea').contains('Hello world');
 
-    cy.get('button').click();
+    cy.get('button').eq(1).contains('Submit')
+
+    cy.get('button').eq(1).click();
   });
 });
+
+describe('Back button', () => {
+  beforeEach(() => {
+    cy.visit('http://localhost:3000/register');
+
+    cy.get('input').should('have.length', 3);
+    cy.get('.register-form__header').contains('Name');
+  });
+
+  it('Should not be present on the first page of form', () => {
+    cy.get("registration__back-btn").should('not.exist')
+  })
+
+  it('Should bring you back one page when clicked', () => {
+    cy.get('input').eq(0)
+      .type('Billy')
+      .should('have.value', 'Billy')
+    cy.get('input').eq(1)
+      .type('BillyBob33@gmail.com')
+      .should('have.value', 'BillyBob33@gmail.com')
+    cy.get('input').eq(2)
+      .type('billyB')
+      .should('have.value', 'billyB')
+
+    cy.get('button').eq(1).click();
+
+    cy.get(".registration__back-btn").contains('Back');
+
+    cy.get(".registration__back-btn").click();
+
+    cy.get('input').should('have.length', 3);
+    cy.get('.register-form__header').contains('Name');
+  })
+})

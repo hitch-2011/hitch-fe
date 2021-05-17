@@ -22,7 +22,7 @@ const Form: FC<FormProps> = ({ header, inputs }): JSX.Element => {
         onChange={event => input.method(event.target.value)}
         type={input.type ? input.type : 'text'}
         autoComplete='off'
-        // required
+        required
       />
     )
   })
