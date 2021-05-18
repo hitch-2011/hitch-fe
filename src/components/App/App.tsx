@@ -59,6 +59,7 @@ const App = () => {
           exact path="/register"
           render={() => <Registration {...formProps} />}
         />
+        {!isLoggedIn && <Redirect to="/" />}
         <Route
             exact path='/profile'
             render={({ match }) => {
