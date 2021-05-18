@@ -14,13 +14,15 @@ const OriginDestination: FC<OriginDestinationProps> = ({ setOrigin, origin }) =>
   const handleSelect = (address: string): any => {
     setOrigin(address)
    geocodeByAddress(address)
-     .then(results => getLatLng(results[0]))
+     .then(results => {
+       setOrigin(results[0].formatted_address)
+       return results[0].formatted_address
+     })
      .then(latLng => console.log('Success', latLng))
      .catch(error => console.error('Error', error));
   };
   return (
     <div className="origin-destination">
-
       <PlacesAutocomplete
         value={origin}
         onChange={setOrigin}
@@ -37,18 +39,14 @@ const OriginDestination: FC<OriginDestinationProps> = ({ setOrigin, origin }) =>
               <div className="autocomplete-dropdown-container">
                 {loading && <div>Loading...</div>}
                 {suggestions.map(suggestion => {
+                  // console.log(suggestion)
                   const className = suggestion.active
                     ? 'suggestion-item--active'
                     : 'suggestion-item';
-                  // inline style for demonstration purpose
-                  // const style = suggestion.active
-                  //   ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                  //   : { backgroundColor: '#ffffff', cursor: 'pointer' };
                   return (
                     <div
                       {...getSuggestionItemProps(suggestion, {
-                        className,
-                        // style,
+                        className
                       })}
                     >
                       <span>{suggestion.description}</span>
