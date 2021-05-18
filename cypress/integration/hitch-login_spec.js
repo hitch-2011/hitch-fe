@@ -9,11 +9,11 @@ describe('Sign up user flow', () => {
   });
 
   it('should have button to sign up', () => {
-    cy.get('button').contains('Sign up now');
+    cy.get('button').contains('Sign up');
   });
 
   it('should be able to click \'sign up now\' button', () => {
-    cy.get('button').click();
+    cy.get('button').eq(0).click();
     cy.url().should('include', 'http://localhost:3000/register')
   });
 });
