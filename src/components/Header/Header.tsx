@@ -8,10 +8,6 @@ interface HeaderProps {
   isLoggedIn: boolean
 }
 
-const storeScroll = () => {
-  document.documentElement.dataset.scroll = window.scrollY.toString();
-}
-
 const Header: FC<HeaderProps> = ({ toggleMenu, menuIsOpen, isLoggedIn }) => {
   return (
     <header className={isLoggedIn ? "header-main--small" : "header-main"}>

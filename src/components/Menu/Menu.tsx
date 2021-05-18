@@ -17,7 +17,7 @@ const Menu: FC<MenuProps> = ({ menuIsOpen, toggleMenu }) => {
             <img 
               className="menu__bar__profile__img"
               src={userPhoto} 
-              alt="Your profile picture"
+              alt="Your profile"
             />
           </div>
           <p className="menu__bar__profile__name">Name</p>
