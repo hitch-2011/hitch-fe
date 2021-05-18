@@ -1,10 +1,10 @@
 .signup {
-  height: calc(100% - 98px);
+  height: 100%;
+  @include justifyCenter;
 
   &__logo {
     width: 250px;
-    display: block;
-    margin: 80px auto;
+    margin-bottom: 100px;
   }
 
   &__btn {

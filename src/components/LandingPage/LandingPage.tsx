@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import logo from '../../assets/landing-logo.svg';
+import logo from '../../assets/images/landing-logo.svg';
 
 const LandingPage = () => {
   return (

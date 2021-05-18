@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import LandingPage from '../LandingPage/LandingPage';
 import { Route, Switch } from 'react-router-dom';
 import Registration from '../Registration/Registration';
-import { HiOutlineMenuAlt2 } from 'react-icons/hi';
 import Menu from '../Menu/Menu';
 import MatchedRoutes from '../MatchedRoutes/MatchedRoutes';
+import Header from '../Header/Header';
 import { routeData } from '../../mockData';
 import DetailedRoute from '../DetailedRoute/DetailedRoute';
 
@@ -12,7 +12,6 @@ const App = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [page, setPage] = useState(0);
   const [make, setMake] = useState('');
   const [model, setModel] = useState('');
   const [year, setYear] = useState('');
@@ -28,26 +27,24 @@ const App = () => {
     friday: false,
     saturday: false
   });
+  const [page, setPage] = useState(0);
   const [bio, setBio] = useState('');
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const formProps = {
     name, setName, email,
     setEmail, page, setPage, make, setMake, model, setModel, year, setYear, origin,
     setOrigin, destination, setDestination, days, setDays, departTime, setDepartTime,
-    password, setPassword, bio, setBio
+    password, setPassword, bio, setBio, isLoggedIn, setIsLoggedIn
   };
-
-  const toggleMenu = () => {
-    console.log('es')
-    setMenuOpen(!menuOpen);
-  }
 
   return (
     <div className="app">
-      <h1 className="app__header">HITCH</h1>
-      <div className="hamburger" onClick={toggleMenu}><HiOutlineMenuAlt2 /></div>
-      <Menu menuOpen={menuOpen} toggleMenu={toggleMenu} />
+      <Header menuIsOpen={menuIsOpen} toggleMenu={() => setMenuIsOpen(!menuIsOpen)}/> 
+      {/* <h1 className="app__header">HITCH</h1>
+      <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}><HiOutlineMenuAlt2 /></div>
+      <Menu menuOpen={menuOpen} toggleMenu={() => setMenuOpen(!menuOpen)} /> */}
       <Switch>
         <Route
           exact path="/"
@@ -62,7 +59,7 @@ const App = () => {
           render={() => <Registration {...formProps} />}
         />
         <Route
-            exact path='/:id'
+            exact path='/profile'
             render={({ match }) => {
               return (
                 <DetailedRoute />

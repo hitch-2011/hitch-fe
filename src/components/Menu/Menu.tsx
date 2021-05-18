@@ -1,19 +1,24 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
+import userPhoto from '../../assets/images/man.png';
 
 interface MenuProps {
   toggleMenu: () => void;
-  menuOpen: boolean
+  menuIsOpen: boolean
 }
 
-const Menu: FC<MenuProps> = ({ menuOpen, toggleMenu }) => {
+const Menu: FC<MenuProps> = ({ menuIsOpen, toggleMenu }) => {
 
   return (
-    <div className={menuOpen ? 'menu' : 'menu-closed'} onClick={toggleMenu}>
-      <div className={menuOpen ? 'menu__bar' : 'menu__bar-closed'}>
+    <div className={menuIsOpen ? 'menu' : 'menu-closed'} onClick={toggleMenu}>
+      <div className={menuIsOpen ? 'menu__bar' : 'menu__bar-closed'}>
         <div className="menu__bar__profile">  
-          <div className="menu__bar__profile__img">
-            {/* //an image will go here */}
+          <div className="menu__bar__profile__container">
+            <img 
+              className="menu__bar__profile__img"
+              src={userPhoto} 
+              alt="Your profile picture"
+            />
           </div>
           <p className="menu__bar__profile__name">Name</p>
           <Link to="/profile" className="profile-link link">
