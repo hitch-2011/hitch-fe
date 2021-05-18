@@ -60,6 +60,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-places-autocomplete": "^7.2.7",
     "cypress": "^7.3.0",
     "start-server-and-test": "^1.12.2"
   }
