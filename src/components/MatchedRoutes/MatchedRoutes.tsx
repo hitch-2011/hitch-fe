@@ -18,7 +18,7 @@ interface MatchedProps {
 const MatchedRoutes: FC<MatchedProps> = ({ routes }) => {
 
   const formatTime = (time: string): string => {
-    let hour: string | any = time.split(':').shift();
+    let hour: string = time.split(':')[0];
     if (parseInt(hour) >= 12) {
       return 'pm'
     } else {

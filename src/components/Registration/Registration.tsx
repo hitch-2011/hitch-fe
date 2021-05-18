@@ -3,6 +3,7 @@ import Form from '../Form/Form';
 import DaysAndTime from '../DaysAndTime/DaysAndTime';
 import { RegistrationProps } from '../../interfaces/interfaces';
 import { IoArrowBackSharp } from 'react-icons/io5';
+import { Redirect } from 'react-router';
 
 
 
@@ -10,7 +11,7 @@ const Registration: FC<RegistrationProps> = (props) => {
   const { name, setName, email, setEmail,
     page, setPage, make, setMake, model, setModel, year, setYear, origin,
     setOrigin, destination, setDestination, departTime, setDepartTime, days, setDays,
-    password, setPassword, bio, setBio } = props;
+    password, setPassword, bio, setBio,setIsLoggedIn } = props;
 
   const progress = {
     transform: `scaleX(.${page * 20})`
@@ -19,6 +20,10 @@ const Registration: FC<RegistrationProps> = (props) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setPage(page + 1);
+    if(page === 4) {
+      setIsLoggedIn(true);
+      <Redirect to='/matched-routes' />
+    }
   }
 
   const toggleView = page > 0 ? 'registration__back-btn btn' : 'registration__back-btn__hidden btn';
