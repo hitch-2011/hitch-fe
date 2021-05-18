@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import LandingPage from '../LandingPage/LandingPage';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Registration from '../Registration/Registration';
-import Menu from '../Menu/Menu';
 import MatchedRoutes from '../MatchedRoutes/MatchedRoutes';
 import Header from '../Header/Header';
 import { routeData } from '../../mockData';
@@ -41,10 +40,12 @@ const App = () => {
 
   return (
     <div className="app">
-      <Header menuIsOpen={menuIsOpen} toggleMenu={() => setMenuIsOpen(!menuIsOpen)}/> 
-      {/* <h1 className="app__header">HITCH</h1>
-      <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}><HiOutlineMenuAlt2 /></div>
-      <Menu menuOpen={menuOpen} toggleMenu={() => setMenuOpen(!menuOpen)} /> */}
+      <Header 
+        menuIsOpen={menuIsOpen} 
+        toggleMenu={() => setMenuIsOpen(!menuIsOpen)}
+        isLoggedIn={isLoggedIn}
+      /> 
+      {isLoggedIn && <Redirect to="/matched-routes" />}
       <Switch>
         <Route
           exact path="/"

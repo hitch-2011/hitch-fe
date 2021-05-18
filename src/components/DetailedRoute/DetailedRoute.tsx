@@ -21,7 +21,7 @@ const DetailedRoute = () => {
   })
 
   return (
-    <div>
+    <div className="detailed-route">
       <section className='header'>
         <Link className='header__back' to='matches'>
           <p> back </p>
