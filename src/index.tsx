@@ -5,6 +5,7 @@ import App from './components/App/App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+require('dotenv').config();
 
 ReactDOM.render(
   <React.StrictMode>
