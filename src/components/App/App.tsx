@@ -49,17 +49,17 @@ const App = () => {
       <Switch>
         <Route
           exact path="/"
-          render={() => <LandingPage />}
-        />
-        <Route
-          exact path="/matched-routes"
-          render={() => <MatchedRoutes routes={routeData.allRoutes} />}
+          render={() => <LandingPage setIsLoggedIn={setIsLoggedIn}/>}
         />
         <Route
           exact path="/register"
           render={() => <Registration {...formProps} />}
         />
         {!isLoggedIn && <Redirect to="/" />}
+        <Route
+          exact path="/matched-routes"
+          render={() => <MatchedRoutes routes={routeData.allRoutes} />}
+        />
         <Route
             exact path='/profile'
             render={({ match }) => {
