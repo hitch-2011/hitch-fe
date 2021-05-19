@@ -28,7 +28,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
   })
 
   useEffect(() => {
-    console.log("User effect worked")
+    
   })
 
   return (
