@@ -42,7 +42,6 @@ const PlacesInput: FC<PlacesInputProps> = ({value, onChange, placeholder}) => {
                   const className = suggestion.active
                     ? 'suggestion-item--active'
                     : 'suggestion-item';
-                    console.log(suggestion.description)
                   return (
                     <div
                       {...getSuggestionItemProps(suggestion, {

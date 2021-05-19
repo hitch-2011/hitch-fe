@@ -1,0 +1,12 @@
+.autocomplete-dropdown-container {
+  width: 85%;
+  margin: 0 7.5%;
+  position: absolute;
+  background-color: #fff;
+}
+.suggestion-item--active {
+  background-color: rgba($lightAccent, 0.4);
+}
+.suggestion-item {
+  background-color: #fff;
+}
