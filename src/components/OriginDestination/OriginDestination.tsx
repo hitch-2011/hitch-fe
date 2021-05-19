@@ -3,69 +3,32 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
+import PlacesInput from '../PlacesInput/PlacesInput';
 
 interface OriginDestinationProps {
-  setOrigin: Dispatch<SetStateAction<string>>
-  origin: string
+  setOrigin: Dispatch<SetStateAction<string>>;
+  origin: string;
+  setDestination: Dispatch<SetStateAction<string>>;
+  destination: string;
 }
 
 
-const OriginDestination: FC<OriginDestinationProps> = ({ setOrigin, origin }) => {
-  const handleSelect = (address: string): any => {
-    setOrigin(address)
-   geocodeByAddress(address)
-     .then(results => {
-       setOrigin(results[0].formatted_address)
-       return results[0].formatted_address
-     })
-     .then(latLng => console.log('Success', latLng))
-     .catch(error => console.error('Error', error));
-  };
+const OriginDestination: FC<OriginDestinationProps> = ({ setOrigin, origin, setDestination, destination }) => {
   return (
     <div className="origin-destination">
-      <PlacesAutocomplete
+      <h1 className="origin-destination__header">Origin and Destination</h1>
+      <PlacesInput
         value={origin}
         onChange={setOrigin}
-        onSelect={handleSelect}
-      >
-        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-            <div>
-              <input
-                {...getInputProps({
-                  placeholder: 'Search Places ...',
-                  className: 'location-search-input',
-                })}
-              />
-              <div className="autocomplete-dropdown-container">
-                {loading && <div>Loading...</div>}
-                {suggestions.map(suggestion => {
-                  // console.log(suggestion)
-                  const className = suggestion.active
-                    ? 'suggestion-item--active'
-                    : 'suggestion-item';
-                  return (
-                    <div
-                      {...getSuggestionItemProps(suggestion, {
-                        className
-                      })}
-                    >
-                      <span>{suggestion.description}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-      </PlacesAutocomplete>
+        placeholder={'From ...'}
+      />
+      <PlacesInput
+        value={destination}
+        onChange={setDestination}
+        placeholder={'To ...'}
+      />
     </div>
   )
-  // <PlacesAutocomplete
-  //   value={origin}
-  //   onChange={setOrigin}
-  //   onSelect={handleSelect}
-  // >
-
-  // </PlacesAutocomplete>
 }
 
 export default OriginDestination;
