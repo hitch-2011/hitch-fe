@@ -19,12 +19,16 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
 
   }, [userId])
 
-  const days = detailedRouteData.route.days.map(day => {
+  const days = detailedRouteData.route.days.map((day, index) => {
     return (
-      <div className='day'>
-        {(day === 'tuesday' || day === 'thursday') ? day.charAt(0).toUpperCase() + day.slice(1, 2) : day.substring(0, 1).toUpperCase()}
+      <div className='day' key={index}>
+        {(day === 'tuesday' || day === 'thursday') ? day.charAt(0).toUpperCase() + day.slice(1,2) : day.substring(0, 1).toUpperCase()}
       </div>
     )
+  })
+
+  useEffect(() => {
+    console.log("User effect worked")
   })
 
   return (
@@ -44,7 +48,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
           <h3>Time: </h3>
           <p>{detailedRouteData.route.time}</p>
           <h3>Days: </h3>
-          <p className='user-details__days'>{days}</p>
+          <div className='user-details__days'>{days}</div>
         </article>
       </section>
       <section>
