@@ -29,7 +29,7 @@ const PlacesInput: FC<PlacesInputProps> = ({value, onChange, placeholder}) => {
         onSelect={handleSelect}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-            <div>
+            <div key={1}>
               <input
                 {...getInputProps({
                   placeholder,
@@ -38,18 +38,21 @@ const PlacesInput: FC<PlacesInputProps> = ({value, onChange, placeholder}) => {
               />
               <div className="autocomplete-dropdown-container">
                 {loading && <div>Loading...</div>}
-                {suggestions.map(suggestion => {
+                {suggestions.map((suggestion, i) => {
                   const className = suggestion.active
                     ? 'suggestion-item--active'
                     : 'suggestion-item';
+                  suggestion.id = i.toString()
+                  //this npm package sets the key to id, however id returns undefined.
+                  //here we reassign the id to index and stringify because it needs a type of 'string'
                   return (
-                    <div
+                    <section
                       {...getSuggestionItemProps(suggestion, {
                         className
                       })}
                     >
                       <span>{suggestion.description}</span>
-                    </div>
+                    </section>
                   );
                 })}
               </div>

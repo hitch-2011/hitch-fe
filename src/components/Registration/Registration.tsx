@@ -51,12 +51,12 @@ const Registration: FC<RegistrationProps> = (props) => {
         />
       }
       {page === 2 &&
-        <OriginDestination setOrigin={setOrigin} origin={origin} destination={destination} setDestination={setDestination}/>
-        // <Form
-        //   header="Origin and Destination"
-        //   inputs={[{ property: origin, method: setOrigin, placeholder: 'Origin' },
-        //   { property: destination, method: setDestination, placeholder: 'Destination' }]}
-        // />
+        <OriginDestination 
+          setOrigin={setOrigin} 
+          origin={origin} 
+          destination={destination} 
+          setDestination={setDestination}
+        />
       }
       {page === 3 &&
         <DaysAndTime property={departTime} method={setDepartTime} setDays={setDays} days={days} />

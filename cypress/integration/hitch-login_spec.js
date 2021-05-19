@@ -468,6 +468,7 @@ describe('User time and day input, and about me section', () => {
 
   beforeEach(() => {
     cy.visit('http://localhost:3000/register');
+    cy.intercept("https://maps.googleapis.com/maps/api/place/js/*")
 
     cy.get('input').should('have.length', 3);
     cy.get('.register-form__header').contains('Name');

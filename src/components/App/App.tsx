@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LandingPage from '../LandingPage/LandingPage';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Registration from '../Registration/Registration';
@@ -6,6 +6,7 @@ import MatchedRoutes from '../MatchedRoutes/MatchedRoutes';
 import Header from '../Header/Header';
 import { routeData } from '../../mockData';
 import DetailedRoute from '../DetailedRoute/DetailedRoute';
+require('dotenv').config()
 
 const App = () => {
   const [name, setName] = useState('');
@@ -37,6 +38,19 @@ const App = () => {
     setOrigin, destination, setDestination, days, setDays, departTime, setDepartTime,
     password, setPassword, bio, setBio, isLoggedIn, setIsLoggedIn
   };
+
+  useEffect(() => {
+    const script = document.createElement('script');
+
+    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBS_2C_7FuKpDZ6Hv4uo2Shqn_fctik4Ik&libraries=places";
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    }
+  }, []);
 
   return (
     <div className="app">
