@@ -54,14 +54,6 @@ const Registration: FC<RegistrationProps> = (props) => {
         />
       }
       {page === 1 &&
-        <Form
-          header="Car Details"
-          inputs={[{ property: make, method: setMake, placeholder: 'Make' },
-          { property: model, method: setModel, placeholder: 'Model' },
-          { property: year, method: setYear, placeholder: 'Year' }]}
-        />
-      }
-      {page === 2 &&
         <div className="bio">
           <h1 className="bio__header">About Me</h1>
           <textarea
@@ -71,6 +63,14 @@ const Registration: FC<RegistrationProps> = (props) => {
             onChange={event => setBio(event.target.value)}
           />
         </div>
+      }
+      {page === 2 &&
+        <Form
+          header="Car Details"
+          inputs={[{ property: make, method: setMake, placeholder: 'Make' },
+          { property: model, method: setModel, placeholder: 'Model' },
+          { property: year, method: setYear, placeholder: 'Year' }]}
+        />
       }
       {page === 3 &&
         <OriginDestination
