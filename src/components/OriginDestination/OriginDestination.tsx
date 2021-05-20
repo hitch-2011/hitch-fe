@@ -1,8 +1,4 @@
 import React, { Dispatch, SetStateAction, FC } from 'react';
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
 import PlacesInput from '../PlacesInput/PlacesInput';
 
 interface OriginDestinationProps {
