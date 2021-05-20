@@ -23,6 +23,7 @@
 .header--small {
   @extend .header-main__title;
   font-size: 30px;
+  text-shadow: 2px 3px 0 rgba($lightAccent, 0.15);
 }
 
 .hamburger {

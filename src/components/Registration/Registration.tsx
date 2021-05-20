@@ -4,6 +4,7 @@ import DaysAndTime from '../DaysAndTime/DaysAndTime';
 import { RegistrationProps } from '../../interfaces/interfaces';
 import { IoArrowBackSharp } from 'react-icons/io5';
 import { Redirect } from 'react-router';
+import OriginDestination from '../OriginDestination/OriginDestination';
 
 
 
@@ -50,10 +51,11 @@ const Registration: FC<RegistrationProps> = (props) => {
         />
       }
       {page === 2 &&
-        <Form
-          header="Origin and Destination"
-          inputs={[{ property: origin, method: setOrigin, placeholder: 'Origin' },
-          { property: destination, method: setDestination, placeholder: 'Destination' }]}
+        <OriginDestination 
+          setOrigin={setOrigin} 
+          origin={origin} 
+          destination={destination} 
+          setDestination={setDestination}
         />
       }
       {page === 3 &&
