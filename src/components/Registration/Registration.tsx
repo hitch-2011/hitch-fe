@@ -12,7 +12,7 @@ const Registration: FC<RegistrationProps> = (props) => {
   const { name, setName, email, setEmail,
     page, setPage, make, setMake, model, setModel, year, setYear, origin,
     setOrigin, destination, setDestination, departTime, setDepartTime, days, setDays,
-    password, setPassword, bio, setBio,setIsLoggedIn } = props;
+    password, setPassword, bio, setBio, setIsLoggedIn } = props;
 
   const progress = {
     transform: `scaleX(.${page * 20})`
@@ -21,7 +21,7 @@ const Registration: FC<RegistrationProps> = (props) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setPage(page + 1);
-    if(page === 4) {
+    if (page === 4) {
       setIsLoggedIn(true);
       <Redirect to='/matched-routes' />
     }
@@ -51,17 +51,6 @@ const Registration: FC<RegistrationProps> = (props) => {
         />
       }
       {page === 2 &&
-        <OriginDestination 
-          setOrigin={setOrigin} 
-          origin={origin} 
-          destination={destination} 
-          setDestination={setDestination}
-        />
-      }
-      {page === 3 &&
-        <DaysAndTime property={departTime} method={setDepartTime} setDays={setDays} days={days} />
-      }
-      {page === 4 &&
         <div className="bio">
           <h1 className="bio__header">About Me</h1>
           <textarea
@@ -71,6 +60,17 @@ const Registration: FC<RegistrationProps> = (props) => {
             onChange={event => setBio(event.target.value)}
           />
         </div>
+      }
+      {page === 3 &&
+        <OriginDestination
+          setOrigin={setOrigin}
+          origin={origin}
+          destination={destination}
+          setDestination={setDestination}
+        />
+      }
+      {page === 4 &&
+        <DaysAndTime property={departTime} method={setDepartTime} setDays={setDays} days={days} />
       }
       <div className="registration__progress">
         <div className="progress-bar" style={progress} />
