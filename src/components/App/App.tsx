@@ -42,7 +42,7 @@ const App = () => {
   useEffect(() => {
     const script = document.createElement('script');
 
-    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBS_2C_7FuKpDZ6Hv4uo2Shqn_fctik4Ik&libraries=places";
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_PLACES}&libraries=places`;
     script.async = true;
 
     document.body.appendChild(script);
@@ -54,16 +54,16 @@ const App = () => {
 
   return (
     <div className="app">
-      <Header 
-        menuIsOpen={menuIsOpen} 
+      <Header
+        menuIsOpen={menuIsOpen}
         toggleMenu={() => setMenuIsOpen(!menuIsOpen)}
         isLoggedIn={isLoggedIn}
-      /> 
+      />
       {isLoggedIn && <Redirect to="/matched-routes" />}
       <Switch>
         <Route
           exact path="/"
-          render={() => <LandingPage setIsLoggedIn={setIsLoggedIn}/>}
+          render={() => <LandingPage setIsLoggedIn={setIsLoggedIn} />}
         />
         <Route
           exact path="/register"
@@ -75,13 +75,13 @@ const App = () => {
           render={() => <MatchedRoutes routes={routeData.allRoutes} />}
         />
         <Route
-            exact path='/profile'
-            render={({ match }) => {
-              return (
-                <DetailedRoute />
-              )
-            }}
-          />
+          exact path='/profile'
+          render={({ match }) => {
+            return (
+              <DetailedRoute />
+            )
+          }}
+        />
       </Switch>
     </div>
   );
