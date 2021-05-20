@@ -5,15 +5,15 @@ interface UserData {
   bio: string;
 }
 
-interface RouteData {
-  orgin: string;
-  destination: string;
-  time: string;
-  days: Array<string>;
-}
+// interface RouteData {
+//   orgin: string;
+//   destination: string;
+//   time: string;
+//   days: Array<string>;
+// }
 
 export const postUserInfo = (userInfo: UserData) => {
-  return fetch('', {
+  return fetch(`https://afternoon-journey-49986.herokuapp.com/api/v1/users`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(userInfo)
@@ -21,11 +21,11 @@ export const postUserInfo = (userInfo: UserData) => {
     .then(response => response.json())
 }
 
-export const postRouteData = (routeInfo: RouteData) => {
-  return fetch('', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(routeInfo)
-  })
-    .then(response => response.json())
-}
+// export const postRouteData = (routeInfo: RouteData) => {
+//   return fetch('', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(routeInfo)
+//   })
+//     .then(response => response.json())
+// }
