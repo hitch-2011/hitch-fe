@@ -498,8 +498,11 @@ describe('User time and day input, and about me section', () => {
     cy.get('button').eq(1).click();
 
     cy.get('input').eq(0)
-      .type('2199 S University Blvd, Denver, CO 80208')
-      .should('have.value', '2199 S University Blvd, Denver, CO 80208')
+      .type('1138 Corona St, Denver, CO 80218')
+      .get('span').eq(0)
+      .click()
+      .get('input').eq(0)
+      .should('have.value', '1138 Corona St, Denver, CO 80218, USA')
     cy.get('input').eq(1)
       .type('1850 Table Mesa Dr, Boulder, CO 80305')
       .should('have.value', '1850 Table Mesa Dr, Boulder, CO 80305')
