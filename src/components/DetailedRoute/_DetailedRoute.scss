@@ -13,12 +13,17 @@
 
   &__back {
     position: fixed;
-    left: 0;
+    right: 15px;
+    top: 15px;
   }
 
   &__photo {
     height: 120px;
     align-self: center;
+  }
+
+  &__close-icon {
+    height: 20px;
   }
 }
 
