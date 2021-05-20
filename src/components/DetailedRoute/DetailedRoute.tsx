@@ -6,7 +6,6 @@ import userPhoto from '../../assets/images/man.png';
 import exampleMapOne from '../../assets/images/exampleMapOne.png';
 import exampleMapTwo from '../../assets/images/exampleMapTwo.png';
 import { getUserByID } from '../../apiCalls';
-import  { MapContainer, googleApiWrapper } from '../Map/Map'
 
 interface DetailedRouteProps {
   userId: string
@@ -57,8 +56,8 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
           </div>
         </section>
         <section className='route-details'>
-          {/* <img className='route-details__map'src={exampleMapTwo} alt='destination-map'/> */}
-          <MapContainer />
+          <img className='route-details__map'src={exampleMapTwo} alt='destination-map'/>
+          {/* <MapContainer /> */}
           <div className='route-details__distance'>
             <h3>Distance from Destination: </h3>
             <p className='route-details__miles'>{detailedRouteData.route.distanceFromDestination}</p>
