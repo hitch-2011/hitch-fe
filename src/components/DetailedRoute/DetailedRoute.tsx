@@ -6,6 +6,8 @@ import userPhoto from '../../assets/images/man.png';
 import exampleMapOne from '../../assets/images/exampleMapOne.png';
 import exampleMapTwo from '../../assets/images/exampleMapTwo.png';
 import { getUserByID } from '../../apiCalls';
+import close from '../../assets/images/close.png'
+// import  { MapContainer, googleApiWrapper } from '../Map/Map'
 
 interface DetailedRouteProps {
   userId: string
@@ -32,7 +34,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
       <section className='header'>
         <img className='header__photo' src={userPhoto} alt={detailedRouteData.user.name}/>
         <Link className='header__back' to='matched-routes'>
-          <p> back </p>
+          <img src={close} />
         </Link>
       </section>
       <section className='user-details'>
