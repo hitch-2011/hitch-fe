@@ -7,7 +7,6 @@
   display: flex;
   flex-direction: row;
   height: 20vh;
-  // height: 150px;
   justify-content: center;
   border-bottom: 2px solid $darkAccent;
 
@@ -65,8 +64,7 @@
 
 .route-details {
   display: flex;
-  // height: 175px;
-  height: 21vh;
+  height: 20vh;
   border-bottom: 2px solid $darkAccent;
 
   &__map {
