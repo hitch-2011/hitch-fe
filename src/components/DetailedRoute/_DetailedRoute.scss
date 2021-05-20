@@ -6,7 +6,8 @@
 .header {
   display: flex;
   flex-direction: row;
-  height: 150px;
+  height: 20vh;
+  // height: 150px;
   justify-content: center;
   border-bottom: 2px solid $darkAccent;
 
@@ -22,7 +23,8 @@
 }
 
 .user-details {
-  height: 150px;
+  // height: 150px;
+  height: 20vh;
   display: flex;
   flex-direction: row;
   border-bottom: 2px solid $darkAccent;
@@ -35,6 +37,7 @@
 
   &__route-details {
     width: 50%;
+    margin: 4px;
     align-self: center;
     justify-self: center;
   }
@@ -57,7 +60,8 @@
 
 .route-details {
   display: flex;
-  height: 175px;
+  // height: 175px;
+  height: 21vh;
   border-bottom: 2px solid $darkAccent;
 
   &__map {
@@ -67,16 +71,17 @@
   &__distance {
     display: flex;
     flex-direction: column;
-    align-content: center;
     justify-content: center;
     padding: 10px;
   }
 
   &__miles {
     @extend .day;
-    height: 35px;
-    width: 35px;
-    margin: 4px;
-    padding: 5px;
+    align-self: center;
+    font-size: 24px;
+    height: 50px;
+    width: 50px;
+    margin: 6px 4px 4px 4px;
+    padding: 8px 4px 4px 4px;
   }
 }

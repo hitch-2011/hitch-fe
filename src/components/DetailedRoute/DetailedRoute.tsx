@@ -6,6 +6,7 @@ import userPhoto from '../../assets/images/man.png';
 import exampleMapOne from '../../assets/images/exampleMapOne.png';
 import exampleMapTwo from '../../assets/images/exampleMapTwo.png';
 import { getUserByID } from '../../apiCalls';
+import  { MapContainer, googleApiWrapper } from '../Map/Map'
 
 interface DetailedRouteProps {
   userId: string
@@ -27,17 +28,13 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
     )
   })
 
-  useEffect(() => {
-    
-  })
-
   return (
     <div className="detailed-route">
       <section className='header'>
-        <Link className='header__back' to='matches'>
+        <img className='header__photo' src={userPhoto} alt={detailedRouteData.user.name}/>
+        <Link className='header__back' to='matched-routes'>
           <p> back </p>
         </Link>
-        <img className='header__photo' src={userPhoto} alt={detailedRouteData.user.name} />
       </section>
       <section className='user-details'>
         <article className='user-details__driver-bio'>
@@ -55,12 +52,13 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
         <section className='route-details'>
           <img className='route-details__map' src={exampleMapOne} alt='origin-map' />
           <div className='route-details__distance'>
-            <h3>Distance away from Origin: </h3>
-            <p>{detailedRouteData.route.distanceFromOrigin}</p>
+            <h3>Distance from  Origin: </h3>
+            <p className='route-details__miles'>{detailedRouteData.route.distanceFromOrigin}</p>
           </div>
         </section>
         <section className='route-details'>
-          <img className='route-details__map' src={exampleMapTwo} alt='destination-map' />
+          {/* <img className='route-details__map'src={exampleMapTwo} alt='destination-map'/> */}
+          <MapContainer />
           <div className='route-details__distance'>
             <h3>Distance from Destination: </h3>
             <p className='route-details__miles'>{detailedRouteData.route.distanceFromDestination}</p>
@@ -74,4 +72,4 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
   )
 }
 
-export default DetailedRoute
+export default DetailedRoute;
