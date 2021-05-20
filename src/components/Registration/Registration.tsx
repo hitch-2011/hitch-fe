@@ -5,6 +5,7 @@ import { RegistrationProps } from '../../interfaces/interfaces';
 import { IoArrowBackSharp } from 'react-icons/io5';
 import { Redirect } from 'react-router';
 import OriginDestination from '../OriginDestination/OriginDestination';
+import { postUserInfo } from '../../apiCalls';
 
 
 
@@ -21,6 +22,16 @@ const Registration: FC<RegistrationProps> = (props) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setPage(page + 1);
+    if (page === 2) {
+      const userInfo = {
+        email,
+        password,
+        fullname: name,
+        bio
+      }
+      postUserInfo(userInfo)
+        .then(response => console.log(response))
+    }
     if (page === 4) {
       setIsLoggedIn(true);
       <Redirect to='/matched-routes' />
