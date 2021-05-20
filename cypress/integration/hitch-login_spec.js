@@ -249,7 +249,7 @@ describe('User car details input', () => {
     cy.get('button').eq(1).click();
 
     cy.get('input').should('have.length', 2);
-    cy.get('.register-form__header').contains('Origin and Destination');
+    cy.get('.origin-destination__header').contains('Origin and Destination');
   });
 });
 
@@ -359,7 +359,7 @@ describe('User origin and destination input', () => {
 
   it('should have an app and form title', () => {
     cy.get('h1').contains('HITCH');
-    cy.get('.register-form__header').contains('Origin and Destination');
+    cy.get('.origin-destination__header').contains('Origin and Destination');
   });
 
   it('should contain an input for a user\'s origin and destination', () => {
@@ -385,7 +385,7 @@ describe('User origin and destination input', () => {
   it('should be able to click \'next\' button and move to next page after completing all inputs', () => {
 
     cy.get('input').should('have.length', 2);
-    cy.get('.register-form__header').contains('Origin and Destination');
+    cy.get('.origin-destination__header').contains('Origin and Destination');
 
     cy.get('input').eq(0)
       .type('2199 S University Blvd, Denver, CO 80208')
@@ -436,7 +436,7 @@ describe('User origin and destination sad paths', () => {
 
   it('should have an app and form title, and inputs', () => {
     cy.get('h1').contains('HITCH');
-    cy.get('.register-form__header').contains('Origin and Destination');
+    cy.get('.origin-destination__header').contains('Origin and Destination');
     cy.get('input').should('have.length', 2);
   });
 

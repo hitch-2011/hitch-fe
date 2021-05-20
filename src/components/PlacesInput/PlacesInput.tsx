@@ -35,6 +35,7 @@ const PlacesInput: FC<PlacesInputProps> = ({value, onChange, placeholder}) => {
                   placeholder,
                   className: 'location-search-input',
                 })}
+                required
               />
               <div className="autocomplete-dropdown-container">
                 {loading && <div>Loading...</div>}
