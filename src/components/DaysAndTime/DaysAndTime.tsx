@@ -13,6 +13,22 @@ const DaysAndTime: FC<DaysAndTimeProps> = ({property, method, setDays, days}) =>
     const { id, checked } = e.target
     setDays({...days, [id]: checked})
   }
+
+  const daysCheckBox = Object.keys(days).map(day => {
+    return (
+      <>
+        <input 
+          id={day}
+          type="checkbox"
+          value={day}
+          checked={days[day]}
+          onChange={handleChange}
+        />
+        <label className="days__label" htmlFor={day}>{day.charAt(0).toUpperCase()}
+        </label>
+      </>
+    )
+  })
   return (
     <div className='days-and-time'>
       <h1 className="days-and-time__header">Days and Time</h1>
@@ -27,7 +43,8 @@ const DaysAndTime: FC<DaysAndTimeProps> = ({property, method, setDays, days}) =>
       />
       
       <div className='days'>
-        <input 
+        {daysCheckBox}
+        {/* <input 
           id="sunday"
           type="checkbox"
           value="sunday"
@@ -89,7 +106,7 @@ const DaysAndTime: FC<DaysAndTimeProps> = ({property, method, setDays, days}) =>
           onChange={handleChange}
         />
         <label className="days__label" htmlFor="saturday">S
-        </label>
+        </label> */}
       </div>
     </div>
   )
