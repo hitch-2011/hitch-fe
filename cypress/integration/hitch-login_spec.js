@@ -1,9 +1,13 @@
 describe('Sign up user flow', () => {
 
   beforeEach(() => {
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
+      method: "POST",
+      body: "good"
+
+    })
     cy.visit('http://localhost:3000/');
   });
-
   it('should have an app title', () => {
     cy.get('h1').contains('HITCH');
   });
@@ -21,6 +25,11 @@ describe('Sign up user flow', () => {
 describe('User name input', () => {
 
   beforeEach(() => {
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
+      method: "POST",
+      body: "good"
+
+    })
     cy.visit('http://localhost:3000/register');
   });
 
@@ -75,14 +84,19 @@ describe('User name input', () => {
 
     cy.get('button').eq(1).click();
 
-    cy.get('input').should('have.length', 3);
-    cy.get('.register-form__header').contains('Car Details');
+    cy.get('textarea').should('have.length', 1);
+    cy.get('.bio__header').contains('About Me');
   });
 });
 
 describe('User name input sad paths', () => {
 
   beforeEach(() => {
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
+      method: "POST",
+      body: "good"
+
+    })
     cy.visit('http://localhost:3000/register');
   });
 
@@ -182,6 +196,11 @@ describe('User name input sad paths', () => {
 describe('User car details input', () => {
 
   beforeEach(() => {
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
+      method: "POST",
+      body: "good"
+
+    })
     cy.visit('http://localhost:3000/register');
 
     cy.get('input').should('have.length', 3);
@@ -197,6 +216,7 @@ describe('User car details input', () => {
       .type('billyB')
       .should('have.value', 'billyB')
 
+    cy.get('button').eq(1).click();
     cy.get('button').eq(1).click();
   });
 
@@ -256,6 +276,11 @@ describe('User car details input', () => {
 describe('User car details input sad paths', () => {
 
   beforeEach(() => {
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
+      method: "POST",
+      body: "good"
+
+    })
     cy.visit('http://localhost:3000/register');
 
     cy.get('input').should('have.length', 3);
@@ -271,6 +296,7 @@ describe('User car details input sad paths', () => {
       .type('billyB')
       .should('have.value', 'billyB')
 
+    cy.get('button').eq(1).click();
     cy.get('button').eq(1).click();
   });
 
@@ -327,6 +353,11 @@ describe('User car details input sad paths', () => {
 describe('User origin and destination input', () => {
 
   beforeEach(() => {
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
+      method: "POST",
+      body: "good"
+
+    })
     cy.visit('http://localhost:3000/register');
 
     cy.get('input').should('have.length', 3);
@@ -342,6 +373,7 @@ describe('User origin and destination input', () => {
       .type('billyB')
       .should('have.value', 'billyB')
 
+    cy.get('button').eq(1).click();
     cy.get('button').eq(1).click();
 
     cy.get('input').eq(0)
@@ -407,6 +439,11 @@ describe('User origin and destination input', () => {
 describe('User origin and destination sad paths', () => {
 
   beforeEach(() => {
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
+      method: "POST",
+      body: "good"
+
+    })
     cy.visit('http://localhost:3000/register');
 
     cy.get('input').should('have.length', 3);
@@ -422,6 +459,7 @@ describe('User origin and destination sad paths', () => {
       .type('billyB')
       .should('have.value', 'billyB')
 
+    cy.get('button').eq(1).click();
     cy.get('button').eq(1).click();
 
     cy.get('input').eq(0)
@@ -467,9 +505,14 @@ describe('User origin and destination sad paths', () => {
 });
 
 
-describe('User time and day input, and about me section', () => {
+describe('User about me section', () => {
 
   beforeEach(() => {
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
+      method: "POST",
+      body: "good"
+
+    })
     cy.visit('http://localhost:3000/register');
     cy.intercept("https://maps.googleapis.com/maps/api/place/js/*")
 
@@ -486,6 +529,38 @@ describe('User time and day input, and about me section', () => {
       .type('billyB')
       .should('have.value', 'billyB')
 
+    cy.get('button').eq(1).click();
+  });
+  it('should be able to click \'next\' button and move to next page after completing time and day inputs', () => {
+    cy.get('input').should('not.exist')
+    cy.get('.bio__header').contains('About Me');
+  });
+});
+
+describe('Days and time', () => {
+  beforeEach(() => {
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
+      method: "POST",
+      body: "good"
+
+    })
+    cy.visit('http://localhost:3000/register');
+    cy.intercept("https://maps.googleapis.com/maps/api/place/js/*")
+
+    cy.get('input').should('have.length', 3);
+    cy.get('.register-form__header').contains('Name');
+
+    cy.get('input').eq(0)
+      .type('Billy')
+      .should('have.value', 'Billy')
+    cy.get('input').eq(1)
+      .type('BillyBob33@gmail.com')
+      .should('have.value', 'BillyBob33@gmail.com')
+    cy.get('input').eq(2)
+      .type('billyB')
+      .should('have.value', 'billyB')
+
+    cy.get('button').eq(1).click();
     cy.get('button').eq(1).click();
 
     cy.get('input').eq(0)
@@ -511,7 +586,7 @@ describe('User time and day input, and about me section', () => {
       .should('have.value', '1850 Table Mesa Dr, Boulder, CO 80305')
 
     cy.get('button').eq(1).click();
-  });
+  })
 
   it('should have an app and form title', () => {
     cy.get('h1').contains('HITCH');
@@ -537,48 +612,15 @@ describe('User time and day input, and about me section', () => {
     cy.get('[type="checkbox"]').eq(5).check({ force: true }).and('have.value', 'friday')
     cy.get('[type="checkbox"]').eq(6).check({ force: true }).and('have.value', 'saturday')
   });
-
-  it('should be able to click \'next\' button and move to next page after completing time and day inputs', () => {
-
-    cy.get('input').should('have.length', 8);
-    cy.get('.days-and-time__header').contains('Days and Time');;
-
-    cy.get('input').eq(0)
-      .type('09:30')
-      .should('have.value', '09:30')
-
-    cy.get('[type="checkbox"]').eq(0).check({ force: true }).and('have.value', 'sunday');
-
-    cy.get('button').eq(1).click();
-
-    cy.get('input').should('not.exist')
-    cy.get('.bio__header').contains('About Me');
-  });
-
-  it('should be able view about me section, and add to bio', () => {
-
-    cy.get('input').eq(0)
-      .type('09:30')
-      .should('have.value', '09:30')
-
-    cy.get('[type="checkbox"]').eq(0).check({ force: true }).and('have.value', 'sunday');
-
-    cy.get('button').eq(1).click();
-
-    cy.get('input').should('not.exist')
-    cy.get('.bio__header').contains('About Me');
-
-    cy.get('textarea').type('Hello world');
-    cy.get('textarea').contains('Hello world');
-
-    cy.get('button').eq(1).contains('Submit')
-
-    cy.get('button').eq(1).click();
-  });
-});
+})
 
 describe('Back button', () => {
   beforeEach(() => {
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
+      method: "POST",
+      body: "good"
+
+    })
     cy.visit('http://localhost:3000/register');
 
     cy.get('input').should('have.length', 3);

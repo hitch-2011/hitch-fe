@@ -35,10 +35,10 @@ const Registration: FC<RegistrationProps> = (props) => {
     if (page === 4) {
 
       const routeData = {
-        userID: 1,
+        user_id: 1,
         origin,
         destination,
-        time: departTime,
+        departure_time: departTime,
         days: Object.keys(days).filter(el => days[el] === true)
       }
       console.log(routeData)

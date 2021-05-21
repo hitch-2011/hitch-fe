@@ -1,6 +1,12 @@
 describe('The menu toggle functionality', () => {
   beforeEach(() => {
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
+      method: "POST",
+      body: "good"
+
+    })
     cy.visit('http://localhost:3000/register');
+    cy.intercept("https://maps.googleapis.com/maps/api/place/js/*")
 
     cy.get('input').should('have.length', 3);
     cy.get('.register-form__header').contains('Name');
@@ -15,6 +21,7 @@ describe('The menu toggle functionality', () => {
       .type('billyB')
       .should('have.value', 'billyB')
 
+    cy.get('button').eq(1).click();
     cy.get('button').eq(1).click();
 
     cy.get('input').eq(0)
@@ -40,14 +47,18 @@ describe('The menu toggle functionality', () => {
       .should('have.value', '1850 Table Mesa Dr, Boulder, CO 80305')
 
     cy.get('button').eq(1).click();
+
+    cy.get('[type="checkbox"]').eq(1).check({ force: true })
+    cy.get('[type="checkbox"]').eq(5).check({ force: true })
+    cy.get('[type="checkbox"]').eq(6).check({ force: true })
     cy.get('button').eq(1).click();
-    cy.get('button').eq(1).click();
+
   });
 
   it('Should not be visible until clicked', () => {
     cy.get('.menu__bar').should('not.exist')
     cy.get('.hamburger').click()
-    .get('.menu__bar').should('exist')
+      .get('.menu__bar').should('exist')
   });
 
   it('Should be able to close the menu by clicking anywhere', () => {
@@ -64,7 +75,13 @@ describe('The menu toggle functionality', () => {
 
 describe('The clickable links on the menu', () => {
   beforeEach(() => {
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
+      method: "POST",
+      body: "good"
+
+    })
     cy.visit('http://localhost:3000/register');
+    cy.intercept("https://maps.googleapis.com/maps/api/place/js/*")
 
     cy.get('input').should('have.length', 3);
     cy.get('.register-form__header').contains('Name');
@@ -79,6 +96,7 @@ describe('The clickable links on the menu', () => {
       .type('billyB')
       .should('have.value', 'billyB')
 
+    cy.get('button').eq(1).click();
     cy.get('button').eq(1).click();
 
     cy.get('input').eq(0)
@@ -104,9 +122,13 @@ describe('The clickable links on the menu', () => {
       .should('have.value', '1850 Table Mesa Dr, Boulder, CO 80305')
 
     cy.get('button').eq(1).click();
+
+    cy.get('[type="checkbox"]').eq(1).check({ force: true })
+    cy.get('[type="checkbox"]').eq(5).check({ force: true })
+    cy.get('[type="checkbox"]').eq(6).check({ force: true })
     cy.get('button').eq(1).click();
-    cy.get('button').eq(1).click()
-      .get('.hamburger').click()
+
+    cy.get('.hamburger').click()
   });
 
   it('Should be able to travel to profile', () => {

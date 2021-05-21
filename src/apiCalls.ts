@@ -6,10 +6,10 @@ interface UserData {
 }
 
 interface RouteData {
-  userID: number;
+  user_id: number;
   origin: string;
   destination: string;
-  time: string;
+  departure_time: string;
   days: string[];
 }
 
