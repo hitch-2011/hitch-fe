@@ -5,7 +5,7 @@ import { RegistrationProps } from '../../interfaces/interfaces';
 import { IoArrowBackSharp } from 'react-icons/io5';
 import { Redirect } from 'react-router';
 import OriginDestination from '../OriginDestination/OriginDestination';
-import { postUserInfo } from '../../apiCalls';
+import { postUserInfo, postRouteData } from '../../apiCalls';
 
 
 
@@ -33,6 +33,15 @@ const Registration: FC<RegistrationProps> = (props) => {
         .then(response => console.log(response))
     }
     if (page === 4) {
+      console.log(days)
+      const routeData = {
+        origin,
+        destination,
+        time: departTime,
+        days: Object.keys(days).filter(el => days[el] === true)
+      }
+      postRouteData(routeData)
+        .then(response => console.log(response))
       setIsLoggedIn(true);
       <Redirect to='/matched-routes' />
     }
