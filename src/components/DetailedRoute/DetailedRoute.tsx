@@ -52,7 +52,10 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
       </section>
       <section>
         <section className='route-details'>
-          <img className='route-details__map' src={exampleMapOne} alt='origin-map' />
+          <div className='route-details__distance'>
+            <MapDisplay />
+          </div>
+          {/* <img className='route-details__map'src={exampleMapOne} alt='origin-map'/> */}
           <div className='route-details__distance'>
             <h3>Distance from  Origin: </h3>
             <p className='route-details__miles'>{detailedRouteData.route.distanceFromOrigin}</p>
