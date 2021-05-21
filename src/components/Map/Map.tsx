@@ -6,16 +6,11 @@ const mapStyles = {
   height: '19%',
 };
 
-interface MapProps {
-  // zoom: number
-}
-
-export const MapDisplay: FC<MapProps> = (props: any) => {
+export const MapDisplay = (props: any) => {
   return (
     <Map
       google={props.google}
       style={mapStyles}
-      // zoom={8}
       initialCenter={{ lat: 47.444, lng: -122.176}}
     />
   );
