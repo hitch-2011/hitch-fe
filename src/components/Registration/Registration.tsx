@@ -33,13 +33,15 @@ const Registration: FC<RegistrationProps> = (props) => {
         .then(response => console.log(response))
     }
     if (page === 4) {
-      console.log(days)
+
       const routeData = {
+        userID: 1,
         origin,
         destination,
         time: departTime,
         days: Object.keys(days).filter(el => days[el] === true)
       }
+      console.log(routeData)
       postRouteData(routeData)
         .then(response => console.log(response))
       setIsLoggedIn(true);

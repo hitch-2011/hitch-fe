@@ -6,6 +6,7 @@ interface UserData {
 }
 
 interface RouteData {
+  userID: number;
   origin: string;
   destination: string;
   time: string;
@@ -22,7 +23,7 @@ export const postUserInfo = (userInfo: UserData) => {
 }
 
 export const postRouteData = (routeInfo: RouteData) => {
-  return fetch(`https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides`, {
+  return fetch(`https://afternoon-journey-49986.herokuapp.com/api/v1/users/3/rides`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(routeInfo)
