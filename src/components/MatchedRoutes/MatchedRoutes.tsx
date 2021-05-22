@@ -5,7 +5,7 @@ import { routeData } from '../../mockData';
 
 interface RouteData {
   id: number;
-  name: string;
+  user_name: string;
   distance_from_origin: string;
   distance_from_destination: string;
   departure_time: string;
@@ -45,7 +45,7 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
       <section className='route-card' key={route.id} id={route.id.toString()}>
         <div className='route-card__name'>
           <p className='route-card__detail'>Name</p>
-          {/* <p>{route.name}</p> */}
+          <p>{route.user_name}</p>
         </div>
         <div className='route-card__time'>
           <p className='route-card__detail'>Time</p>
