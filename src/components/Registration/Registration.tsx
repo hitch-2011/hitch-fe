@@ -46,9 +46,14 @@ const Registration: FC<RegistrationProps> = (props) => {
       }
       console.log(routeData)
       postRouteData(routeData)
-        .then(response => console.log(response))
+        .then(response => {
+          if (response.data.attributes) {
+            <Redirect to='/matched-routes' />
+          }
+        }
+        )
       setIsLoggedIn(true);
-      <Redirect to='/matched-routes' />
+
     }
   }
 

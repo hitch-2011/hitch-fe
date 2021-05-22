@@ -26,7 +26,7 @@ export const postUserInfo = (userInfo: UserData) => {
 }
 
 export const postRouteData = (routeInfo: RouteData) => {
-  return fetch(`https://afternoon-journey-49986.herokuapp.com/api/v1/users/3/rides`, {
+  return fetch(`https://afternoon-journey-49986.herokuapp.com/api/v1/users/${routeInfo.user_id}/rides`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(routeInfo)
@@ -36,5 +36,10 @@ export const postRouteData = (routeInfo: RouteData) => {
 
 export const getMatchedRides = (id: number) => {
   return fetch(`https://afternoon-journey-49986.herokuapp.com/api/v1/users/${id}/rides`)
+    .then(response => response.json())
+}
+
+export const getUserByID = (id: number) => {
+  return fetch(`https://afternoon-journey-49986.herokuapp.com/api/v1/users/${id}`)
     .then(response => response.json())
 }

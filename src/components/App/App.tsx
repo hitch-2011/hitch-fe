@@ -79,7 +79,7 @@ const App = () => {
           exact path='/profile'
           render={({ match }) => {
             return (
-              <DetailedRoute />
+              <DetailedRoute userId={currentUserId} />
             )
           }}
         />
