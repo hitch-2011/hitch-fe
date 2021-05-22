@@ -3,11 +3,8 @@ import { useEffect, FC } from 'react';
 import { Link } from 'react-router-dom';
 import { detailedRouteData } from '../../mockData';
 import userPhoto from '../../assets/images/man.png';
-import exampleMapOne from '../../assets/images/exampleMapOne.png';
-import exampleMapTwo from '../../assets/images/exampleMapTwo.png';
 import { getUserByID } from '../../apiCalls';
 import close from '../../assets/images/close.png'
-// import  { MapContainer, googleApiWrapper } from '../Map/Map'
 import MapDisplay from '../Map/Map'
 
 interface DetailedRouteProps {
@@ -35,7 +32,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
       <section className='header'>
         <img className='header__photo' src={userPhoto} alt={detailedRouteData.user.name}/>
         <Link className='header__back' to='matched-routes'>
-          <img className='header__close-icon' src={close} />
+          <img className='header__close-icon' src={close} alt='close-button'/>
         </Link>
       </section>
       <section className='user-details'>
@@ -55,14 +52,12 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
           <div className='route-details__map-div'>
             <MapDisplay />
           </div>
-          {/* <img className='route-details__map'src={exampleMapOne} alt='origin-map'/> */}
           <div className='route-details__distance'>
             <h3>Distance from  Origin: </h3>
             <p className='route-details__miles'>{detailedRouteData.route.distanceFromOrigin}</p>
           </div>
         </section>
         <section className='route-details'>
-          {/* <img className='route-details__map'src={exampleMapTwo} alt='destination-map'/> */}
           <div className='route-details__map-div'>
             <MapDisplay />
           </div>
