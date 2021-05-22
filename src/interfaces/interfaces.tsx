@@ -25,7 +25,9 @@ export interface RegistrationProps {
   setPassword: Dispatch<SetStateAction<string>>;
   bio: string;
   setBio: Dispatch<SetStateAction<string>>;
-  setIsLoggedIn: Dispatch<SetStateAction<boolean>>
+  setIsLoggedIn: Dispatch<SetStateAction<boolean>>;
+  currentUserId: string;
+  setCurrentUserId: Dispatch<SetStateAction<string>>;
 }
 
 export interface DayPicker {

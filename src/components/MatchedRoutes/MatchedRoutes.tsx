@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
+import { getMatchedRides } from '../../apiCalls';
 
 
 interface RouteData {
@@ -11,11 +12,12 @@ interface RouteData {
 }
 
 interface MatchedProps {
-  routes: Array<RouteData>
+  currentUserId: string
 }
 
 
-const MatchedRoutes: FC<MatchedProps> = ({ routes }) => {
+const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
+  const [matchedRoutes, setMatchedRoutes] = useState<RouteData[]>([])
 
   const formatTime = (time: string): string => {
     let hour: string = time.split(':')[0];
@@ -26,7 +28,17 @@ const MatchedRoutes: FC<MatchedProps> = ({ routes }) => {
     }
   }
 
-  const routeCards = routes.map(route => {
+  useEffect(() => {
+    getMatchedRides(parseInt(currentUserId))
+      .then(response => {
+        console.log(response)
+        setMatchedRoutes(response)
+      })
+
+  }, [])
+
+
+  const routeCards = matchedRoutes.map(route => {
 
     return (
       <section className='route-card' key={route.routeId}>
@@ -52,7 +64,7 @@ const MatchedRoutes: FC<MatchedProps> = ({ routes }) => {
 
   return (
     <section className='route-view'>
-      <h1 className='route-view__title'>Matched Routes ({routes.length})</h1>
+      <h1 className='route-view__title'>Matched Routes ({matchedRoutes.length})</h1>
       {routeCards}
     </section>
   )

@@ -31,12 +31,13 @@ const App = () => {
   const [bio, setBio] = useState('');
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUserId, setCurrentUserId] = useState('1')
 
   const formProps = {
     name, setName, email,
     setEmail, page, setPage, make, setMake, model, setModel, year, setYear, origin,
     setOrigin, destination, setDestination, days, setDays, departTime, setDepartTime,
-    password, setPassword, bio, setBio, isLoggedIn, setIsLoggedIn
+    password, setPassword, bio, setBio, isLoggedIn, setIsLoggedIn, currentUserId, setCurrentUserId
   };
 
   useEffect(() => {
@@ -72,7 +73,7 @@ const App = () => {
         {!isLoggedIn && <Redirect to="/" />}
         <Route
           exact path="/matched-routes"
-          render={() => <MatchedRoutes routes={routeData.allRoutes} />}
+          render={() => <MatchedRoutes currentUserId={currentUserId} />}
         />
         <Route
           exact path='/profile'

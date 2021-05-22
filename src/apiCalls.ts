@@ -3,10 +3,13 @@ interface UserData {
   password: string;
   fullname: string;
   bio: string;
+  make: string;
+  model: string;
+  year: string;
 }
 
 interface RouteData {
-  user_id: number;
+  user_id: string;
   origin: string;
   destination: string;
   departure_time: string;
@@ -28,5 +31,10 @@ export const postRouteData = (routeInfo: RouteData) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(routeInfo)
   })
+    .then(response => response.json())
+}
+
+export const getMatchedRides = (id: number) => {
+  return fetch(`https://afternoon-journey-49986.herokuapp.com/api/v1/users/${id}/rides`)
     .then(response => response.json())
 }

@@ -13,7 +13,7 @@ const Registration: FC<RegistrationProps> = (props) => {
   const { name, setName, email, setEmail,
     page, setPage, make, setMake, model, setModel, year, setYear, origin,
     setOrigin, destination, setDestination, departTime, setDepartTime, days, setDays,
-    password, setPassword, bio, setBio, setIsLoggedIn } = props;
+    password, setPassword, bio, setBio, setIsLoggedIn, currentUserId, setCurrentUserId } = props;
 
   const progress = {
     transform: `scaleX(.${page * 20})`
@@ -27,15 +27,18 @@ const Registration: FC<RegistrationProps> = (props) => {
         email,
         password,
         fullname: name,
-        bio
+        bio,
+        make,
+        model,
+        year
       }
       postUserInfo(userInfo)
-        .then(response => console.log(response))
+        .then(response => setCurrentUserId(response.data.id))
     }
     if (page === 4) {
 
       const routeData = {
-        user_id: 1,
+        user_id: currentUserId,
         origin,
         destination,
         departure_time: departTime,
