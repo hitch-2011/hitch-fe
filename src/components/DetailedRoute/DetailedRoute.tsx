@@ -27,8 +27,6 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
     )
   })
 
-
-
   return (
     <div className="detailed-route">
       <section className='header'>
