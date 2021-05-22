@@ -33,8 +33,8 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
         console.log(response)
         setMatchedRoutes(response.data.attributes.matched_routes)
       })
-
-  }, [])
+    console.log(matchedRoutes)
+  }, [currentUserId])
 
 
   const routeCards = matchedRoutes.map(route => {

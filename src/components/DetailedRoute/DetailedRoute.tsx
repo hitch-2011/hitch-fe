@@ -17,7 +17,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
     getUserByID(parseInt(userId))
       .then(response => console.log(response))
 
-  }, [])
+  }, [userId])
 
   const days = detailedRouteData.route.days.map(day => {
     return (
