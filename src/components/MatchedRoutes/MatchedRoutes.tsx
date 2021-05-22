@@ -1,7 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
 import { getMatchedRides } from '../../apiCalls';
-import { routeData } from '../../mockData';
-
 
 interface RouteData {
   id: number;

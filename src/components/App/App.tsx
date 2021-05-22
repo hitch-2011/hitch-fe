@@ -4,7 +4,6 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Registration from '../Registration/Registration';
 import MatchedRoutes from '../MatchedRoutes/MatchedRoutes';
 import Header from '../Header/Header';
-import { routeData } from '../../mockData';
 import DetailedRoute from '../DetailedRoute/DetailedRoute';
 require('dotenv').config()
 
