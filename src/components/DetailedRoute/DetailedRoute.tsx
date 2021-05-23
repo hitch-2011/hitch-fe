@@ -112,9 +112,13 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
           </div>
         </section>
       </section>
-      {!currentUser &&
+      {!currentUser ?
       <button className="registration__button btn">
         Request a Hitch
+      </button>
+      :
+      <button className="registration__button btn">
+        Add a Route
       </button>
       }
     </div>

@@ -1,6 +1,4 @@
 import { Map, GoogleApiWrapper, Circle } from 'google-maps-react'
-import { useState, useEffect } from 'react';
-// import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 require('dotenv').config()
 
 interface MapDisplayProps {
