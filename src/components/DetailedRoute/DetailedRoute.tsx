@@ -1,4 +1,4 @@
-import { useEffect, FC } from 'react';
+import { useEffect, FC, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { detailedRouteData } from '../../mockData';
 import userPhoto from '../../assets/images/man.png';
@@ -12,10 +12,16 @@ interface DetailedRouteProps {
 
 const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
 
+  const [name, setName] = useState('');
+  const [bio, setBio] = useState('');
+  const [time, setTime] = useState('');
+  const [day, setDays] = useState('');
+  const [origin, setOrigin] = useState('');
+  const [destination, setDestination] = useState('');
+
   useEffect(() => {
     getUserByID(parseInt(userId))
       .then(response => console.log(response))
-
   }, [userId])
 
   const days = detailedRouteData.route.days.map((day, index) => {
