@@ -192,8 +192,8 @@ describe('The clickable links on the menu', () => {
       .url().should('include', '/pending-routes');
   });
 
-  it('Should be able to travel to messages', () => {
-    cy.get('.menu-link').eq(3).click()
-      .url().should('include', '/messages');
-  });
+  // it('Should be able to travel to messages', () => {
+  //   cy.get('.menu-link').eq(3).click()
+  //     .url().should('include', '/messages');
+  // });
 })

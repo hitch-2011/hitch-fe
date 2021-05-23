@@ -1,7 +1,12 @@
-import { Map, GoogleApiWrapper } from 'google-maps-react'
+import { Map, GoogleApiWrapper, Circle } from 'google-maps-react'
 require('dotenv').config()
 
-export const MapDisplay = (props: any) => {
+interface MapDisplayProps {
+  latLong: any
+  google: any
+}
+
+export const MapDisplay = ({ latLong, google }: MapDisplayProps) => {
 
   const mapStyles = {
     width: '50%',
@@ -9,13 +14,32 @@ export const MapDisplay = (props: any) => {
   };
 
   return (
+    <>
+    { latLong.lat !== 0 ?
     <Map
-    google={props.google}
+    google={google}
     style={mapStyles}
-    initialCenter={{ lat: 47.444, lng: -122.176}}
-    />
-    );
-  }
+    initialCenter={latLong}
+    >
+       <Circle
+        radius={250}
+        center={latLong}
+        onMouseover={() => console.log('mouseover')}
+        onClick={() => console.log('click')}
+        onMouseout={() => console.log('mouseout')}
+        strokeColor='transparent'
+        strokeOpacity={0}
+        strokeWeight={5}
+        fillColor='#4f2dc7'
+        fillOpacity={0.2}
+      />
+    </Map>
+    :
+    <p>LOADING</p>
+    }
+    </>
+  );
+}
 
 export default GoogleApiWrapper({
   apiKey: `${process.env.REACT_APP_PLACES}`
