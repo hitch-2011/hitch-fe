@@ -24,7 +24,7 @@ export const MapDisplay = ({ latLong, google }: MapDisplayProps) => {
     initialCenter={latLong}
     >
        <Circle
-        radius={200}
+        radius={250}
         center={latLong}
         onMouseover={() => console.log('mouseover')}
         onClick={() => console.log('click')}

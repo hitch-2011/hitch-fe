@@ -19,11 +19,17 @@ interface RideData {
   zipcode_destination: string
   zipcode_origin: string
 }
+
+interface VehicleData {
+  make: string
+  model: string
+}
 interface UserData {
   bio: string
   fullname: string
   ride_days: Array<string>
   user_rides: Array<RideData>
+  vehicle: VehicleData
 }
 
 const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
@@ -36,6 +42,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
     getUserByID(parseInt(userId))
       .then(response => {
         setMatchedUser(response.data.attributes)
+        console.log(response)
         geocodeByAddress(response.data.attributes.user_rides[0].origin)
         .then(results => getLatLng(results[0]))
         .then(latLng => {
@@ -68,8 +75,12 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
       </section>
       <section className='user-details'>
         <article className='user-details__driver-bio'>
-          <h3>Driver Details</h3>
+          <h3>{matchedUser?.fullname}</h3>
           <p>{matchedUser?.bio}</p>
+          <div className='user-details__vehicle-details'>
+            <p className='user-details__make'>{matchedUser?.vehicle.make}</p>
+            <p>{matchedUser?.vehicle.model}</p>
+          </div>
         </article>
         <article className='user-details__route-details'>
           <h3>Time: </h3>
@@ -81,10 +92,10 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
       <section>
         <section className='route-details'>
           <div className='route-details__map-div'>
-            {originLatLong !== {lat: 0, lng: 0} && <MapDisplay latLong={originLatLong}/>}
+            <MapDisplay latLong={originLatLong}/>
           </div>
           <div className='route-details__distance'>
-            <h3>Origin Zip: </h3>
+            <h3>Origin Zip</h3>
             <p className='route-details__miles'>{matchedUser?.user_rides[0].zipcode_origin}</p>
           </div>
         </section>
@@ -93,7 +104,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
             <MapDisplay latLong={destinationLatLong}/>
           </div>
           <div className='route-details__distance'>
-            <h3>Destination Zip: </h3>
+            <h3>Destination Zip</h3>
             <p className='route-details__miles'>{matchedUser?.user_rides[0].zipcode_destination}</p>
           </div>
         </section>
