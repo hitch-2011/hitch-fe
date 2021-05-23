@@ -37,7 +37,7 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
 
 
   const routeCards = matchedRoutes.map(route => {
-    console.log(matchedRoutes)
+
     return (
       <section className='route-card' key={route.id} id={route.id.toString()}>
         <div className='route-card__name'>
