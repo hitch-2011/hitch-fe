@@ -39,7 +39,6 @@ const Registration: FC<RegistrationProps> = (props) => {
       return
     }
     if (page === 4) {
-
       const routeData = {
         user_id: currentUserId,
         origin,
