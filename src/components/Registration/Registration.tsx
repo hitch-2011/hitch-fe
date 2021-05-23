@@ -21,7 +21,6 @@ const Registration: FC<RegistrationProps> = (props) => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setPage(page + 1);
     if (page === 2) {
       const userInfo = {
         email,
@@ -46,15 +45,10 @@ const Registration: FC<RegistrationProps> = (props) => {
       }
       console.log(routeData)
       postRouteData(routeData)
-        .then(response => {
-          if (response.data.attributes) {
-            <Redirect to='/matched-routes' />
-          }
-        }
-        )
-      setIsLoggedIn(true);
-
+        .then(() => setIsLoggedIn(true))
+      return
     }
+    setPage(page + 1);
   }
 
   const toggleView = page > 0 ? 'registration__back-btn btn' : 'registration__back-btn__hidden btn';
