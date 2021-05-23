@@ -1,4 +1,3 @@
-// import React, {FC, Dispatch, SetStateAction} from 'react';
 import { useEffect, FC } from 'react';
 import { Link } from 'react-router-dom';
 import { detailedRouteData } from '../../mockData';
