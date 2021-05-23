@@ -32,7 +32,7 @@ export const MapDisplay = ({ latLong, google }: MapDisplayProps) => {
         strokeColor='transparent'
         strokeOpacity={0}
         strokeWeight={5}
-        fillColor='#FF0000'
+        fillColor='#4f2dc7'
         fillOpacity={0.2}
       />
     </Map>
