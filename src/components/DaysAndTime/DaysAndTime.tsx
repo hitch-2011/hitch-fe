@@ -16,17 +16,18 @@ const DaysAndTime: FC<DaysAndTimeProps> = ({property, method, setDays, days, err
     setDays({...days, [id]: checked});
   };
 
-  const daysCheckBox = Object.keys(days).map(day => {
+  const daysCheckBox = Object.keys(days).map((day, i) => {
     return (
       <>
         <input 
+          key={i}
           id={day}
           type="checkbox"
           value={day}
           checked={days[day]}
           onChange={handleChange}
         />
-        <label className="days__label" htmlFor={day}>{day.charAt(0).toUpperCase()}
+        <label key={i} className="days__label" htmlFor={day}>{day.charAt(0).toUpperCase()}
         </label>
       </>
     )
@@ -41,7 +42,7 @@ const DaysAndTime: FC<DaysAndTimeProps> = ({property, method, setDays, days, err
         className="time-input"
         value={property}
         onChange={e => method(e.target.value)}
-        // required
+        required
       />
       
       <div className='days'>
