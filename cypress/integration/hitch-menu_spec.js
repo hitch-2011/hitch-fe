@@ -2,9 +2,34 @@ describe('The menu toggle functionality', () => {
   beforeEach(() => {
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
       method: "POST",
-      body: "good"
+      body: 'good'
 
     })
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides', {
+      method: "POST",
+      body: {
+        user_id: '1',
+        origin: '1138 Corona St, Denver, CO 80218, USA',
+        destination: '1850 Table Mesa Dr, Boulder, CO 80305',
+        departure_time: "09:03",
+        days: ["monday", "tuesday"]
+      }
+    })
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides', {
+      method: "GET",
+      statusCode: 200,
+      body: {
+        data: {
+          attributes:{
+            bio: "I like driving.",
+            email: "dominic@gmail.com",
+            fullname: "fullname",
+            matched_routes: [{id: 2, user_id: 3, origin: "3956 Alcott St Denver, CO 80211, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am"}]
+          }
+        }
+      }
+    })
+
     cy.visit('http://localhost:3000/register');
     cy.intercept("https://maps.googleapis.com/maps/api/place/js/*")
 
@@ -52,7 +77,6 @@ describe('The menu toggle functionality', () => {
     cy.get('[type="checkbox"]').eq(5).check({ force: true })
     cy.get('[type="checkbox"]').eq(6).check({ force: true })
     cy.get('button').eq(1).click();
-
   });
 
   it('Should not be visible until clicked', () => {
@@ -78,7 +102,24 @@ describe('The clickable links on the menu', () => {
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
       method: "POST",
       body: "good"
-
+    })
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides', {
+      method: "POST",
+      body: "good"
+    })
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides', {
+      method: "GET",
+      statusCode: 200,
+      body: {
+        data: {
+          attributes:{
+            bio: "I like driving.",
+            email: "dominic@gmail.com",
+            fullname: "fullname",
+            matched_routes: [{id: 2, user_id: 3, origin: "3956 Alcott St Denver, CO 80211, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am"}]
+          }
+        }
+      }
     })
     cy.visit('http://localhost:3000/register');
     cy.intercept("https://maps.googleapis.com/maps/api/place/js/*")

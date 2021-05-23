@@ -41,7 +41,7 @@ const DaysAndTime: FC<DaysAndTimeProps> = ({property, method, setDays, days, err
         className="time-input"
         value={property}
         onChange={e => method(e.target.value)}
-        required
+        // required
       />
       
       <div className='days'>
