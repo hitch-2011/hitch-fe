@@ -1,19 +1,19 @@
-import {Dispatch, SetStateAction} from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
 export interface RegistrationProps {
   name: string;
   setName: Dispatch<SetStateAction<string>>;
-  email: string; 
+  email: string;
   setEmail: Dispatch<SetStateAction<string>>;
-  page: number; 
+  page: number;
   setPage: Dispatch<SetStateAction<number>>;
-  make: string; 
+  make: string;
   setMake: Dispatch<SetStateAction<string>>;
-  model: string; 
+  model: string;
   setModel: Dispatch<SetStateAction<string>>;
-  year: string; 
+  year: string;
   setYear: Dispatch<SetStateAction<string>>;
-  origin: string; 
+  origin: string;
   setOrigin: Dispatch<SetStateAction<string>>;
   destination: string;
   setDestination: Dispatch<SetStateAction<string>>;
@@ -25,7 +25,9 @@ export interface RegistrationProps {
   setPassword: Dispatch<SetStateAction<string>>;
   bio: string;
   setBio: Dispatch<SetStateAction<string>>;
-  setIsLoggedIn: Dispatch<SetStateAction<boolean>>
+  setIsLoggedIn: Dispatch<SetStateAction<boolean>>;
+  currentUserId: string;
+  setCurrentUserId: Dispatch<SetStateAction<string>>;
 }
 
 export interface DayPicker {
@@ -35,5 +37,6 @@ export interface DayPicker {
   wednesday: boolean,
   thursday: boolean,
   friday: boolean,
-  saturday: boolean
+  saturday: boolean,
+  [index: string]: boolean
 }
