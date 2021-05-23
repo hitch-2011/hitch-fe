@@ -3,7 +3,6 @@ import Form from '../Form/Form';
 import DaysAndTime from '../DaysAndTime/DaysAndTime';
 import { RegistrationProps } from '../../interfaces/interfaces';
 import { IoArrowBackSharp } from 'react-icons/io5';
-import { Redirect } from 'react-router';
 import OriginDestination from '../OriginDestination/OriginDestination';
 import { postUserInfo, postRouteData } from '../../apiCalls';
 
