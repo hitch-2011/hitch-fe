@@ -1,4 +1,4 @@
-import { Map, GoogleApiWrapper } from 'google-maps-react'
+import { Map, GoogleApiWrapper, Circle } from 'google-maps-react'
 import { useState, useEffect } from 'react';
 // import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 require('dotenv').config()
@@ -9,23 +9,6 @@ interface MapDisplayProps {
 }
 
 export const MapDisplay = ({ latLong, google }: MapDisplayProps) => {
-
-  const [lat, setLat] = useState(0)
-  const [long, setLong] = useState(0)
-  const [currentLocation, setCurrentLocation] = useState({lat: 10, lng: 100})
-
-  // useEffect(() => {
-  //   if (address) {
-  //     geocodeByAddress(address)
-  //       .then(results => getLatLng(results[0]))
-  //       .then(latLng => {
-  //         // console.log(latLng)
-  //         setLat(latLng.lat)
-  //         setLong(latLng.lng)
-  //       })
-  //       .catch(error => console.error('Error', error));
-  //   }
-  // }, [address])
 
   const mapStyles = {
     width: '50%',
@@ -38,9 +21,21 @@ export const MapDisplay = ({ latLong, google }: MapDisplayProps) => {
     <Map
     google={google}
     style={mapStyles}
-    // initialCenter={latLong}
     initialCenter={latLong}
-    />
+    >
+       <Circle
+        radius={200}
+        center={latLong}
+        onMouseover={() => console.log('mouseover')}
+        onClick={() => console.log('click')}
+        onMouseout={() => console.log('mouseout')}
+        strokeColor='transparent'
+        strokeOpacity={0}
+        strokeWeight={5}
+        fillColor='#FF0000'
+        fillOpacity={0.2}
+      />
+    </Map>
     :
     <p>LOADING</p>
     }
