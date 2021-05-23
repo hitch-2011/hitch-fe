@@ -1,31 +1,31 @@
 import { Map, GoogleApiWrapper } from 'google-maps-react'
 import { useState, useEffect } from 'react';
-import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+// import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 require('dotenv').config()
 
 interface MapDisplayProps {
-  address: any
+  latLong: any
   google: any
 }
 
-export const MapDisplay = ({ address, google }: MapDisplayProps) => {
+export const MapDisplay = ({ latLong, google }: MapDisplayProps) => {
 
   const [lat, setLat] = useState(0)
   const [long, setLong] = useState(0)
-  // const [latLong, setLatLong] = useState({lat: 0, lng: 0})
+  const [currentLocation, setCurrentLocation] = useState({lat: 10, lng: 100})
 
-  useEffect(() => {
-    if (address) {
-      geocodeByAddress(address)
-        .then(results => getLatLng(results[0]))
-        .then(latLng => {
-          console.log(latLng)
-          setLat(latLng.lat)
-          setLong(latLng.lng)
-        })
-        .catch(error => console.error('Error', error));
-    }
-  }, [address])
+  // useEffect(() => {
+  //   if (address) {
+  //     geocodeByAddress(address)
+  //       .then(results => getLatLng(results[0]))
+  //       .then(latLng => {
+  //         // console.log(latLng)
+  //         setLat(latLng.lat)
+  //         setLong(latLng.lng)
+  //       })
+  //       .catch(error => console.error('Error', error));
+  //   }
+  // }, [address])
 
   const mapStyles = {
     width: '50%',
@@ -33,12 +33,18 @@ export const MapDisplay = ({ address, google }: MapDisplayProps) => {
   };
 
   return (
+    <>
+    { latLong.lat !== 0 ?
     <Map
     google={google}
     style={mapStyles}
     // initialCenter={latLong}
-    initialCenter={{lat: lat, lng: long}}
+    initialCenter={latLong}
     />
+    :
+    <p>LOADING</p>
+    }
+    </>
   );
 }
 

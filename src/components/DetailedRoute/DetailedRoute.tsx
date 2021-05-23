@@ -5,6 +5,8 @@ import userPhoto from '../../assets/images/man.png';
 import { getUserByID } from '../../apiCalls';
 import close from '../../assets/images/close.png'
 import MapDisplay from '../Map/Map'
+import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+
 
 interface DetailedRouteProps {
   userId: string
@@ -25,14 +27,26 @@ interface UserData {
 }
 
 const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
-  
+
   const [matchedUser, setMatchedUser] = useState<UserData>()
+  const [originLatLong, setOriginLatLong] = useState({lat: 0, lng: 0})
+  const [destinationLatLong, setDestinationLatLong] = useState({lat: 0, lng: 0})
 
   useEffect(() => {
     getUserByID(parseInt(userId))
       .then(response => {
-        console.log(response)
         setMatchedUser(response.data.attributes)
+        geocodeByAddress(response.data.attributes.user_rides[0].origin)
+        .then(results => getLatLng(results[0]))
+        .then(latLng => {
+          setOriginLatLong(latLng)
+        })
+        geocodeByAddress(response.data.attributes.user_rides[0].destination)
+        .then(results => getLatLng(results[0]))
+        .then(latLng => {
+          setDestinationLatLong(latLng)
+        })
+        .catch(error => console.error('Error', error));
       })
   }, [userId])
 
@@ -67,7 +81,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
       <section>
         <section className='route-details'>
           <div className='route-details__map-div'>
-            <MapDisplay address={matchedUser?.user_rides[0].origin}/>
+            {originLatLong !== {lat: 0, lng: 0} && <MapDisplay latLong={originLatLong}/>}
           </div>
           <div className='route-details__distance'>
             <h3>Origin Zip: </h3>
@@ -76,7 +90,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
         </section>
         <section className='route-details'>
           <div className='route-details__map-div'>
-            <MapDisplay address={matchedUser?.user_rides[0].destination}/>
+            <MapDisplay latLong={destinationLatLong}/>
           </div>
           <div className='route-details__distance'>
             <h3>Destination Zip: </h3>
