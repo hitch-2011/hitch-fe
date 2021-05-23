@@ -12,12 +12,12 @@ interface DetailedRouteProps {
 
 const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
 
-  const [name, setName] = useState('');
-  const [bio, setBio] = useState('');
-  const [time, setTime] = useState('');
-  const [day, setDays] = useState('');
-  const [origin, setOrigin] = useState('');
-  const [destination, setDestination] = useState('');
+  // const [name, setName] = useState('');
+  // const [bio, setBio] = useState('');
+  // const [time, setTime] = useState('');
+  // const [day, setDays] = useState('');
+  // const [origin, setOrigin] = useState('');
+  // const [destination, setDestination] = useState('');
 
   useEffect(() => {
     getUserByID(parseInt(userId))
