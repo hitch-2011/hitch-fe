@@ -18,7 +18,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "http://localhost:5000",
+  "start_url": "http://hitch-a-ride-app.herokuapp.com/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
