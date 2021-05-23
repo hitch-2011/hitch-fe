@@ -1,4 +1,4 @@
-import React, { FC, FormEvent } from 'react';
+import React, { FC, FormEvent, useState } from 'react';
 import Form from '../Form/Form';
 import DaysAndTime from '../DaysAndTime/DaysAndTime';
 import { RegistrationProps } from '../../interfaces/interfaces';
@@ -9,6 +9,7 @@ import { postUserInfo, postRouteData } from '../../apiCalls';
 
 
 const Registration: FC<RegistrationProps> = (props) => {
+  const [error, setError] = useState(false)
   const { name, setName, email, setEmail,
     page, setPage, make, setMake, model, setModel, year, setYear, origin,
     setOrigin, destination, setDestination, departTime, setDepartTime, days, setDays,
@@ -17,7 +18,7 @@ const Registration: FC<RegistrationProps> = (props) => {
   const progress = {
     transform: `scaleX(.${page * 20})`
   };
-
+  const daysSelected = Object.values(days).some(day => day === true);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (page === 2) {
@@ -33,8 +34,11 @@ const Registration: FC<RegistrationProps> = (props) => {
       postUserInfo(userInfo)
         .then(response => setCurrentUserId(response.data.id))
     }
+    if(page === 4 && !daysSelected) {
+      setError(!daysSelected)
+      return
+    }
     if (page === 4) {
-
       const routeData = {
         user_id: currentUserId,
         origin,
@@ -93,7 +97,7 @@ const Registration: FC<RegistrationProps> = (props) => {
         />
       }
       {page === 4 &&
-        <DaysAndTime property={departTime} method={setDepartTime} setDays={setDays} days={days} />
+        <DaysAndTime property={departTime} method={setDepartTime} setDays={setDays} days={days} error={error} />
       }
       <div className="registration__progress">
         <div className="progress-bar" style={progress} />

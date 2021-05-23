@@ -31,12 +31,12 @@ export interface RegistrationProps {
 }
 
 export interface DayPicker {
-  sunday: boolean,
-  monday: boolean,
-  tuesday: boolean,
-  wednesday: boolean,
-  thursday: boolean,
-  friday: boolean,
-  saturday: boolean,
-  [index: string]: boolean
+  sunday: boolean;
+  monday: boolean;
+  tuesday: boolean;
+  wednesday: boolean;
+  thursday: boolean;
+  friday: boolean;
+  saturday: boolean;
+  [index: string]: boolean;
 }
