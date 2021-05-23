@@ -10,6 +10,7 @@ import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 
 interface DetailedRouteProps {
   userId: string
+  currentUser: boolean
 }
 
 interface RideData {
@@ -32,7 +33,7 @@ interface UserData {
   vehicle: VehicleData
 }
 
-const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
+const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
 
   const [matchedUser, setMatchedUser] = useState<UserData>()
   const [originLatLong, setOriginLatLong] = useState({lat: 0, lng: 0})
@@ -60,7 +61,9 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
   const days = matchedUser?.ride_days.map((day, index) => {
     return (
       <div className='day' key={index}>
-        {(day === 'tuesday' || day === 'thursday') ? day.charAt(0).toUpperCase() + day.slice(1,2) : day.substring(0, 1).toUpperCase()}
+        {(day === 'tuesday' || day === 'thursday' || day === 'saturday' || day === 'sunday') ? 
+        day.charAt(0).toUpperCase() + day.slice(1,2) : 
+        day.substring(0, 1).toUpperCase()}
       </div>
     )
   })
@@ -109,9 +112,11 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId }) => {
           </div>
         </section>
       </section>
+      {!currentUser &&
       <button className="registration__button btn">
         Request a Hitch
       </button>
+      }
     </div>
   )
 }

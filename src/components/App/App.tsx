@@ -76,9 +76,9 @@ const App = () => {
         />
         <Route
           exact path='/profile'
-          render={({ match }) => {
+          render={() => {
             return (
-              <DetailedRoute userId={currentUserId} currentUser='true'/>
+              <DetailedRoute userId={currentUserId} currentUser={true}/>
             )
           }}
         />
@@ -86,7 +86,7 @@ const App = () => {
           exact path='/:id'
           render={({ match }) => {
             return (
-              <DetailedRoute userId={match.params.id} currentUser='false'/>
+              <DetailedRoute userId={match.params.id} currentUser={false}/>
             )
           }}
         />
