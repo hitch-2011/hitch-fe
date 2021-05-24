@@ -45,11 +45,6 @@
     justify-self: center;
   }
 
-  &__days {
-    display: flex;
-    justify-content: center;
-  }
-
   &__vehicle-details {
     display: flex;
     flex-direction: row;
@@ -62,16 +57,6 @@
   }
 }
 
-.day {
-  background-color: $darkAccent;
-  color: white;
-  height: 25px;
-  width: 25px;
-  margin: 2px;
-  padding: 1px;
-  border-radius: 50%;
-}
-
 .route-details {
   display: flex;
   height: 20vh;
@@ -79,7 +64,6 @@
 
   &__map-div {
     width: 50%;
-    z-index: -1;
   }
 
   &__distance {
