@@ -35,13 +35,19 @@ const Registration: FC<RegistrationProps> = (props) => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if(page < 2) {
+      setPage(page + 1);
+    }
     if (page === 2) {
       postUserInfo(userInfo)
         .then(response => {
+          console.log(response)
           setCurrentUserId(response.data.id);
           setPage(page + 1);
+          setError(false);
         })
-        .catch(() => {
+        .catch(err => {
+          console.log(err)
           setError(true);
           setPage(0);
         })
@@ -80,7 +86,7 @@ const Registration: FC<RegistrationProps> = (props) => {
           { property: email, method: setEmail, placeholder: 'Email', type: 'email' },
           { property: password, method: setPassword, placeholder: 'Password', type: 'password' }]}
         />
-        {error && <Error />}
+        {error && <Error message={'This email is already registered'}/>}
         </>
       }
       {page === 1 &&

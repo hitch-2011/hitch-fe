@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { BsExclamation } from 'react-icons/bs'
 
-const Error = () => {
+interface ErrorProps {
+  message: string
+}
+
+const Error: FC<ErrorProps> = ({message}) => {
   return (
     <p className="error">
-        <BsExclamation className="error__exclamation"/>Please pick at least one day
+        <BsExclamation className="error__exclamation"/>{message}
     </p>
   )
 }
