@@ -30,4 +30,18 @@
     padding: 10px 0;
     border-bottom: 3px solid $darkAccent;
   }
+
+  &__message {
+    margin-top: 30px;
+  }
+}
+
+.loading-icon {
+  font-size: 50px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .loading-icon {
+    animation: loading infinite 4s linear;
+  }
 }
