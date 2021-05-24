@@ -35,8 +35,8 @@
         }
       ],
       "vehicle": {"id": 1, "user_id": 1, "make": "make", "model": "model", "year": "1991"},
-      "id": "1",
-      "type": "profile"
-    }
+    },
+    "id": "1",
+    "type": "profile"
   }
 }
