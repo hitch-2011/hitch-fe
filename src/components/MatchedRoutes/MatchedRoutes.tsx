@@ -9,6 +9,7 @@ interface RouteData {
   distance_from_destination: string;
   departure_time: string;
   days: string[];
+  user_id: number;
 }
 
 interface MatchedProps {
@@ -18,6 +19,7 @@ interface MatchedProps {
 
 const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
   const [matchedRoutes, setMatchedRoutes] = useState<RouteData[]>([])
+  const [error, setError] = useState('')
 
   const formatTime = (time: string): string => {
     let hour: string = time.split(':')[0];
@@ -31,12 +33,18 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
   useEffect(() => {
     getMatchedRides(parseInt(currentUserId))
       .then(response => {
-        console.log(response)
-        setMatchedRoutes(response.data.attributes.matched_routes)
+        if (response === 'You are our first route in those areas! We will find a hitch for you soon!') {
+          setError('No matches found')
+        } else {
+
+
+          console.log(response)
+          setMatchedRoutes(response.data.attributes.matched_routes)
+        }
       })
   }, [currentUserId])
 
-  const validRoutes = matchedRoutes.filter(route => route.id.toString() !== currentUserId)
+  const validRoutes = matchedRoutes.filter(route => route.user_id.toString() !== currentUserId)
   console.log(validRoutes)
   const routeCards = validRoutes.map(route => {
 
@@ -66,8 +74,9 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
   return (
     <section className='route-view'>
       <h1 className='route-view__title'>Matched Routes ({validRoutes.length})</h1>
-      {!!validRoutes.length && routeCards}
-      {!validRoutes.length && <h1>Loading...</h1>}
+      {error && <h2>{error}</h2>}
+      {!!validRoutes.length && !error && routeCards}
+      {!validRoutes.length && !error && <h1>Loading...</h1>}
     </section>
   )
 }
