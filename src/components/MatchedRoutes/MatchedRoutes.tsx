@@ -36,7 +36,9 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
       })
   }, [currentUserId])
 
-  const routeCards = matchedRoutes.map(route => {
+  const validRoutes = matchedRoutes.filter(route => route.id.toString() !== currentUserId)
+  console.log(validRoutes)
+  const routeCards = validRoutes.map(route => {
 
     return (
       // <section className='route-card' key={route.id} id={route.id.toString()}>
@@ -63,9 +65,9 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
 
   return (
     <section className='route-view'>
-      <h1 className='route-view__title'>Matched Routes ({matchedRoutes.length})</h1>
-      {matchedRoutes.length && routeCards}
-      {!matchedRoutes.length && <h1>No matched routes yet!</h1>}
+      <h1 className='route-view__title'>Matched Routes ({validRoutes.length})</h1>
+      {!!validRoutes.length && routeCards}
+      {!validRoutes.length && <h1>Loading...</h1>}
     </section>
   )
 }
