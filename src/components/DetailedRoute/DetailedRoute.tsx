@@ -36,8 +36,8 @@ interface UserData {
 const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
 
   const [matchedUser, setMatchedUser] = useState<UserData>()
-  const [originLatLong, setOriginLatLong] = useState({lat: 0, lng: 0})
-  const [destinationLatLong, setDestinationLatLong] = useState({lat: 0, lng: 0})
+  const [originLatLong, setOriginLatLong] = useState({ lat: 0, lng: 0 })
+  const [destinationLatLong, setDestinationLatLong] = useState({ lat: 0, lng: 0 })
 
   useEffect(() => {
     getUserByID(parseInt(userId))
@@ -45,25 +45,35 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
         setMatchedUser(response.data.attributes)
         console.log(response)
         geocodeByAddress(response.data.attributes.user_rides[0].origin)
-        .then(results => getLatLng(results[0]))
-        .then(latLng => {
-          setOriginLatLong(latLng)
-        })
+          .then(results => getLatLng(results[0]))
+          .then(latLng => {
+            setOriginLatLong(latLng)
+          })
         geocodeByAddress(response.data.attributes.user_rides[0].destination)
-        .then(results => getLatLng(results[0]))
-        .then(latLng => {
-          setDestinationLatLong(latLng)
-        })
-        .catch(error => console.error('Error', error));
+          .then(results => getLatLng(results[0]))
+          .then(latLng => {
+            setDestinationLatLong(latLng)
+          })
+          .catch(error => console.error('Error', error));
       })
   }, [userId])
+
+  const days = matchedUser?.ride_days.map((day, index) => {
+    return (
+      <div className='day' key={index}>
+        {(day === 'Tuesday' || day === 'Thursday' || day === 'Saturday' || day === 'Sunday') ?
+          day.charAt(0).toUpperCase() + day.slice(1, 2) :
+          day.substring(0, 1).toUpperCase()}
+      </div>
+    )
+  })
 
   return (
     <div className="detailed-route">
       <section className='header'>
-        <img className='header__photo' src={userPhoto} alt={detailedRouteData.user.name}/>
+        <img className='header__photo' src={userPhoto} alt={detailedRouteData.user.name} />
         <Link className='header__back' to='matched-routes'>
-          <img className='header__close-icon' src={close} alt='close-button'/>
+          <img className='header__close-icon' src={close} alt='close-button' />
         </Link>
       </section>
       <section className='user-details'>
@@ -85,7 +95,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
       <section>
         <section className='route-details'>
           <div className='route-details__map-div'>
-            <MapDisplay latLong={originLatLong}/>
+            <MapDisplay latLong={originLatLong} />
           </div>
           <div className='route-details__distance'>
             <h3>Origin Zip</h3>
@@ -94,7 +104,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
         </section>
         <section className='route-details'>
           <div className='route-details__map-div'>
-            <MapDisplay latLong={destinationLatLong}/>
+            <MapDisplay latLong={destinationLatLong} />
           </div>
           <div className='route-details__distance'>
             <h3>Destination Zip</h3>
@@ -103,12 +113,12 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
         </section>
       </section>
       {!currentUser ?
-      <button className="registration__button btn">
-        Request a Hitch
+        <button className="registration__button btn">
+          Request a Hitch
       </button>
-      :
-      <button className="registration__button btn">
-        Add a Route
+        :
+        <button className="registration__button btn">
+          Add a Route
       </button>
       }
     </div>
