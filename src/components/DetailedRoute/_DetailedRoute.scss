@@ -45,11 +45,6 @@
     justify-self: center;
   }
 
-  // &__days {
-  //   display: flex;
-  //   justify-content: center;
-  // }
-
   &__vehicle-details {
     display: flex;
     flex-direction: row;
@@ -60,16 +55,6 @@
   &__make {
     padding-right: 5px
   }
-}
-
-.day {
-  background-color: $darkAccent;
-  color: white;
-  height: 25px;
-  width: 25px;
-  margin: 2px;
-  padding: 1px;
-  border-radius: 50%;
 }
 
 .route-details {
