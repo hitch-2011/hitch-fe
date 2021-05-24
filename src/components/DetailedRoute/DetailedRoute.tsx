@@ -58,16 +58,6 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
       })
   }, [userId])
 
-  const days = matchedUser?.ride_days.map((day, index) => {
-    return (
-      <div className='day' key={index}>
-        {(day === 'Tuesday' || day === 'Thursday' || day === 'Saturday' || day === 'Sunday') ?
-          day.charAt(0).toUpperCase() + day.slice(1, 2) :
-          day.substring(0, 1).toUpperCase()}
-      </div>
-    )
-  })
-
   return (
     <div className="detailed-route">
       <section className='header'>
