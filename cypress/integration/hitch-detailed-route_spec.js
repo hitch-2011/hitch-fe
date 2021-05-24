@@ -31,8 +31,11 @@ describe('Sign up user flow', () => {
       }
     })
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1', {fixture: 'profile'})
-
-    cy.visit('http://localhost:3000/profile');
+    cy.visit('http://localhost:3000');
+    cy.get('[data-cy=login-button]')
+    .click()
+    .get('[data-cy=menu]')
+    .click()
   })
 
     it('should have an app title', () => {
