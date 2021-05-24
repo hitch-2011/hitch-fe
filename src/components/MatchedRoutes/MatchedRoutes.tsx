@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getMatchedRides } from '../../apiCalls';
 
 interface RouteData {
@@ -13,7 +13,7 @@ interface RouteData {
 
 interface MatchedProps {
   currentUserId: string
-} 
+}
 
 
 const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
@@ -36,12 +36,11 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
       })
   }, [currentUserId])
 
-
   const routeCards = matchedRoutes.map(route => {
 
     return (
-      <section className='route-card' key={route.id} id={route.id.toString()}>
-      {/* <Link to={`/${route.id}`}className='route-card' key={route.id} id={route.id.toString()}> */}
+      // <section className='route-card' key={route.id} id={route.id.toString()}>
+      <Link to={`/${route.id}`} className='route-card' key={route.id} id={route.id.toString()}>
         <div className='route-card__name'>
           <p className='route-card__detail'>Name</p>
           <p>{route.user_name}</p>
@@ -58,8 +57,7 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
           <p className='route-card__detail'>from destin.</p>
           <p>{route.distance_from_destination} mi</p>
         </div>
-        {/* </Link> */}
-        </section>
+      </ Link>
     )
   })
 
