@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getMatchedRides } from '../../apiCalls';
+import Days from '../Days/Days';
 
 interface RouteData {
   id: number;
@@ -10,6 +11,7 @@ interface RouteData {
   departure_time: string;
   days: string[];
   user_id: number;
+  ridedays: string[];
 }
 
 interface MatchedProps {
@@ -58,8 +60,8 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
           <p>{route.departure_time} {formatTime(route.departure_time)}</p>
         </div>
         <div className='route-card__origin'>
-          <p className='route-card__detail'>from orgin</p>
-          <p>{route.distance_from_origin} mi</p>
+          <p className='route-card__detail'>Days</p>
+          <Days matchedDays={route.ridedays} />
         </div>
         <div className='route-card__destination'>
           <p className='route-card__detail'>from destin.</p>
