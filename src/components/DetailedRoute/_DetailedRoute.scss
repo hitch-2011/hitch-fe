@@ -45,10 +45,10 @@
     justify-self: center;
   }
 
-  &__days {
-    display: flex;
-    justify-content: center;
-  }
+  // &__days {
+  //   display: flex;
+  //   justify-content: center;
+  // }
 
   &__vehicle-details {
     display: flex;
@@ -79,7 +79,6 @@
 
   &__map-div {
     width: 50%;
-    z-index: -1;
   }
 
   &__distance {
