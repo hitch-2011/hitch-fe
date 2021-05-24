@@ -18,21 +18,32 @@ const Registration: FC<RegistrationProps> = (props) => {
   const progress = {
     transform: `scaleX(.${page * 20})`
   };
+
   const daysSelected = Object.values(days).some(day => day === true);
+  
+  const userInfo = {
+    email,
+    password,
+    fullname: name,
+    bio,
+    make,
+    model,
+    year
+  }
+
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (page === 2) {
-      const userInfo = {
-        email,
-        password,
-        fullname: name,
-        bio,
-        make,
-        model,
-        year
-      }
       postUserInfo(userInfo)
-        .then(response => setCurrentUserId(response.data.id))
+        .then(response => {
+          setCurrentUserId(response.data.id);
+          setPage(page + 1);
+        })
+        .catch(() => {
+          setError(true);
+          setPage(0);
+        })
     }
     if(page === 4 && !daysSelected) {
       setError(!daysSelected)
@@ -46,7 +57,6 @@ const Registration: FC<RegistrationProps> = (props) => {
         departure_time: departTime,
         days: Object.keys(days).filter(el => days[el] === true)
       }
-      console.log(routeData)
       postRouteData(routeData)
         .then(() => setIsLoggedIn(true))
       return
