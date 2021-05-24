@@ -5,6 +5,7 @@ import { RegistrationProps } from '../../interfaces/interfaces';
 import { IoArrowBackSharp } from 'react-icons/io5';
 import OriginDestination from '../OriginDestination/OriginDestination';
 import { postUserInfo, postRouteData } from '../../apiCalls';
+import Error from '../Error/Error'
 
 
 
@@ -72,12 +73,15 @@ const Registration: FC<RegistrationProps> = (props) => {
         <IoArrowBackSharp /> Back
       </button>
       {page === 0 &&
+        <>
         <Form
           header="Name"
           inputs={[{ property: name, method: setName, placeholder: 'Name' },
           { property: email, method: setEmail, placeholder: 'Email', type: 'email' },
           { property: password, method: setPassword, placeholder: 'Password', type: 'password' }]}
         />
+        {error && <Error />}
+        </>
       }
       {page === 1 &&
         <div className="bio">

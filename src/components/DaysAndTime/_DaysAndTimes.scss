@@ -23,16 +23,16 @@
     background-clip: unset;
   }
 
-  &__error {
-    margin-top: 60px;
-    color: rgb(212, 10, 10);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    &__exclamation {
-      font-size: 40px;
-    }
-  }
+  // &__error {
+  //   margin-top: 60px;
+  //   color: rgb(212, 10, 10);
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   &__exclamation {
+  //     font-size: 40px;
+  //   }
+  // }
 }
 
 .days input[type="checkbox"] {
