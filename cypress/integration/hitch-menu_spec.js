@@ -3,7 +3,14 @@ describe('The menu toggle functionality', () => {
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
       method: "POST",
       body: ''
-
+    })
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
+      status: 200,
+      body: {
+        data: {
+          id: 1
+        }
+      }
     })
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides', {
       method: "POST",
@@ -103,6 +110,14 @@ describe('The clickable links on the menu', () => {
       method: "POST",
       body: "good"
     })
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
+      status: 200,
+      body: {
+        data: {
+          id: 1
+        }
+      }
+    })
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides', {
       method: "POST",
       body: "good"
@@ -192,8 +207,4 @@ describe('The clickable links on the menu', () => {
       .url().should('include', '/pending-routes');
   });
 
-  // it('Should be able to travel to messages', () => {
-  //   cy.get('.menu-link').eq(3).click()
-  //     .url().should('include', '/messages');
-  // });
 })
