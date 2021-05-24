@@ -1,6 +1,6 @@
 import React, {FC, Dispatch, SetStateAction} from 'react';
-import { DayPicker } from '../../interfaces/interfaces'
-import { BsExclamation } from 'react-icons/bs'
+import { DayPicker } from '../../interfaces/interfaces';
+import Error from '../Error/Error';
 
 interface DaysAndTimeProps {
   property: string;
@@ -47,9 +47,7 @@ const DaysAndTime: FC<DaysAndTimeProps> = ({property, method, setDays, days, err
       <div className='days'>
         {daysCheckBox}
       </div>
-      {error && <p className="days__error">
-        <BsExclamation className="days__error__exclamation"/>Please pick at least one day
-        </p>}
+      {error && <Error message={'Please pick at least one day'} />}
     </div>
   )
 }

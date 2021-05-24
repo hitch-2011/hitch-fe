@@ -41,7 +41,6 @@ const Registration: FC<RegistrationProps> = (props) => {
     if (page === 2) {
       postUserInfo(userInfo)
         .then(response => {
-          console.log(response)
           setCurrentUserId(response.data.id);
           setPage(page + 1);
           setError(false);
@@ -51,6 +50,7 @@ const Registration: FC<RegistrationProps> = (props) => {
           setError(true);
           setPage(0);
         })
+      return
     }
     if(page === 4 && !daysSelected) {
       setError(!daysSelected)
@@ -68,7 +68,7 @@ const Registration: FC<RegistrationProps> = (props) => {
         .then(() => setIsLoggedIn(true))
       return
     }
-    setPage(page + 1);
+    setPage(page + 1)
   }
 
   const toggleView = page > 0 ? 'registration__back-btn btn' : 'registration__back-btn__hidden btn';
