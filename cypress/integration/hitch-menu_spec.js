@@ -2,7 +2,7 @@ describe('The menu toggle functionality', () => {
   beforeEach(() => {
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
       method: "POST",
-      body: 'good'
+      body: ''
 
     })
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides', {
@@ -20,11 +20,11 @@ describe('The menu toggle functionality', () => {
       statusCode: 200,
       body: {
         data: {
-          attributes:{
+          attributes: {
             bio: "I like driving.",
             email: "dominic@gmail.com",
             fullname: "fullname",
-            matched_routes: [{id: 2, user_id: 3, origin: "3956 Alcott St Denver, CO 80211, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am"}]
+            matched_routes: [{ id: 1, user_id: 3, origin: "3956 Alcott St Denver, CO 80211, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", ridedays: ["monday", "tuesday"] }]
           }
         }
       }
@@ -59,7 +59,7 @@ describe('The menu toggle functionality', () => {
       .type('2001')
       .should('have.value', '2001')
 
-    cy.get('button').eq(1).click();
+    cy.get('.registration__button').click();
 
     cy.get('input').eq(0)
       .type('1138 Corona St, Denver, CO 80218')
@@ -71,12 +71,12 @@ describe('The menu toggle functionality', () => {
       .type('1850 Table Mesa Dr, Boulder, CO 80305')
       .should('have.value', '1850 Table Mesa Dr, Boulder, CO 80305')
 
-    cy.get('button').eq(1).click();
+    cy.get('.registration__button').click();
 
     cy.get('[type="checkbox"]').eq(1).check({ force: true })
     cy.get('[type="checkbox"]').eq(5).check({ force: true })
     cy.get('[type="checkbox"]').eq(6).check({ force: true })
-    cy.get('button').eq(1).click();
+    cy.get('.registration__button').click()
   });
 
   it('Should not be visible until clicked', () => {
@@ -112,11 +112,11 @@ describe('The clickable links on the menu', () => {
       statusCode: 200,
       body: {
         data: {
-          attributes:{
+          attributes: {
             bio: "I like driving.",
             email: "dominic@gmail.com",
             fullname: "fullname",
-            matched_routes: [{id: 2, user_id: 3, origin: "3956 Alcott St Denver, CO 80211, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am"}]
+            matched_routes: [{ id: 1, user_id: 3, origin: "3956 Alcott St Denver, CO 80211, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", ridedays: ["monday", "tuesday"] }]
           }
         }
       }
@@ -167,9 +167,9 @@ describe('The clickable links on the menu', () => {
     cy.get('[type="checkbox"]').eq(1).check({ force: true })
     cy.get('[type="checkbox"]').eq(5).check({ force: true })
     cy.get('[type="checkbox"]').eq(6).check({ force: true })
-    cy.get('button').eq(1).click();
+    cy.get('.registration__button').click();
 
-    cy.get('.hamburger').click()
+    cy.get('.hamburger').wait(50).click()
   });
 
   it('Should be able to travel to profile', () => {
