@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { detailedRouteData } from '../../mockData';
 import userPhoto from '../../assets/images/man.png';
 import { getUserByID } from '../../apiCalls';
-import close from '../../assets/images/close.png'
-import MapDisplay from '../Map/Map'
-import Days from '../Days/Days'
+import close from '../../assets/images/close.png';
+import MapDisplay from '../Map/Map';
+import Days from '../Days/Days';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 
 interface DetailedRouteProps {

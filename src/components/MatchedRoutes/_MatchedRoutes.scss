@@ -1,6 +1,8 @@
 .route-card {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr 1fr 40%;
+  position: relative;
+  align-items: center;
   border-bottom: 3px solid #3694ff;
   margin-top: 10px;
   padding-bottom: 10px;
@@ -13,8 +15,11 @@
   }
 }
 
-.route-card:hover {
-  background-color: #3694ff; 
+.route-card__arrow {
+  position: absolute;
+  right: 5px;
+  top: -5px;
+  font-size: 25px;
 }
 
 .route-view {

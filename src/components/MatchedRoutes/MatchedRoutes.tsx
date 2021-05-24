@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getMatchedRides } from '../../apiCalls';
 import Days from '../Days/Days';
+import { IoArrowRedoCircleOutline } from 'react-icons/io5';
 
 interface RouteData {
   id: number;
@@ -42,6 +43,7 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
           setMatchedRoutes(response.data.attributes.matched_routes)
         }
       })
+      .catch(err => setError('Oops, something went wrong'))
   }, [currentUserId])
 
   const validRoutes = matchedRoutes.filter(route => route.user_id.toString() !== currentUserId)
@@ -49,7 +51,6 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
   const routeCards = validRoutes.map(route => {
 
     return (
-      // <section className='route-card' key={route.id} id={route.id.toString()}>
       <Link to={`/${route.id}`} className='route-card' key={route.id} id={route.id.toString()}>
         <div className='route-card__name'>
           <p className='route-card__detail'>Name</p>
@@ -63,10 +64,7 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
           <p className='route-card__detail'>Days</p>
           <Days matchedDays={route.ridedays} />
         </div>
-        <div className='route-card__destination'>
-          <p className='route-card__detail'>from destin.</p>
-          <p>{route.distance_from_destination} mi</p>
-        </div>
+        <IoArrowRedoCircleOutline className='route-card__arrow' />
       </ Link>
     )
   })
