@@ -33,11 +33,9 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
   useEffect(() => {
     getMatchedRides(parseInt(currentUserId))
       .then(response => {
-        if (response === 'You are our first route in those areas! We will find a hitch for you soon!') {
+        if (response.data === 'You are our first route in those areas! We will find a hitch for you soon!') {
           setError('No matches found')
         } else {
-
-
           console.log(response)
           setMatchedRoutes(response.data.attributes.matched_routes)
         }
