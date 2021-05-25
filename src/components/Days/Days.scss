@@ -6,7 +6,7 @@
   flex-wrap: wrap;
 
   &__profile-day {
-    background-color: $darkAccent;
+    background: $darkGradient;
     color: white;
     height: 25px;
     width: 25px;
@@ -15,5 +15,3 @@
     border-radius: 50%;
   }
 }
-
-

@@ -1,0 +1,16 @@
+.error {
+  position: absolute;
+  width: 100%;
+  margin-top: 60px;
+  color: rgb(212, 10, 10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &__exclamation {
+    font-size: 35px;
+  }
+}

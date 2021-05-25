@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { getMatchedRides } from '../../apiCalls';
 import Days from '../Days/Days';
 import { IoArrowRedoCircleOutline } from 'react-icons/io5';
+import { VscLoading } from 'react-icons/vsc';
 
 interface RouteData {
   id: number;
@@ -39,7 +40,6 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
         if (response.data === 'You are our first route in those areas! We will find a hitch for you soon!') {
           setError('No matches found')
         } else {
-          console.log(response)
           setMatchedRoutes(response.data.attributes.matched_routes)
         }
       })
@@ -72,9 +72,9 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
   return (
     <section className='route-view'>
       <h1 className='route-view__title'>Matched Routes ({validRoutes.length})</h1>
-      {error && <h2>{error}</h2>}
+      {error && <h2 className="route-view__message">{error}</h2>}
       {!!validRoutes.length && !error && routeCards}
-      {!validRoutes.length && !error && <h1>Loading...</h1>}
+      {!validRoutes.length && !error && <VscLoading className="loading-icon route-view__message" />}
     </section>
   )
 }

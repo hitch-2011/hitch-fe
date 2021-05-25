@@ -5,6 +5,8 @@ import { RegistrationProps } from '../../interfaces/interfaces';
 import { IoArrowBackSharp } from 'react-icons/io5';
 import OriginDestination from '../OriginDestination/OriginDestination';
 import { postUserInfo, postRouteData } from '../../apiCalls';
+import Error from '../Error/Error';
+import { VscLoading } from 'react-icons/vsc';
 
 
 
@@ -18,40 +20,60 @@ const Registration: FC<RegistrationProps> = (props) => {
   const progress = {
     transform: `scaleX(.${page * 20})`
   };
+
   const daysSelected = Object.values(days).some(day => day === true);
+  
+  const userInfo = {
+    email,
+    password,
+    fullname: name,
+    bio,
+    make,
+    model,
+    year
+  }
+
+  const routeData = {
+    user_id: currentUserId,
+    origin,
+    destination,
+    departure_time: departTime,
+    days: Object.keys(days).filter(el => days[el] === true)
+  }
+
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (page === 2) {
-      const userInfo = {
-        email,
-        password,
-        fullname: name,
-        bio,
-        make,
-        model,
-        year
-      }
       postUserInfo(userInfo)
-        .then(response => setCurrentUserId(response.data.id))
-    }
-    if(page === 4 && !daysSelected) {
+        .then(response => {
+          setCurrentUserId(response.data.id);
+          setPage(page + 1);
+          setError(false);
+        })
+        .catch(() => {
+          setError(true);
+          setPage(0);
+        })
+      return
+    } else if(page === 3) {
+      setError(false)
+    } else if(page === 4 && !daysSelected) {
       setError(!daysSelected)
       return
-    }
-    if (page === 4) {
-      const routeData = {
-        user_id: currentUserId,
-        origin,
-        destination,
-        departure_time: departTime,
-        days: Object.keys(days).filter(el => days[el] === true)
-      }
-      console.log(routeData)
+    } else if (page === 4) {
       postRouteData(routeData)
-        .then(() => setIsLoggedIn(true))
+        .then(() => {
+          setError(false);
+          setIsLoggedIn(true);
+        })
+        .catch(() => {
+          setError(true);
+          setPage(3);
+        })
       return
     }
-    setPage(page + 1);
+    setPage(page + 1)
   }
 
   const toggleView = page > 0 ? 'registration__back-btn btn' : 'registration__back-btn__hidden btn';
@@ -62,12 +84,15 @@ const Registration: FC<RegistrationProps> = (props) => {
         <IoArrowBackSharp /> Back
       </button>
       {page === 0 &&
+        <>
         <Form
           header="Name"
           inputs={[{ property: name, method: setName, placeholder: 'Name' },
           { property: email, method: setEmail, placeholder: 'Email', type: 'email' },
           { property: password, method: setPassword, placeholder: 'Password', type: 'password' }]}
         />
+        {error && <Error message={'This email is already registered'}/>}
+        </>
       }
       {page === 1 &&
         <div className="bio">
@@ -89,23 +114,34 @@ const Registration: FC<RegistrationProps> = (props) => {
         />
       }
       {page === 3 &&
+        <>
         <OriginDestination
           setOrigin={setOrigin}
           origin={origin}
           destination={destination}
           setDestination={setDestination}
         />
+        {error && <Error message={'We could not find a drivable route, please try again'}/>}
+        </>
       }
       {page === 4 &&
         <DaysAndTime property={departTime} method={setDepartTime} setDays={setDays} days={days} error={error} />
       }
-      <div className="registration__progress">
-        <div className="progress-bar" style={progress} />
-        <button
-          className="registration__button btn"
-          type="submit"
-        >{page === 4 ? 'Submit' : 'Next'}</button>
-      </div>
+      {page === 5 && 
+        <div>
+          <h1 className="loading-message">Finding similar rides</h1>
+          <VscLoading className="loading-icon"/>
+        </div>
+      }
+      {page < 5 && 
+        <div className="registration__progress">
+          <div className="progress-bar" style={progress} />
+          <button
+            className="registration__button btn"
+            type="submit"
+          >{page === 4 ? 'Submit' : 'Next'}</button>
+        </div>
+      }
     </form>
   )
 }
