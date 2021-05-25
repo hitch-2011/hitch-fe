@@ -1,5 +1,4 @@
 describe('Sign up user flow', () => {
-
   before(() => {
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
       method: "POST",
@@ -81,6 +80,10 @@ describe('Sign up user flow', () => {
     .contains("80017")
   });
 
+  it('Should display a button to add a route', () => {
+    cy.get('[data-cy=add-route-button]')
+    .contains("Add a Route")
+  });
 })
 
   // before(() => {

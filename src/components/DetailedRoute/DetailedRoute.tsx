@@ -106,9 +106,15 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
         <button className="registration__button btn">
           Request a Hitch
       </button>
+<<<<<<< HEAD
         :
         <button className="registration__button btn">
           Add a Route
+=======
+      :
+      <button data-cy='add-route-button' className="registration__button btn">
+        Add a Route
+>>>>>>> 99bfa5e... Finish testing profile view
       </button>
       }
     </div>
