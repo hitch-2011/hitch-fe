@@ -54,7 +54,7 @@ describe('The menu toggle functionality', () => {
       .should('have.value', 'billyB')
 
     cy.get('button').eq(1).click();
-    cy.get('button').eq(1).click().wait(1000);
+    cy.get('button').eq(1).click();
 
     cy.get('input').eq(0)
       .type('Toyota')
@@ -153,7 +153,7 @@ describe('The clickable links on the menu', () => {
       .should('have.value', 'billyB')
 
     cy.get('button').eq(1).click();
-    cy.get('button').eq(1).click().wait(1000);
+    cy.get('button').eq(1).click();
 
     cy.get('input').eq(0)
       .type('Toyota')

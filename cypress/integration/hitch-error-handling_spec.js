@@ -65,10 +65,6 @@ describe('User validation', () => {
     cy.get('.error').contains('This email is already registered'); 
   })
 
-  it('Should tell you if a route does not exist', () => {
-    cy.get('.error')
-  })
-
 })
 
 describe('Route validation', () => {
@@ -111,7 +107,9 @@ describe('Route validation', () => {
       .should('have.value', 'billyB')
 
     cy.get('button').eq(1).click();
-    cy.get('button').eq(1).click().wait(1000)
+    cy.get('input').eq(0)
+      .type('this is my bio')
+    cy.get('button').eq(1).click();
 
     cy.get('input').eq(0)
       .type('Toyota')
