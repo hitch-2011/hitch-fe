@@ -107,7 +107,7 @@ describe('Route validation', () => {
       .should('have.value', 'billyB')
 
     cy.get('button').eq(1).click();
-    cy.get('input').eq(0)
+    cy.get('textarea')
       .type('this is my bio')
     cy.get('button').eq(1).click();
 
