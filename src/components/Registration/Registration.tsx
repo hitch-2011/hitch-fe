@@ -71,7 +71,6 @@ const Registration: FC<RegistrationProps> = (props) => {
           setError(true);
           setPage(3);
         })
-      return
     }
     setPage(page + 1)
   }
