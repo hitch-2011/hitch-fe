@@ -387,7 +387,7 @@ describe('User origin and destination input', () => {
       .should('have.value', 'billyB')
 
     cy.get('button').eq(1).click();
-    cy.get('button').eq(1).click();
+    cy.get('button').eq(1).click().wait(1000);
 
     cy.get('input').eq(0)
       .type('Toyota')
@@ -480,7 +480,7 @@ describe('User origin and destination sad paths', () => {
       .should('have.value', 'billyB')
 
     cy.get('button').eq(1).click();
-    cy.get('button').eq(1).click();
+    cy.get('button').eq(1).click().wait(1000);
 
     cy.get('input').eq(0)
       .type('Toyota')
@@ -595,7 +595,7 @@ describe('Days and time', () => {
       .should('have.value', 'billyB')
 
     cy.get('button').eq(1).click();
-    cy.get('button').eq(1).click();
+    cy.get('button').eq(1).click().wait(1000);
 
     cy.get('input').eq(0)
       .type('Toyota')
