@@ -127,19 +127,16 @@ To maintain a better user experience, we implemented dynamic error handling, so 
 
 [<img src="https://img.shields.io/badge/LinkedIn-alex--thompson-informational?style=for-the-badge&labelColor=black&logo=linkedin&logoColor=0077b5&&color=0077b5"/>][linkedin]
 [<img src="https://img.shields.io/badge/Github-AlexThompson207-informational?style=for-the-badge&labelColor=black&logo=github&color=8B0BD5"/>][github]
-
 [<img src="https://img.shields.io/badge/LinkedIn-paige--vannelli-informational?style=for-the-badge&labelColor=black&logo=linkedin&logoColor=0077b5&&color=0077b5"/>][linkedin2]
 [<img src="https://img.shields.io/badge/Github-PaigeVannelli-informational?style=for-the-badge&labelColor=black&logo=github&color=8B0BD5"/>][github2]
 
 [<img src="https://img.shields.io/badge/LinkedIn-steven--mancine-informational?style=for-the-badge&labelColor=black&logo=linkedin&logoColor=0077b5&&color=0077b5"/>][linkedin3]
 [<img src="https://img.shields.io/badge/Github-itsnameissteven-informational?style=for-the-badge&labelColor=black&logo=github&color=8B0BD5"/>][github3]
-
 [<img src="https://img.shields.io/badge/LinkedIn-cydnee--owens-informational?style=for-the-badge&labelColor=black&logo=linkedin&logoColor=0077b5&&color=0077b5"/>][linkedin4]
 [<img src="https://img.shields.io/badge/Github-cowens87-informational?style=for-the-badge&labelColor=black&logo=github&color=8B0BD5"/>][github4]
 
 [<img src="https://img.shields.io/badge/LinkedIn-dominic--padula-informational?style=for-the-badge&labelColor=black&logo=linkedin&logoColor=0077b5&&color=0077b5"/>][linkedin5]
 [<img src="https://img.shields.io/badge/Github-domo2192-informational?style=for-the-badge&labelColor=black&logo=github&color=8B0BD5"/>][github5]
-
 [<img src="https://img.shields.io/badge/LinkedIn-jake--volpe-informational?style=for-the-badge&labelColor=black&logo=linkedin&logoColor=0077b5&&color=0077b5"/>][linkedin6]
 [<img src="https://img.shields.io/badge/Github-javolpe-informational?style=for-the-badge&labelColor=black&logo=github&color=8B0BD5"/>][github6]
 
