@@ -48,14 +48,12 @@ const Registration: FC<RegistrationProps> = (props) => {
       postUserInfo(userInfo)
         .then(response => {
           setCurrentUserId(response.data.id);
-          setPage(page + 1);
           setError(false);
         })
         .catch(() => {
           setError(true);
           setPage(0);
         })
-      return
     } else if(page === 3) {
       setError(false)
     } else if(page === 4 && !daysSelected) {
