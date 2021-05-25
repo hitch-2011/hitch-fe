@@ -22,12 +22,7 @@ export const postUserInfo = (userInfo: UserData) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(userInfo)
   })
-    .then(response => {
-      if(!response.ok) {
-        throw new Error(`${response.status}`)
-      }
-      return response.json()
-    })
+    .then(handleErrors)
 }
 
 export const postRouteData = (routeInfo: RouteData) => {
@@ -36,7 +31,7 @@ export const postRouteData = (routeInfo: RouteData) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(routeInfo)
   })
-    .then(response => response.json())
+    .then(handleErrors)
 }
 
 export const getMatchedRides = (id: number) => {
@@ -47,4 +42,12 @@ export const getMatchedRides = (id: number) => {
 export const getUserByID = (id: number) => {
   return fetch(`https://afternoon-journey-49986.herokuapp.com/api/v1/users/${id}`)
     .then(response => response.json())
+}
+
+
+const handleErrors = (response: Response) => {
+  if(!response.ok) {
+    throw new Error(`${response.status}`)
+  }
+  return response.json()
 }
