@@ -126,11 +126,11 @@ describe('Route validation', () => {
     cy.get('button').eq(1).click();
 
     cy.get('input').eq(0)
-      .type('japan')
+      .type('1138 Corona St, Denver, CO 80218')
       .get('span').eq(0)
       .click()
       .get('input').eq(0)
-      .should('have.value', 'Japan')
+      .should('have.value', '1138 Corona St, Denver, CO 80218, USA')
     cy.get('input').eq(1)
       .type('1850 Table Mesa Dr, Boulder, CO 80305')
       .should('have.value', '1850 Table Mesa Dr, Boulder, CO 80305')
