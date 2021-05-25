@@ -208,5 +208,4 @@ describe('The clickable links on the menu', () => {
     cy.get('.menu-link').eq(2).click()
       .url().should('include', '/pending-routes');
   });
-
 })
