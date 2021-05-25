@@ -103,13 +103,13 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
         </section>
       </section>
       {!currentUser ?
-        <button className="registration__button btn">
+        <button data-cy='request-hitch' className="registration__button btn">
           Request a Hitch
-      </button>
+        </button>
       :
-      <button data-cy='add-route-button' className="registration__button btn">
-        Add a Route
-      </button>
+        <button data-cy='add-route-button' className="registration__button btn">
+          Add a Route
+        </button>
       }
     </div>
   )

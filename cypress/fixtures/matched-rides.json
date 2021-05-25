@@ -13,7 +13,7 @@
           "user_id": 2,
           "user_name": "fullname",
           "zipcode_origin": "80211", 
-          "zipcode_destination": "80017", 
+          "zipcode_destination": "80017"
         },
         {
           "departure_time": "9:00am", 
@@ -26,7 +26,7 @@
           "user_id": 3,
           "user_name": "name",
           "zipcode_origin": "80211", 
-          "zipcode_destination": "80017", 
+          "zipcode_destination": "80017" 
         }
       ],
       "id": "1",
