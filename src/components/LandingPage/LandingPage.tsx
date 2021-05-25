@@ -18,7 +18,6 @@ const LandingPage: FC<LandingPageProps> = ({setIsLoggedIn}) => {
       </div>
     </div>
   )
-
 }
 
 export default LandingPage

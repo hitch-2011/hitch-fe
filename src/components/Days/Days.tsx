@@ -5,20 +5,24 @@ interface DaysProps {
 }
 
 const Days: FC<DaysProps> = ({ matchedDays }) => {
-  const days = matchedDays.map((day, index) => {
+  if (matchedDays) {
+    const days = matchedDays.map((day, index) => {
+      return (
+        <div className='profile-days__profile-day' key={index}>
+          {(day === 'tuesday' || day === 'thursday' || day === 'saturday' || day === 'sunday') ? 
+          day.charAt(0).toUpperCase() + day.slice(1,2) : 
+          day.substring(0, 1).toUpperCase()}
+        </div>
+      )
+    })
     return (
-      <div className='profile-days__profile-day' key={index}>
-        {(day === 'tuesday' || day === 'thursday' || day === 'saturday' || day === 'sunday') ? 
-        day.charAt(0).toUpperCase() + day.slice(1,2) : 
-        day.substring(0, 1).toUpperCase()}
+      <div data-cy='user-days' className='profile-days'>
+        {days}
       </div>
     )
-  })
-  return (
-    <div data-cy='user-days' className='profile-days'>
-      {days}
-    </div>
-  )
+  } else {
+    return <p>loading</p>
+  }
 }
 
 export default Days

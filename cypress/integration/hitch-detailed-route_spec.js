@@ -1,4 +1,4 @@
-describe('Sign up user flow', () => {
+describe('Profile user flow', () => {
   before(() => {
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
       method: "POST",
@@ -32,7 +32,8 @@ describe('Sign up user flow', () => {
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1', {fixture: 'profile'})
     cy.intercept("https://maps.googleapis.com/maps/api/place/js/*")
     .visit('http://localhost:3000');
-    cy.get('[data-cy=login-button]')
+    // cy.get('[data-cy=login-button]')
+    cy.get('.login__btn')
     .click()
     .get('[data-cy=menu]')
     .click()
@@ -43,10 +44,10 @@ describe('Sign up user flow', () => {
     })
   })
 
-  it('Should display a header', () => {
-    cy.get('[data-cy=hitch-header-title]')
-    .should('exist')
-  });
+  // it('Should display a header', () => {
+  //   cy.get('[data-cy=hitch-header-title]')
+  //   .should('exist')
+  // });
 
   it('Should display the users name and details', () => {
     cy.get('[data-cy=user-name]')
