@@ -5,7 +5,8 @@ import { RegistrationProps } from '../../interfaces/interfaces';
 import { IoArrowBackSharp } from 'react-icons/io5';
 import OriginDestination from '../OriginDestination/OriginDestination';
 import { postUserInfo, postRouteData } from '../../apiCalls';
-import Error from '../Error/Error'
+import Error from '../Error/Error';
+import { VscLoading } from 'react-icons/vsc';
 
 
 
@@ -66,7 +67,6 @@ const Registration: FC<RegistrationProps> = (props) => {
       }
       postRouteData(routeData)
         .then(() => setIsLoggedIn(true))
-      return
     }
     setPage(page + 1)
   }
@@ -118,6 +118,12 @@ const Registration: FC<RegistrationProps> = (props) => {
       }
       {page === 4 &&
         <DaysAndTime property={departTime} method={setDepartTime} setDays={setDays} days={days} error={error} />
+      }
+      {page === 5 && 
+        <div>
+          <h1 className="loading-message">Finding similar rides</h1>
+          <VscLoading className="loading-icon"/>
+        </div>
       }
       <div className="registration__progress">
         <div className="progress-bar" style={progress} />
