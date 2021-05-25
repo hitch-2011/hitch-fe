@@ -1,6 +1,6 @@
 describe('Sign up user flow', () => {
 
-  beforeEach(() => {
+  before(() => {
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
       method: "POST",
       body: 'good'
@@ -32,7 +32,7 @@ describe('Sign up user flow', () => {
     })
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1', {fixture: 'profile'})
     cy.intercept("https://maps.googleapis.com/maps/api/place/js/*")
-    cy.visit('http://localhost:3000');
+    .visit('http://localhost:3000');
     cy.get('[data-cy=login-button]')
     .click()
     .get('[data-cy=menu]')
@@ -44,8 +44,41 @@ describe('Sign up user flow', () => {
     })
   })
 
-  it('Should confirm that true is equal to true', () => {
-    expect(true).to.equal(true)
+  it('Should allow the user to click on the menu', () => {
+    cy.get('[data-cy=menu]')
+    .click()
+    .get('[data-cy=profile-button]')
+    .should('exist')
+  });
+
+  it('Should display a header', () => {
+    cy.get('[data-cy=hitch-header-title]')
+    .should('exist')
+  });
+
+  it('Should display the users name and details', () => {
+    cy.get('[data-cy=user-name]')
+    .contains("John Smith")
+    .get('[data-cy=user-bio]')
+    .contains("long walks on the beach")
+    .get('[data-cy=user-model]')
+    .contains("Civic")
+  });
+
+  it('Should display the users drive time and days', () => {
+    cy.get('[data-cy=user-time]')
+    .contains("9:00am")
+    .get('[data-cy=user-days]')
+    .contains("M")
+    .get('[data-cy=user-days]')
+    .contains("W")
+  });
+
+  it('Should display origin and destination zip code', () => {
+    cy.get('[data-cy=origin-zip]')
+    .contains("80211")
+    .get('[data-cy=destination-zip]')
+    .contains("80017")
   });
 
 })

@@ -1,10 +1,10 @@
 {
   "data": {
     "attributes": {
-      "bio": "I like driving.",
-      "email": "dominic@gmail.com",
+      "bio": "I like driving and long walks on the beach.",
+      "email": "johnsmith@gmail.com",
       "friends": [],
-      "fullname": "fullname",
+      "fullname": "John Smith",
       "matched_rides": [
         [
           {
@@ -34,7 +34,7 @@
           "zipcode_origin": "80211"
         }
       ],
-      "vehicle": {"id": 1, "user_id": 1, "make": "make", "model": "model", "year": "1991"}
+      "vehicle": {"id": 1, "user_id": 1, "make": "Honda", "model": "Civic", "year": "1991"}
     },
     "id": "1",
     "type": "profile"

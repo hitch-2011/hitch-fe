@@ -15,7 +15,7 @@ const Days: FC<DaysProps> = ({ matchedDays }) => {
     )
   })
   return (
-    <div className='profile-days'>
+    <div data-cy='user-days' className='profile-days'>
       {days}
     </div>
   )
