@@ -33,6 +33,14 @@ const Registration: FC<RegistrationProps> = (props) => {
     year
   }
 
+  const routeData = {
+    user_id: currentUserId,
+    origin,
+    destination,
+    departure_time: departTime,
+    days: Object.keys(days).filter(el => days[el] === true)
+  }
+
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -46,8 +54,7 @@ const Registration: FC<RegistrationProps> = (props) => {
           setPage(page + 1);
           setError(false);
         })
-        .catch(err => {
-          console.log(err)
+        .catch(() => {
           setError(true);
           setPage(0);
         })
@@ -58,14 +65,8 @@ const Registration: FC<RegistrationProps> = (props) => {
       return
     }
     if (page === 4) {
-      const routeData = {
-        user_id: currentUserId,
-        origin,
-        destination,
-        departure_time: departTime,
-        days: Object.keys(days).filter(el => days[el] === true)
-      }
       postRouteData(routeData)
+        .then(response => console.log(response))
         .then(() => setIsLoggedIn(true))
     }
     setPage(page + 1)
@@ -125,13 +126,15 @@ const Registration: FC<RegistrationProps> = (props) => {
           <VscLoading className="loading-icon"/>
         </div>
       }
-      <div className="registration__progress">
-        <div className="progress-bar" style={progress} />
-        <button
-          className="registration__button btn"
-          type="submit"
-        >{page === 4 ? 'Submit' : 'Next'}</button>
-      </div>
+      {page < 5 && 
+        <div className="registration__progress">
+          <div className="progress-bar" style={progress} />
+          <button
+            className="registration__button btn"
+            type="submit"
+          >{page === 4 ? 'Submit' : 'Next'}</button>
+        </div>
+      }
     </form>
   )
 }
