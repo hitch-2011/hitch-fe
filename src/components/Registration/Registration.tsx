@@ -44,9 +44,6 @@ const Registration: FC<RegistrationProps> = (props) => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if(page < 2) {
-      setPage(page + 1);
-    }
     if (page === 2) {
       postUserInfo(userInfo)
         .then(response => {
@@ -59,15 +56,22 @@ const Registration: FC<RegistrationProps> = (props) => {
           setPage(0);
         })
       return
-    }
-    if(page === 4 && !daysSelected) {
+    } else if(page === 3) {
+      setError(false)
+    } else if(page === 4 && !daysSelected) {
       setError(!daysSelected)
       return
-    }
-    if (page === 4) {
+    } else if (page === 4) {
       postRouteData(routeData)
-        .then(response => console.log(response))
-        .then(() => setIsLoggedIn(true))
+        .then(() => {
+          setError(false);
+          setIsLoggedIn(true);
+        })
+        .catch(() => {
+          setError(true);
+          setPage(3);
+        })
+      return
     }
     setPage(page + 1)
   }
@@ -110,12 +114,15 @@ const Registration: FC<RegistrationProps> = (props) => {
         />
       }
       {page === 3 &&
+        <>
         <OriginDestination
           setOrigin={setOrigin}
           origin={origin}
           destination={destination}
           setDestination={setDestination}
         />
+        {error && <Error message={'We could not find a drivable route, please try again'}/>}
+        </>
       }
       {page === 4 &&
         <DaysAndTime property={departTime} method={setDepartTime} setDays={setDays} days={days} error={error} />
