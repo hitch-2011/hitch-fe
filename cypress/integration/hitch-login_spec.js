@@ -273,6 +273,7 @@ describe('User car details input', () => {
       .should('have.value', '2001')
 
     cy.get('button').eq(1).click();
+    cy.wait(1000)
 
     cy.get('input').should('have.length', 2);
     cy.get('.origin-destination__header').contains('Origin and Destination');
@@ -400,6 +401,7 @@ describe('User origin and destination input', () => {
       .should('have.value', '2001')
 
     cy.get('button').eq(1).click();
+    cy.wait(1000)
   });
 
   it('should have an app and form title', () => {
@@ -493,6 +495,7 @@ describe('User origin and destination sad paths', () => {
       .should('have.value', '2001')
 
     cy.get('button').eq(1).click();
+    cy.wait(1000)
   });
 
   it('should have an app and form title, and inputs', () => {
@@ -608,6 +611,7 @@ describe('Days and time', () => {
       .should('have.value', '2001')
 
     cy.get('button').eq(1).click();
+    cy.wait(1000)
 
     cy.get('input').eq(0)
       .type('1138 Corona St, Denver, CO 80218')
