@@ -67,6 +67,7 @@ describe('The menu toggle functionality', () => {
       .should('have.value', '2001')
 
     cy.get('.registration__button').click();
+    cy.wait(1000)
 
     cy.get('input').eq(0)
       .type('1138 Corona St, Denver, CO 80218')
@@ -166,6 +167,7 @@ describe('The clickable links on the menu', () => {
       .should('have.value', '2001')
 
     cy.get('button').eq(1).click();
+    cy.wait(1000)
 
     cy.get('input').eq(0)
       .type('1138 Corona St, Denver, CO 80218')
