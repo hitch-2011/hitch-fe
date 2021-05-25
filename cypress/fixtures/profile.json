@@ -1,0 +1,42 @@
+{
+  "data": {
+    "attributes": {
+      "bio": "I like driving and long walks on the beach.",
+      "email": "johnsmith@gmail.com",
+      "friends": [],
+      "fullname": "John Smith",
+      "matched_rides": [
+        [
+          {
+            "created_at": "2021-05-24T16:42:55.002Z",
+            "departure_time": "9:00am",
+            "destination": "1125 S Kalispell St, Aurora, CO 80017, USA",
+            "id": 2,
+            "origin": "3956 Alcott St, Denver, CO 80211, USA",
+            "updated_at": "2021-05-24T16:42:55.002Z",
+            "user_id": 3,
+            "zipcode_destination": "80017",
+            "zipcode_origin": "80211"
+          }
+        ]
+      ],
+      "ride_days": ["Monday", "Wednesday", "Thursday"],
+      "user_rides": [
+        {
+          "created_at": "2021-05-24T16:42:55.014Z",
+          "departure_time": "9:00am",
+          "destination": "1125 S Kalispell St, Aurora, CO 80017, USA",
+          "id": 3,
+          "origin": "3956 Alcott St, Denver, CO 80211, USA",
+          "updated_at": "2021-05-24T16:42:55.014Z",
+          "user_id": 1,
+          "zipcode_destination": "80017",
+          "zipcode_origin": "80211"
+        }
+      ],
+      "vehicle": {"id": 1, "user_id": 1, "make": "Honda", "model": "Civic", "year": "1991"}
+    },
+    "id": "1",
+    "type": "profile"
+  }
+}

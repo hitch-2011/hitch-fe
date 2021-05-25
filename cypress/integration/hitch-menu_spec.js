@@ -108,10 +108,6 @@ describe('The menu toggle functionality', () => {
 describe('The clickable links on the menu', () => {
   beforeEach(() => {
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
-      method: "POST",
-      body: "good"
-    })
-    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
       status: 200,
       body: {
         data: {

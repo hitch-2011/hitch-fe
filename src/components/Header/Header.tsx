@@ -11,9 +11,9 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ toggleMenu, menuIsOpen, isLoggedIn }) => {
   return (
     <header className={isLoggedIn ? "header-main--small" : "header-main"}>
-      <h1 className={isLoggedIn ? "header--small" :"header-main__title"}>HITCH</h1>
+      <h1 data-cy='hitch-header-title' className={isLoggedIn ? "header--small" :"header-main__title"}>HITCH</h1>
       {isLoggedIn &&
-        <div className="hamburger" onClick={toggleMenu}>
+        <div data-cy='menu' className="hamburger" onClick={toggleMenu}>
           <HiOutlineMenuAlt2 />
         </div>
       }

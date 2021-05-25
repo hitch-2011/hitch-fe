@@ -14,11 +14,10 @@ const LandingPage: FC<LandingPageProps> = ({setIsLoggedIn}) => {
         <Link to="/register">
           <button className="signup__btn btn">Sign up</button> 
         </Link>
-        <button className="login__btn btn" onClick={() => setIsLoggedIn(true)}>Login</button>
+        <button data-cy="login-button" className="login__btn btn" onClick={() => setIsLoggedIn(true)}>Login</button>
       </div>
     </div>
   )
-
 }
 
 export default LandingPage
