@@ -63,7 +63,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
       <section className='header'>
         <img className='header__photo' src={userPhoto} alt={detailedRouteData.user.name} />
         <Link className='header__back' to='matched-routes'>
-          <img className='header__close-icon' src={close} alt='close-button' />
+          <img data-cy='close-button' className='header__close-icon' src={close} alt='close-button'/>
         </Link>
       </section>
       <section className='user-details'>
