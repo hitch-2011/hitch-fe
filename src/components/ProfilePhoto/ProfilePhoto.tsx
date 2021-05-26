@@ -5,7 +5,7 @@ import userPhoto4 from '../../assets/images/user-4.png';
 import { FC, useEffect, useState } from 'react'
 
 interface ProfilePhotoProps {
-  name: string
+  name: any
 }
 
 const ProfilePhoto: FC<ProfilePhotoProps> = ({ name }) => {
