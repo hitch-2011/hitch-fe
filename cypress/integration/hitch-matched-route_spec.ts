@@ -1,3 +1,5 @@
+import { createYield } from "typescript";
+
 describe('Profile user flow', () => {
   before(() => {
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
@@ -29,7 +31,7 @@ describe('Profile user flow', () => {
     cy.on('uncaught:exception', (err, runnable) => {
       return false
     })
-    .get('[data-cy=user-name]')
+    cy.get('[data-cy=user-name]')
     .contains("John Smith")
   })
 

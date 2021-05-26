@@ -1,3 +1,5 @@
+import { createYield } from "typescript";
+
 describe('The menu toggle functionality', () => {
   beforeEach(() => {
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
