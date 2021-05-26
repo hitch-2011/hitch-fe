@@ -29,8 +29,7 @@
 
 
 ## About the Project
-
-Hitch is a progressive web application (PWA), using a mobile first desgin to help cars off road and stuff.......
+Hitch is a progressive web application (PWA), using a mobile first design to help commuters match with other each other based on similar routes. Users are prompted to sign up with route details- origin, destination, departure time and days of the week. Once a user is registered they are able to view a list of other drivers with similar routes.
 
 View the deployed site: [here](https://hitch-a-ride-app.herokuapp.com/)
 
@@ -55,17 +54,17 @@ View the backend repo: [here](https://github.com/hitch-2011/hitch_backend)
 * [Error Handling](#error-handling)
 
 #### Login or Signup
-  - When a user visits the site they are able to signup or login to their profile. The login feature is under development at the moment, and seeded with dummy data for now. 
+  -  - When a user visits the site they are able to signup or login to their profile. The login feature is under development at the moment, and seeded with dummy data for now. This is a great way to demo the application without having to sign up.
 <img src="https://media.giphy.com/media/0g3OcJGum2J8vgliaE/giphy.gif">
 
 #### Matched Rides
-  - After a user signups or logins in, they are redirected to a matched rides view, which displays all rides within 4 miles of the current users route. 
+  - After a user signups or logins in, they are redirected to a matched rides view, which displays all rides within 4 miles of the current users route. Each matched ride is a clickable link and will navigigate to the detailed ride page. 
 <p align="center">
   <img alt="giph of matched rides and user profile" src="https://media.giphy.com/media/9wjRWY2FySyyvDEyXo/giphy.gif">
 </p>
 
 #### Ride Profile
- - Using the hamburger menu, a user can view their own profile, or when clicking on a matched ride see the route details.
+ - Using the hamburger menu, a user can view their own profile, or when clicking on a matched ride see the route details. This page allows you to see more information on the ride, including a users profile and map of the origin and destination.
  <img src="" width="500" align="center">
 
 #### Accessibility 
@@ -130,16 +129,19 @@ To maintain a better user experience, we implemented dynamic error handling, so 
 
 [<img src="https://img.shields.io/badge/LinkedIn-alex--thompson-informational?style=for-the-badge&labelColor=black&logo=linkedin&logoColor=0077b5&&color=0077b5"/>][linkedin]
 [<img src="https://img.shields.io/badge/Github-AlexThompson207-informational?style=for-the-badge&labelColor=black&logo=github&color=8B0BD5"/>][github]
+</br>
 [<img src="https://img.shields.io/badge/LinkedIn-paige--vannelli-informational?style=for-the-badge&labelColor=black&logo=linkedin&logoColor=0077b5&&color=0077b5"/>][linkedin2]
 [<img src="https://img.shields.io/badge/Github-PaigeVannelli-informational?style=for-the-badge&labelColor=black&logo=github&color=8B0BD5"/>][github2]
-
+</br>
 [<img src="https://img.shields.io/badge/LinkedIn-steven--mancine-informational?style=for-the-badge&labelColor=black&logo=linkedin&logoColor=0077b5&&color=0077b5"/>][linkedin3]
 [<img src="https://img.shields.io/badge/Github-itsnameissteven-informational?style=for-the-badge&labelColor=black&logo=github&color=8B0BD5"/>][github3]
+</br>
 [<img src="https://img.shields.io/badge/LinkedIn-cydnee--owens-informational?style=for-the-badge&labelColor=black&logo=linkedin&logoColor=0077b5&&color=0077b5"/>][linkedin4]
 [<img src="https://img.shields.io/badge/Github-cowens87-informational?style=for-the-badge&labelColor=black&logo=github&color=8B0BD5"/>][github4]
-
+</br>
 [<img src="https://img.shields.io/badge/LinkedIn-dominic--padula-informational?style=for-the-badge&labelColor=black&logo=linkedin&logoColor=0077b5&&color=0077b5"/>][linkedin5]
 [<img src="https://img.shields.io/badge/Github-domo2192-informational?style=for-the-badge&labelColor=black&logo=github&color=8B0BD5"/>][github5]
+</br>
 [<img src="https://img.shields.io/badge/LinkedIn-jake--volpe-informational?style=for-the-badge&labelColor=black&logo=linkedin&logoColor=0077b5&&color=0077b5"/>][linkedin6]
 [<img src="https://img.shields.io/badge/Github-javolpe-informational?style=for-the-badge&labelColor=black&logo=github&color=8B0BD5"/>][github6]
 
