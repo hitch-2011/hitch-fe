@@ -32,7 +32,9 @@
 
 Hitch is a progressive web application (PWA), using a mobile first desgin to help cars off road and stuff.......
 
-View the deployed site: [here](href="https://hitch-a-ride-app.herokuapp.com/")
+View the deployed site: [here](https://hitch-a-ride-app.herokuapp.com/)
+
+View the backend repo: [here](https://github.com/hitch-2011/hitch_backend)
 
 ## Installation
 
@@ -57,7 +59,7 @@ View the deployed site: [here](href="https://hitch-a-ride-app.herokuapp.com/")
 <img src="" width="1440">
 
 #### Matched Rides
-  - After a user signups or logins in, they are directed to a matched rides view, display all rides within 4 miles of current users route. 
+  - After a user signups or logins in, they are redirected to a matched rides view, which displays all rides within 4 miles of the current users route. 
 
 <img src="" width="1440">
 
