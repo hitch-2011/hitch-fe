@@ -109,7 +109,7 @@ describe('User name input sad paths', () => {
     cy.get('[type="submit"]').click()
     cy.get('input:invalid').eq(0).should('have.length', 1)
     cy.get('input').eq(0).then(($input) => {
-      expect($input[0].validationMessage).to.eq('Please fill out this field.')
+      expect(($input[0] as HTMLInputElement).validationMessage).to.eq('Please fill out this field.')
     })
   });
 
@@ -122,7 +122,7 @@ describe('User name input sad paths', () => {
     cy.get('[type="submit"]').click()
     cy.get('input:invalid').eq(1).should('have.length', 1)
     cy.get('input').eq(1).then(($input) => {
-      expect($input[0].validationMessage).to.eq('Please fill out this field.')
+      expect(($input[0] as HTMLInputElement).validationMessage).to.eq('Please fill out this field.')
     })
   });
 
@@ -135,7 +135,7 @@ describe('User name input sad paths', () => {
     cy.get('[type="submit"]').click()
     cy.get('input:invalid').eq(0).should('have.length', 1)
     cy.get('input').eq(2).then(($input) => {
-      expect($input[0].validationMessage).to.eq('Please fill out this field.')
+      expect(($input[0] as HTMLInputElement).validationMessage).to.eq('Please fill out this field.')
     })
   });
 
@@ -151,7 +151,7 @@ describe('User name input sad paths', () => {
     cy.get('[type="submit"]').click()
     cy.get('input:invalid').eq(0).should('have.length', 1)
     cy.get('input').eq(2).then(($input) => {
-      expect($input[0].validationMessage).to.eq('Please fill out this field.')
+      expect(($input[0] as HTMLInputElement).validationMessage).to.eq('Please fill out this field.')
     })
   });
 
@@ -169,7 +169,7 @@ describe('User name input sad paths', () => {
     cy.get('[type="submit"]').click()
     cy.get('input:invalid').eq(0).should('have.length', 1)
     cy.get('input').eq(1).then(($input) => {
-      expect($input[0].validationMessage).to.eq('Please include an \'@\' in the email address. \'billy\' is missing an \'@\'.')
+      expect(($input[0] as HTMLInputElement).validationMessage).to.eq('Please include an \'@\' in the email address. \'billy\' is missing an \'@\'.')
     });
   });
 
@@ -187,7 +187,7 @@ describe('User name input sad paths', () => {
     cy.get('[type="submit"]').click()
     cy.get('input:invalid').eq(0).should('have.length', 1)
     cy.get('input').eq(1).then(($input) => {
-      expect($input[0].validationMessage).to.eq('Please enter a part following \'@\'. \'billy@\' is incomplete.')
+      expect(($input[0] as HTMLInputElement).validationMessage).to.eq('Please enter a part following \'@\'. \'billy@\' is incomplete.')
     });
   });
 });
@@ -318,7 +318,7 @@ describe('User car details input sad paths', () => {
     cy.get('[type="submit"]').click()
     cy.get('input:invalid').eq(0).should('have.length', 1)
     cy.get('input').eq(0).then(($input) => {
-      expect($input[0].validationMessage).to.eq('Please fill out this field.')
+      expect(($input[0] as HTMLInputElement).validationMessage).to.eq('Please fill out this field.')
     })
     cy.get('.register-form__header').contains('Origin and Destination').should('not.exist')
   });
@@ -332,7 +332,7 @@ describe('User car details input sad paths', () => {
     cy.get('[type="submit"]').click()
     cy.get('input:invalid').eq(1).should('have.length', 1)
     cy.get('input').eq(1).then(($input) => {
-      expect($input[0].validationMessage).to.eq('Please fill out this field.')
+      expect(($input[0] as HTMLInputElement).validationMessage).to.eq('Please fill out this field.')
     })
 
     cy.get('.register-form__header').contains('Origin and Destination').should('not.exist')
@@ -350,7 +350,7 @@ describe('User car details input sad paths', () => {
     cy.get('[type="submit"]').click()
     cy.get('input:invalid').eq(0).should('have.length', 1)
     cy.get('input').eq(2).then(($input) => {
-      expect($input[0].validationMessage).to.eq('Please fill out this field.')
+      expect(($input[0] as HTMLInputElement).validationMessage).to.eq('Please fill out this field.')
     })
 
     cy.get('.register-form__header').contains('Origin and Destination').should('not.exist')
@@ -509,7 +509,7 @@ describe('User origin and destination sad paths', () => {
     cy.get('[type="submit"]').click()
     cy.get('input:invalid').eq(0).should('have.length', 1)
     cy.get('input').eq(0).then(($input) => {
-      expect($input[0].validationMessage).to.eq('Please fill out this field.')
+      expect(($input[0] as HTMLInputElement).validationMessage).to.eq('Please fill out this field.')
     })
   });
 
@@ -522,7 +522,7 @@ describe('User origin and destination sad paths', () => {
     cy.get('[type="submit"]').click()
     cy.get('input:invalid').eq(0).should('have.length', 1)
     cy.get('input').eq(1).then(($input) => {
-      expect($input[0].validationMessage).to.eq('Please fill out this field.')
+      expect(($input[0] as HTMLInputElement).validationMessage).to.eq('Please fill out this field.')
     })
   });
 });
