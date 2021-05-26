@@ -48,24 +48,22 @@ View the backend repo: [here](https://github.com/hitch-2011/hitch_backend)
 
 ## Functionality
 * [Login or Signup](#login-or-signup)
-* [Matched Rides](#matched-rides)
-* [Ride Profile](#ride-profile)
+* [Matched Rides and User Profile](#matched-rides-and-user-profile)
 * [Accessibility](#accessibility)
 * [Error Handling](#error-handling)
 
 #### Login or Signup
-  -  - When a user visits the site they are able to signup or login to their profile. The login feature is under development at the moment, and seeded with dummy data for now. This is a great way to demo the application without having to sign up.
-<img src="https://media.giphy.com/media/0g3OcJGum2J8vgliaE/giphy.gif">
+  -  When a user visits the site they are able to signup or login to their profile. The login feature is under development at the moment, and seeded with dummy data for now. This is a great way to demo the application without having to sign up.
+<p align="center">
+  <img src="https://media.giphy.com/media/nqHB70AE5wpVR9o9C8/giphy.gif">
+</p>
 
-#### Matched Rides
+#### Matched Rides and User Profile
   - After a user signups or logins in, they are redirected to a matched rides view, which displays all rides within 4 miles of the current users route. Each matched ride is a clickable link and will navigigate to the detailed ride page. 
+ - Using the hamburger menu, a user can view their own profile, or when clicking on a matched ride see the route details. This page allows you to see more information on the ride, including a users profile and map of the origin and destination.
 <p align="center">
   <img alt="giph of matched rides and user profile" src="https://media.giphy.com/media/9wjRWY2FySyyvDEyXo/giphy.gif">
 </p>
-
-#### Ride Profile
- - Using the hamburger menu, a user can view their own profile, or when clicking on a matched ride see the route details. This page allows you to see more information on the ride, including a users profile and map of the origin and destination.
- <img src="" width="500" align="center">
 
 #### Accessibility 
 
