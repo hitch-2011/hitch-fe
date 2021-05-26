@@ -1,8 +1,9 @@
 .detailed-route {
   padding-top: 55px;
   height: 100%;
+  min-height: 100vh;
   overflow: hidden;
-  box-sizing:border-box
+  box-sizing: border-box;
 }
 
 .header {
@@ -50,7 +51,7 @@
   }
 
   &__make {
-    padding-right: 5px
+    padding-right: 5px;
   }
 }
 

@@ -7,9 +7,13 @@ interface MapDisplayProps {
 }
 
 export const MapDisplay = ({ latLong, google }: MapDisplayProps) => {
-
+  const containerStyle = {
+  position: 'relative',  
+  width: '100%',
+  height: '100vh'
+}
   const mapStyles = {
-    width: '50%',
+    width: '100%',
     height: '19%',
   };
 
@@ -18,6 +22,7 @@ export const MapDisplay = ({ latLong, google }: MapDisplayProps) => {
     { latLong.lat !== 0 ?
     <Map
     google={google}
+    containerStyle={containerStyle}
     style={mapStyles}
     initialCenter={latLong}
     >
