@@ -16,20 +16,21 @@ describe('Profile user flow', () => {
       }
     })
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides', {fixture: "matched-rides"})
-    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1', {fixture: 'profile'})
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/2', {fixture: 'profile'})
     cy.intercept("https://maps.googleapis.com/maps/api/place/js/*")
     .visit('http://localhost:3000');
     cy.get('.login__btn')
     .click()
-    .get('.route-card').first()
+  })
+
+  it('Should allow user to click on matched route', () => {
+    cy.get('.route-card').first()
     .click()
     cy.on('uncaught:exception', (err, runnable) => {
       return false
     })
-  })
-
-  it('Should allow user to click on matched route', () => {
-
+    .get('[data-cy=user-name]')
+    .contains("John Smith")
   })
 
   it('Should display the users name and details', () => {
