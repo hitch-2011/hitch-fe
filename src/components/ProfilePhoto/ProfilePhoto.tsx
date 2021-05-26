@@ -2,9 +2,13 @@ import userPhoto1 from '../../assets/images/user-1.png';
 import userPhoto2 from '../../assets/images/user-2.png';
 import userPhoto3 from '../../assets/images/user-3.png';
 import userPhoto4 from '../../assets/images/user-4.png';
-import { useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 
-const ProfilePhoto = () => {
+interface ProfilePhotoProps {
+  name: string
+}
+
+const ProfilePhoto: FC<ProfilePhotoProps> = ({ name }) => {
 
   const [randomPhoto, setRandomPhoto] = useState('')
 
@@ -23,7 +27,7 @@ const ProfilePhoto = () => {
 
   return (
     <div>
-      <img src={randomPhoto} className='photo'/>
+      <img src={randomPhoto} className='photo' alt={name}/>
     </div>
   )
 }
