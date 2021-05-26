@@ -188,4 +188,5 @@ describe('The clickable links on the menu', () => {
   it('Should be able to travel to profile', () => {
     cy.get('.profile-link').click()
       .url().should('include', '/profile');
-  });
+  })
+})
