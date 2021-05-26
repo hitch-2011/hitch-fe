@@ -1,12 +1,11 @@
 import { useEffect, FC, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { detailedRouteData } from '../../mockData';
-import userPhoto from '../../assets/images/man.png';
 import { getUserByID } from '../../apiCalls';
 import close from '../../assets/images/close.png';
 import MapDisplay from '../Map/Map';
 import Days from '../Days/Days';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import ProfilePhoto from '../ProfilePhoto/ProfilePhoto';
 
 interface DetailedRouteProps {
   userId: string
@@ -42,7 +41,6 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
   useEffect(() => {
     getUserByID(parseInt(userId))
       .then(response => {
-        console.log(response)
         setMatchedUser(response.data.attributes)
         geocodeByAddress(response.data.attributes.user_rides[0].origin)
           .then(results => getLatLng(results[0]))
@@ -61,7 +59,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
   return (
     <div className="detailed-route">
       <section className='header'>
-        <img className='header__photo' src={userPhoto} alt={detailedRouteData.user.name} />
+        <ProfilePhoto />
         <Link className='header__back' to='matched-routes'>
           <img data-cy='close-button' className='header__close-icon' src={close} alt='close-button'/>
         </Link>

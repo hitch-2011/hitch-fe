@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import userPhoto from '../../assets/images/man.png';
+import userPhoto from '../../assets/images/user-4.png';
 
 interface MenuProps {
   toggleMenu: () => void;
