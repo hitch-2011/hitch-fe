@@ -47,11 +47,9 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
   }, [currentUserId])
 
   const validRoutes = matchedRoutes.filter(route => route.user_id.toString() !== currentUserId)
-  console.log(validRoutes)
   const routeCards = validRoutes.map(route => {
-
     return (
-      <Link to={`/${route.id}`} className='route-card' key={route.id} id={route.id.toString()}>
+      <Link to={`/${route.user_id}`} className='route-card' key={route.id} id={route.id.toString()}>
         <div className='route-card__name'>
           <p className='route-card__detail'>Name</p>
           <p>{route.user_name}</p>

@@ -1,0 +1,36 @@
+{
+  "data": {
+    "attributes": {
+      "matched_routes": [
+         {
+          "departure_time": "9:00am", 
+          "destination": "1125 S Kalispell St, Aurora, CO 80017, USA",
+          "distance_from_destination": 0,
+          "distance_from_origin": 0,
+          "id": 1,
+          "origin": "3956 Alcott St, Denver, CO 80211, USA",
+          "ridedays": ["Monday", "Wednesday", "Thursday"],
+          "user_id": 2,
+          "user_name": "fullname",
+          "zipcode_origin": "80211", 
+          "zipcode_destination": "80017"
+        },
+        {
+          "departure_time": "9:00am", 
+          "destination": "1125 S Kalispell St, Aurora, CO 80017, USA",
+          "distance_from_destination": 0,
+          "distance_from_origin": 0,
+          "id": 2,
+          "origin": "3956 Alcott St, Denver, CO 80211, USA",
+          "ridedays": ["Monday", "Wednesday", "Thursday"],
+          "user_id": 3,
+          "user_name": "name",
+          "zipcode_origin": "80211", 
+          "zipcode_destination": "80017" 
+        }
+      ],
+      "id": "1",
+      "type": "matched"
+    }
+  }
+}

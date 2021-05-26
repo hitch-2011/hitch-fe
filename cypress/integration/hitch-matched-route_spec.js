@@ -15,32 +15,22 @@ describe('Profile user flow', () => {
         days: ["monday", "tuesday"]
       }
     })
-    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides', {
-      method: "GET",
-      statusCode: 200,
-      body: {
-        data: {
-          attributes:{
-            bio: "I like driving.",
-            email: "dominic@gmail.com",
-            fullname: "fullname",
-            matched_routes: [{id: 2, user_id: 3, origin: "3956 Alcott St Denver, CO 80211, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am"}]
-          }
-        }
-      }
-    })
-    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1', {fixture: 'profile'})
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides', {fixture: "matched-rides"})
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/2', {fixture: 'profile'})
     cy.intercept("https://maps.googleapis.com/maps/api/place/js/*")
     .visit('http://localhost:3000');
     cy.get('.login__btn')
     .click()
-    .get('[data-cy=menu]')
-    .click()
-    .get('[data-cy=profile-button]')
+  })
+
+  it('Should allow user to click on matched route', () => {
+    cy.get('.route-card').first()
     .click()
     cy.on('uncaught:exception', (err, runnable) => {
       return false
     })
+    .get('[data-cy=user-name]')
+    .contains("John Smith")
   })
 
   it('Should display the users name and details', () => {
@@ -69,8 +59,8 @@ describe('Profile user flow', () => {
   });
 
   it('Should display a button to add a route', () => {
-    cy.get('[data-cy=add-route-button]')
-    .contains("Add a Route")
+    cy.get('[data-cy=request-hitch]')
+    .contains("Request a Hitch")
   });
 
   it('Should allow the user to click on the menu', () => {
@@ -80,3 +70,4 @@ describe('Profile user flow', () => {
     .should('exist')
   });
 })
+
