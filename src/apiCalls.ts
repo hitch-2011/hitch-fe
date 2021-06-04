@@ -3,6 +3,9 @@ interface UserData {
   password: string;
   fullname: string;
   bio: string;
+}
+
+interface CarData {
   make: string;
   model: string;
   year: string;
@@ -16,13 +19,23 @@ interface RouteData {
   days: string[];
 }
 
+const baseURL = 'https://afternoon-journey-49986.herokuapp.com/api/v1/users'
+
 export const postUserInfo = (userInfo: UserData) => {
-  return fetch(`https://afternoon-journey-49986.herokuapp.com/api/v1/users`, {
+  return fetch(baseURL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(userInfo)
   })
     .then(handleErrors)
+}
+
+export const postCarInfo = (carInfo: CarData, userId: number) => {
+  return fetch(`${baseURL}/${userId}/vehicles`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(carInfo)
+  })
 }
 
 export const postRouteData = (routeInfo: RouteData) => {
