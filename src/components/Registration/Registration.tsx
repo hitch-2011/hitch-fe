@@ -4,7 +4,7 @@ import DaysAndTime from '../DaysAndTime/DaysAndTime';
 import { RegistrationProps } from '../../interfaces/interfaces';
 import { IoArrowBackSharp } from 'react-icons/io5';
 import OriginDestination from '../OriginDestination/OriginDestination';
-import { postUserInfo, postRouteData } from '../../apiCalls';
+import { postUserInfo, postRouteData, postCarInfo } from '../../apiCalls';
 import Error from '../Error/Error';
 import { VscLoading } from 'react-icons/vsc';
 
@@ -28,6 +28,9 @@ const Registration: FC<RegistrationProps> = (props) => {
     password,
     fullname: name,
     bio,
+  }
+
+  const carInfo = {
     make,
     model,
     year
@@ -44,9 +47,10 @@ const Registration: FC<RegistrationProps> = (props) => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (page === 2) {
+    if (page === 1) {
       postUserInfo(userInfo)
         .then(response => {
+          console.log('userInfo', response)
           setCurrentUserId(response.data.id);
           setPage(page + 1);
           setError(false);
@@ -56,10 +60,19 @@ const Registration: FC<RegistrationProps> = (props) => {
           setPage(0);
         })
       return
-    } else if(page === 3) {
-      setError(false)
+    } else if(page === 2) {
+      postCarInfo(carInfo, parseInt(currentUserId))
+        .then((response) => {
+          console.log('userInfo', response)
+          setPage(page + 1);
+          setError(false);
+        })
+        .catch(() => setError(true))
+        return 
+    }  else if(page === 3) {
+      setError(false);
     } else if(page === 4 && !daysSelected) {
-      setError(!daysSelected)
+      setError(!daysSelected);
       return
     } else if (page === 4) {
       postRouteData(routeData)
@@ -105,12 +118,15 @@ const Registration: FC<RegistrationProps> = (props) => {
         </div>
       }
       {page === 2 &&
+        <>
         <Form
           header="Car Details"
           inputs={[{ property: make, method: setMake, placeholder: 'Make' },
           { property: model, method: setModel, placeholder: 'Model' },
           { property: year, method: setYear, placeholder: 'Year' }]}
         />
+        {error && <Error message={'Something went wrong please try again'}/>}
+        </>
       }
       {page === 3 &&
         <>

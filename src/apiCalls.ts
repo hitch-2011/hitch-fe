@@ -36,6 +36,7 @@ export const postCarInfo = (carInfo: CarData, userId: number) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(carInfo)
   })
+    .then(handleErrors)
 }
 
 export const postRouteData = (routeInfo: RouteData) => {

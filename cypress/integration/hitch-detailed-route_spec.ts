@@ -1,9 +1,10 @@
+import { createYield } from "typescript";
+
 describe('Profile user flow', () => {
   before(() => {
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
       method: "POST",
-      body: 'good'
-
+      body: ''
     })
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides', {
       method: "POST",

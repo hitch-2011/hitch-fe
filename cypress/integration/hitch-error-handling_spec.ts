@@ -1,8 +1,18 @@
+import { createYield } from "typescript";
+
 describe('User validation', () => {
   beforeEach(() => {
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
       method: "POST",
       body: ""
+    })
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/vehicles', {
+      method: "POST",
+      body: {
+        make: 'Toyota',
+        model: 'Corolla',
+        year: '2002'
+      }
     })
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
       status: 400,
@@ -46,19 +56,9 @@ describe('User validation', () => {
       .should('have.value', 'billyB')
 
     cy.get('button').eq(1).click();
+    cy.wait(500);
     cy.get('button').eq(1).click();
 
-    cy.get('input').eq(0)
-      .type('Toyota')
-      .should('have.value', 'Toyota')
-    cy.get('input').eq(1)
-      .type('Tacoma')
-      .should('have.value', 'Tacoma')
-    cy.get('input').eq(2)
-      .type('2001')
-      .should('have.value', '2001')
-
-    cy.get('button').eq(1).click();
   });
 
   it('Should show an error message if an email is already registered', () => {
@@ -72,6 +72,14 @@ describe('Route validation', () => {
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
       method: "POST",
       body: ""
+    })
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/vehicles', {
+      method: "POST",
+      body: {
+        make: 'Toyota',
+        model: 'Corolla',
+        year: '2002'
+      }
     })
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
       status: 200,
