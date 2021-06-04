@@ -29,7 +29,7 @@
 
 
 ## About the Project
-Hitch is a progressive web application (PWA), using a mobile first design to help commuters match with other each other based on similar routes. Users are prompted to sign up with route details- origin, destination, departure time and days of the week. Once a user is registered they are able to view a list of other drivers with similar routes.
+Hitch is a progressive web application (PWA), using a mobile first design to help commuters match with each other based on similar routes. Users are prompted to sign up with route details- origin, destination, departure time and days of the week. Once a user is registered they are able to view a list of other drivers with similar routes.
 
 View the deployed site: [here](https://hitch-a-ride-app.herokuapp.com/)
 
