@@ -296,6 +296,14 @@ describe('User car details input sad paths', () => {
       method: "POST",
       body: "good"
     })
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
+      status: 200,
+      body: {
+        data: {
+          id: 1
+        }
+      }
+    })
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/vehicles', {
       method: "POST",
       body: {
@@ -321,6 +329,7 @@ describe('User car details input sad paths', () => {
 
     cy.get('button').eq(1).click();
     cy.get('button').eq(1).click();
+    cy.wait(500)
   });
 
   it('should have an app form title, and car details inputs', () => {
