@@ -50,7 +50,6 @@ const Registration: FC<RegistrationProps> = (props) => {
     if (page === 1) {
       postUserInfo(userInfo)
         .then(response => {
-          console.log('userInfo', response)
           setCurrentUserId(response.data.id);
           setPage(page + 1);
           setError(false);
@@ -62,15 +61,12 @@ const Registration: FC<RegistrationProps> = (props) => {
       return
     } else if(page === 2) {
       postCarInfo(carInfo, parseInt(currentUserId))
-        .then((response) => {
-          console.log('userInfo', response)
+        .then(() => {
           setPage(page + 1);
           setError(false);
         })
         .catch(() => setError(true))
         return 
-    }  else if(page === 3) {
-      setError(false);
     } else if(page === 4 && !daysSelected) {
       setError(!daysSelected);
       return
