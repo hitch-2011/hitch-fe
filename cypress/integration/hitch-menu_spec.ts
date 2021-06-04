@@ -14,6 +14,14 @@ describe('The menu toggle functionality', () => {
         }
       }
     })
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/vehicles', {
+      method: "POST",
+      body: {
+        make: 'Toyota',
+        model: 'Tacoma',
+        year: '2001'
+      }
+    })
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides', {
       method: "POST",
       body: {
@@ -115,6 +123,14 @@ describe('The clickable links on the menu', () => {
         data: {
           id: 1
         }
+      }
+    })
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/vehicles', {
+      method: "POST",
+      body: {
+        make: 'Toyota',
+        model: 'Tacoma',
+        year: '2001'
       }
     })
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides', {

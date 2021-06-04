@@ -1,3 +1,5 @@
+import { createYield } from "typescript";
+
 describe('Sign up user flow', () => {
 
   beforeEach(() => {
@@ -94,7 +96,6 @@ describe('User name input sad paths', () => {
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
       method: "POST",
       body: "good"
-
     })
     cy.visit('http://localhost:3000/register');
   });
@@ -199,6 +200,14 @@ describe('User car details input', () => {
       method: "POST",
       body: "good"
     })
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/vehicles', {
+      method: "POST",
+      body: {
+        make: 'Toyota',
+        model: 'Tacoma',
+        year: '2001'
+      }
+    })    
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
       status: 200,
       body: {
@@ -286,7 +295,14 @@ describe('User car details input sad paths', () => {
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
       method: "POST",
       body: "good"
-
+    })
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/vehicles', {
+      method: "POST",
+      body: {
+        make: 'Toyota',
+        model: 'Tacoma',
+        year: '2001'
+      }
     })
     cy.visit('http://localhost:3000/register');
 
@@ -371,7 +387,15 @@ describe('User origin and destination input', () => {
           id: 1
         }
       }
-    })    
+    })  
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/vehicles', {
+      method: "POST",
+      body: {
+        make: 'Toyota',
+        model: 'Tacoma',
+        year: '2001'
+      }
+    })  
     cy.visit('http://localhost:3000/register');
 
     cy.get('input').should('have.length', 3);
@@ -465,6 +489,14 @@ describe('User origin and destination sad paths', () => {
           id: 1
         }
       }
+    })
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/vehicles', {
+      method: "POST",
+      body: {
+        make: 'Toyota',
+        model: 'Tacoma',
+        year: '2001'
+      }
     })    
     cy.visit('http://localhost:3000/register');
 
@@ -542,7 +574,15 @@ describe('User about me section', () => {
           id: 1
         }
       }
-    })    
+    }) 
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/vehicles', {
+      method: "POST",
+      body: {
+        make: 'Toyota',
+        model: 'Tacoma',
+        year: '2001'
+      }
+    })   
     cy.visit('http://localhost:3000/register');
     cy.intercept("https://maps.googleapis.com/maps/api/place/js/*")
 
@@ -580,7 +620,15 @@ describe('Days and time', () => {
           id: 1
         }
       }
-    })    
+    })  
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/vehicles', {
+      method: "POST",
+      body: {
+        make: 'Toyota',
+        model: 'Tacoma',
+        year: '2001'
+      }
+    })  
     cy.visit('http://localhost:3000/register');
     cy.intercept("https://maps.googleapis.com/maps/api/place/js/*")
 
@@ -665,7 +713,15 @@ describe('Back button', () => {
           id: 1
         }
       }
-    })    
+    })   
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/vehicles', {
+      method: "POST",
+      body: {
+        make: 'Toyota',
+        model: 'Tacoma',
+        year: '2001'
+      }
+    }) 
     cy.visit('http://localhost:3000/register');
 
     cy.get('input').should('have.length', 3);
