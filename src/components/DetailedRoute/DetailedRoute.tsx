@@ -80,7 +80,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
           {matchedUser && <Days matchedDays={matchedUser.ride_days} />}
         </article>
       </section>
-      <section>
+      <section className="route-container">
         <section className='route-details'>
           <div className='route-details__map-div'>
             <MapDisplay latLong={originLatLong} />
@@ -101,11 +101,11 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
         </section>
       </section>
       {!currentUser ?
-        <button data-cy='request-hitch' className="registration__button btn">
+        <button data-cy='request-hitch' className="profile__button btn">
           Request a Hitch
         </button>
       :
-        <button data-cy='add-route-button' className="registration__button btn">
+        <button data-cy='add-route-button' className="profile__button btn">
           Add a Route
         </button>
       }

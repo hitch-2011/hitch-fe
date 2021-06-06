@@ -2,14 +2,16 @@
   padding-top: 55px;
   height: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
-  box-sizing: border-box;
+  // box-sizing: border-box;
 }
 
 .header {
   display: flex;
   flex-direction: row;
-  height: 20vh;
+  height: calc(25% - 20px);
   justify-content: center;
   border-bottom: 2px solid $darkAccent;
 
@@ -25,7 +27,7 @@
 }
 
 .user-details {
-  height: 20vh;
+  height: calc(25% - 20px);
   display: flex;
   flex-direction: row;
   border-bottom: 2px solid $darkAccent;
@@ -54,10 +56,12 @@
     padding-right: 5px;
   }
 }
-
+.route-container {
+  height: calc(50% - 40px);
+}
 .route-details {
   display: flex;
-  height: 20vh;
+  height: 50%;
   border-bottom: 2px solid $darkAccent;
 
   &__map-div {
@@ -80,6 +84,13 @@
     margin: 6px 4px 4px 4px;
     padding: 8px 4px 4px 4px;
   }
+}
+
+.profile__button {
+  @extend .registration__button;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 // section.route-details div.route-details__map-div div div {

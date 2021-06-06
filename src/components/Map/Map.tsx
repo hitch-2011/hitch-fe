@@ -14,7 +14,7 @@ export const MapDisplay = ({ latLong, google }: MapDisplayProps) => {
 }
   const mapStyles = {
     width: '100%',
-    height: '19%',
+    height: 'calc(25% - 38px) ',
   };
 
   return (
