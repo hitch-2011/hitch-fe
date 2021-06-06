@@ -20,4 +20,4 @@ const LandingPage: FC<LandingPageProps> = ({setIsLoggedIn}) => {
   )
 }
 
-export default LandingPage
+export default LandingPage;
