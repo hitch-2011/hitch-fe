@@ -1,4 +1,3 @@
-import { Z_STREAM_ERROR } from "zlib";
 
 interface UserData {
   email: string;
