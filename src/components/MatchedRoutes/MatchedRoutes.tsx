@@ -52,7 +52,7 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
     return (
       <Link to={`/${route.user_id}`} className='route-card' key={route.id} id={route.id.toString()}>
         <div className='route-card__name'>
-          <p className='route-card__detail'>Name</p>
+          {/* <p className='route-card__detail'>Name</p> */}
           <p>{route.user_name}</p>
         </div>
         <div className='route-card__time'>
