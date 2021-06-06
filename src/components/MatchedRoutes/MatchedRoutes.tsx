@@ -27,24 +27,26 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
 
   const formatTime = (time: string): string => {
     let hour: string = time.split(':')[0];
-    if (parseInt(hour) >= 12) {
-      return 'pm'
+    let min: string = time.split(':')[1];
+    let hourToNum = parseInt(hour)
+    if (hourToNum >= 12) {
+      let formattedTime = hourToNum - 12 === 0 ? hourToNum : hourToNum - 12;
+      return `${formattedTime}:${min} pm`
     } else {
-      return 'am'
+      return `${hourToNum === 0 ? '12' : hourToNum}:${min} am`
     }
   }
 
   useEffect(() => {
     getMatchedRides(parseInt(currentUserId))
       .then(response => {
-        console.log(response)
         if (response.data === 'You are our first route in those areas! We will find a hitch for you soon!') {
           setError('No matches found')
         } else {
           setMatchedRoutes(response.data.attributes.matched_routes)
         }
       })
-      .catch(err => setError('Oops, something went wrong'))
+      .catch(() => setError('Oops, something went wrong'))
   }, [currentUserId])
 
   const validRoutes = matchedRoutes.filter(route => route.user_id.toString() !== currentUserId)
@@ -52,12 +54,11 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
     return (
       <Link to={`/${route.user_id}`} className='route-card' key={route.id} id={route.id.toString()}>
         <div className='route-card__name'>
-          {/* <p className='route-card__detail'>Name</p> */}
           <p>{route.user_name}</p>
         </div>
         <div className='route-card__time'>
           <p className='route-card__detail'>Time</p>
-          <p>{route.departure_time} {formatTime(route.departure_time)}</p>
+          <p>{formatTime(route.departure_time)}</p>
         </div>
         <div className='route-card__origin'>
           <p className='route-card__detail'>Days</p>
