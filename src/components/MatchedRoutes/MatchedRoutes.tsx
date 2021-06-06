@@ -4,6 +4,7 @@ import { getMatchedRides } from '../../apiCalls';
 import Days from '../Days/Days';
 import { IoArrowRedoCircleOutline } from 'react-icons/io5';
 import { VscLoading } from 'react-icons/vsc';
+import { formatTime } from '../../utilities/utilities';
 
 interface RouteData {
   id: number;
@@ -22,20 +23,8 @@ interface MatchedProps {
 
 
 const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
-  const [matchedRoutes, setMatchedRoutes] = useState<RouteData[]>([])
-  const [error, setError] = useState('')
-
-  const formatTime = (time: string): string => {
-    let hour: string = time.split(':')[0];
-    let min: string = time.split(':')[1];
-    let hourToNum = parseInt(hour)
-    if (hourToNum >= 12) {
-      let formattedTime = hourToNum - 12 === 0 ? hourToNum : hourToNum - 12;
-      return `${formattedTime}:${min} pm`
-    } else {
-      return `${hourToNum === 0 ? '12' : hourToNum}:${min} am`
-    }
-  }
+  const [matchedRoutes, setMatchedRoutes] = useState<RouteData[]>([]);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     getMatchedRides(parseInt(currentUserId))
