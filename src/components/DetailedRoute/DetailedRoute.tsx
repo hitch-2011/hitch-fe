@@ -7,7 +7,7 @@ import Days from '../Days/Days';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import ProfilePhoto from '../ProfilePhoto/ProfilePhoto';
 import { formatTime } from '../../utilities/utilities';
-import { format } from 'util';
+
 
 interface DetailedRouteProps {
   userId: string

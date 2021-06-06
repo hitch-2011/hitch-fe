@@ -48,40 +48,18 @@ const Registration: FC<RegistrationProps> = (props) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (page === 1) {
-      postUserInfo(userInfo)
-        .then(response => {
-          setCurrentUserId(response.data.id);
-          setPage(page + 1);
-          setError(false);
-        })
-        .catch(() => {
-          setError(true);
-          setPage(0);
-        })
+      postUserInfo(userInfo, setCurrentUserId, setPage, setError, page);
       return
     } else if(page === 2) {
-      postCarInfo(carInfo, parseInt(currentUserId))
-        .then(() => {
-          setPage(page + 1);
-          setError(false);
-        })
-        .catch(() => setError(true))
+      postCarInfo(carInfo, parseInt(currentUserId), setPage, setError, page);
         return 
     } else if(page === 4 && !daysSelected) {
       setError(!daysSelected);
       return
     } else if (page === 4) {
-      postRouteData(routeData)
-        .then(() => {
-          setError(false);
-          setIsLoggedIn(true);
-        })
-        .catch(() => {
-          setError(true);
-          setPage(3);
-        })
+      postRouteData(routeData, setPage, setError, setIsLoggedIn);
     }
-    setPage(page + 1)
+    !error && setPage(page + 1);
   }
 
   const toggleView = page > 0 ? 'registration__back-btn btn' : 'registration__back-btn__hidden btn';
