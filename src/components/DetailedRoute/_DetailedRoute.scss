@@ -73,14 +73,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding: 10px;
   }
 
   &__miles {
     align-self: center;
     font-size: 24px;
-    height: 50px;
-    width: 50px;
     margin: 6px 4px 4px 4px;
     padding: 8px 4px 4px 4px;
   }
