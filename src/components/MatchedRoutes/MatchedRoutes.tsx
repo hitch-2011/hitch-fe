@@ -4,6 +4,7 @@ import { getMatchedRides } from '../../apiCalls';
 import Days from '../Days/Days';
 import { IoArrowRedoCircleOutline } from 'react-icons/io5';
 import { VscLoading } from 'react-icons/vsc';
+import { formatTime } from '../../utilities/utilities';
 
 interface RouteData {
   id: number;
@@ -22,17 +23,8 @@ interface MatchedProps {
 
 
 const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
-  const [matchedRoutes, setMatchedRoutes] = useState<RouteData[]>([])
-  const [error, setError] = useState('')
-
-  const formatTime = (time: string): string => {
-    let hour: string = time.split(':')[0];
-    if (parseInt(hour) >= 12) {
-      return 'pm'
-    } else {
-      return 'am'
-    }
-  }
+  const [matchedRoutes, setMatchedRoutes] = useState<RouteData[]>([]);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     getMatchedRides(parseInt(currentUserId))
@@ -43,7 +35,7 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
           setMatchedRoutes(response.data.attributes.matched_routes)
         }
       })
-      .catch(err => setError('Oops, something went wrong'))
+      .catch(() => setError('Oops, something went wrong'))
   }, [currentUserId])
 
   const validRoutes = matchedRoutes.filter(route => route.user_id.toString() !== currentUserId)
@@ -51,12 +43,11 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
     return (
       <Link to={`/${route.user_id}`} className='route-card' key={route.id} id={route.id.toString()}>
         <div className='route-card__name'>
-          <p className='route-card__detail'>Name</p>
           <p>{route.user_name}</p>
         </div>
         <div className='route-card__time'>
           <p className='route-card__detail'>Time</p>
-          <p>{route.departure_time} {formatTime(route.departure_time)}</p>
+          <p>{formatTime(route.departure_time)}</p>
         </div>
         <div className='route-card__origin'>
           <p className='route-card__detail'>Days</p>

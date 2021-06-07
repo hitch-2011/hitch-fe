@@ -55,6 +55,7 @@ const App = () => {
   return (
     <div className="app">
       <Header
+        name={name}
         menuIsOpen={menuIsOpen}
         toggleMenu={() => setMenuIsOpen(!menuIsOpen)}
         isLoggedIn={isLoggedIn}

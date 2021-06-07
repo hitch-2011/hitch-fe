@@ -6,6 +6,8 @@ import MapDisplay from '../Map/Map';
 import Days from '../Days/Days';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import ProfilePhoto from '../ProfilePhoto/ProfilePhoto';
+import { formatTime } from '../../utilities/utilities';
+
 
 interface DetailedRouteProps {
   userId: string
@@ -75,12 +77,14 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
         </article>
         <article className='user-details__route-details'>
           <h3>Time: </h3>
-          <p data-cy='user-time'>{matchedUser?.user_rides[0].departure_time}</p>
+          <p data-cy='user-time'>
+            {matchedUser?.user_rides[0].departure_time && formatTime(matchedUser.user_rides[0].departure_time)}
+          </p>
           <h3>Days: </h3>
           {matchedUser && <Days matchedDays={matchedUser.ride_days} />}
         </article>
       </section>
-      <section>
+      <section className="route-container">
         <section className='route-details'>
           <div className='route-details__map-div'>
             <MapDisplay latLong={originLatLong} />
@@ -101,11 +105,11 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
         </section>
       </section>
       {!currentUser ?
-        <button data-cy='request-hitch' className="registration__button btn">
+        <button data-cy='request-hitch' className="profile__button btn">
           Request a Hitch
         </button>
       :
-        <button data-cy='add-route-button' className="registration__button btn">
+        <button data-cy='add-route-button' className="profile__button btn">
           Add a Route
         </button>
       }

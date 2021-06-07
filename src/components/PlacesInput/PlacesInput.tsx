@@ -15,7 +15,6 @@ const PlacesInput: FC<PlacesInputProps> = ({value, onChange, placeholder}) => {
        onChange(results[0].formatted_address)
        return results[0].formatted_address
      })
-     .then(latLng => console.log('Success', latLng))
      .catch(error => console.error('Error', error));
   };
   return (

@@ -4,10 +4,11 @@ import userPhoto from '../../assets/images/user-4.png';
 
 interface MenuProps {
   toggleMenu: () => void;
-  menuIsOpen: boolean
+  menuIsOpen: boolean;
+  name: string;
 }
 
-const Menu: FC<MenuProps> = ({ menuIsOpen, toggleMenu }) => {
+const Menu: FC<MenuProps> = ({ menuIsOpen, toggleMenu, name }) => {
 
   return (
     <div className={menuIsOpen ? 'menu' : 'menu-closed'} onClick={toggleMenu}>
@@ -20,7 +21,7 @@ const Menu: FC<MenuProps> = ({ menuIsOpen, toggleMenu }) => {
               alt="Your profile"
             />
           </div>
-          <p className="menu__bar__profile__name">Name</p>
+          <p className="menu__bar__profile__name">{!name ? 'Billy' : name}</p>
           <Link data-cy='profile-button' to="/profile" className="profile-link link">
             <p>View Profile</p>
           </Link>

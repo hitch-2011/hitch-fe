@@ -6,9 +6,10 @@ interface HeaderProps {
   toggleMenu: () => void;
   menuIsOpen: boolean;
   isLoggedIn: boolean
+  name: string;
 }
 
-const Header: FC<HeaderProps> = ({ toggleMenu, menuIsOpen, isLoggedIn }) => {
+const Header: FC<HeaderProps> = ({ toggleMenu, menuIsOpen, isLoggedIn, name }) => {
   return (
     <header className={isLoggedIn ? "header-main--small" : "header-main"}>
       <h1 data-cy='hitch-header-title' className={isLoggedIn ? "header--small" :"header-main__title"}>HITCH</h1>
@@ -17,7 +18,7 @@ const Header: FC<HeaderProps> = ({ toggleMenu, menuIsOpen, isLoggedIn }) => {
           <HiOutlineMenuAlt2 />
         </div>
       }
-      <Menu menuIsOpen={menuIsOpen} toggleMenu={toggleMenu} />
+      <Menu menuIsOpen={menuIsOpen} toggleMenu={toggleMenu} name={name}/>
     </header>
   )
 
