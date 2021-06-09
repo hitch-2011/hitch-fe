@@ -19,7 +19,7 @@ const ProfileButton:FC<ProfileButtonProps> = ({friendStatus, email, addFriend}) 
     } else if(friendStatus[0] === 'approved') {
       return email
     } else if(friendStatus[0] === 'self') {
-      return 'Add Route'
+      return 'Add a Route'
     }
   }
   const disableButton = () => {

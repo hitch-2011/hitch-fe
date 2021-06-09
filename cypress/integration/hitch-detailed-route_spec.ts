@@ -6,7 +6,8 @@ describe('Profile user flow', () => {
       method: "POST",
       body: ''
     })
-    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides', {
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1?profile_id=1', {fixture: 'profile'})
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1', {
       method: "POST",
       body: {
         user_id: '1',
@@ -16,7 +17,7 @@ describe('Profile user flow', () => {
         days: ["monday", "tuesday"]
       }
     })
-    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides', {
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1?profile_id=', {
       method: "GET",
       statusCode: 200,
       body: {
@@ -30,7 +31,6 @@ describe('Profile user flow', () => {
         }
       }
     })
-    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1', {fixture: 'profile'})
     cy.intercept("https://maps.googleapis.com/maps/api/place/js/*")
     .visit('http://localhost:3000');
     cy.get('.login__btn')
@@ -70,7 +70,7 @@ describe('Profile user flow', () => {
   });
 
   it('Should display a button to add a route', () => {
-    cy.get('[data-cy=add-route-button]')
+    cy.get('[data-cy=request-hitch]')
     .contains("Add a Route")
   });
 
