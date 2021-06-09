@@ -72,7 +72,7 @@ export const postRouteData = (
   setError: React.Dispatch<React.SetStateAction<boolean>>,
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
   ) => {
-  return fetch(`https://afternoon-journey-49986.herokuapp.com/api/v1/users/${routeInfo.user_id}/rides`, {
+  return fetch(`${baseURL}/${routeInfo.user_id}/rides`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(routeInfo)
@@ -89,15 +89,15 @@ export const postRouteData = (
 }
 
 export const getMatchedRides = (id: number) => {
-  return fetch(`https://afternoon-journey-49986.herokuapp.com/api/v1/users/${id}/rides`)
+  return fetch(`${baseURL}/${id}/rides`)
     .then(response => response.json())
 }
 
-export const getUserByID = (id: number) => {
-  return fetch(`https://afternoon-journey-49986.herokuapp.com/api/v1/users/${id}`)
+export const getUserByID = (currentUserId: number, matchId?: number) => {
+  const matchedId = matchId ? `${matchId}?profile_id=${currentUserId}` : `${currentUserId}?profile_id=${currentUserId}`
+  return fetch(`${baseURL}/${matchedId}`)
     .then(response => response.json())
 }
-
 
 const handleErrors = (response: Response) => {
   if(!response.ok) {

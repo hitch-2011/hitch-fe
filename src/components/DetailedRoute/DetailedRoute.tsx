@@ -10,53 +10,61 @@ import { formatTime } from '../../utilities/utilities';
 
 
 interface DetailedRouteProps {
-  userId: string
-  currentUser: boolean
+  userId: string;
+  currentUser: boolean;
+  matchId?: string;
 }
 
 interface RideData {
-  destination: string
-  origin: string
-  departure_time: string
-  zipcode_destination: string
-  zipcode_origin: string
+  destination: string;
+  origin: string;
+  departure_time: string;
+  zipcode_destination: string;
+  zipcode_origin: string;
 }
 
 interface VehicleData {
-  make: string
-  model: string
+  make: string;
+  model: string;
 }
 interface UserData {
-  bio: string
-  fullname: string
-  ride_days: Array<string>
-  user_rides: Array<RideData>
-  vehicle: VehicleData
+  bio: string;
+  fullname: string;
+  ride_days: Array<string>;
+  user_rides: Array<RideData>;
+  vehicle: VehicleData;
 }
 
-const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
+const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser, matchId }) => {
 
   const [matchedUser, setMatchedUser] = useState<UserData>()
   const [originLatLong, setOriginLatLong] = useState({ lat: 0, lng: 0 })
   const [destinationLatLong, setDestinationLatLong] = useState({ lat: 0, lng: 0 })
+  const []
+
+
 
   useEffect(() => {
-    getUserByID(parseInt(userId))
+    getUserByID(parseInt(userId), matchId ? parseInt(matchId) : undefined)
       .then(response => {
+        console.log(response)
         setMatchedUser(response.data.attributes)
         geocodeByAddress(response.data.attributes.user_rides[0].origin)
           .then(results => getLatLng(results[0]))
-          .then(latLng => {
-            setOriginLatLong(latLng)
-          })
+          .then(latLng => setOriginLatLong(latLng))
         geocodeByAddress(response.data.attributes.user_rides[0].destination)
           .then(results => getLatLng(results[0]))
           .then(latLng => {
             setDestinationLatLong(latLng)
           })
-          .catch(error => console.error('Error', error));
+        .catch(error => console.error('Error', error));
       })
-  }, [userId])
+      console.log('dont')
+  }, [currentUser])
+
+  useEffect(() => {
+
+  }, [])
 
   return (
     <div className="detailed-route">
