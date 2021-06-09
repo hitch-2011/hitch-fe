@@ -7,6 +7,7 @@ import Days from '../Days/Days';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import ProfilePhoto from '../ProfilePhoto/ProfilePhoto';
 import { formatTime } from '../../utilities/utilities';
+import ProfileButton from '../../components/ProfileButton/ProfileButton';
 
 
 interface DetailedRouteProps {
@@ -33,6 +34,8 @@ interface UserData {
   ride_days: Array<string>;
   user_rides: Array<RideData>;
   vehicle: VehicleData;
+  friendship_status: string;
+  email: string;
 }
 
 const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser, matchId }) => {
@@ -40,14 +43,10 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser, matchId })
   const [matchedUser, setMatchedUser] = useState<UserData>()
   const [originLatLong, setOriginLatLong] = useState({ lat: 0, lng: 0 })
   const [destinationLatLong, setDestinationLatLong] = useState({ lat: 0, lng: 0 })
-  const []
-
-
 
   useEffect(() => {
     getUserByID(parseInt(userId), matchId ? parseInt(matchId) : undefined)
       .then(response => {
-        console.log(response)
         setMatchedUser(response.data.attributes)
         geocodeByAddress(response.data.attributes.user_rides[0].origin)
           .then(results => getLatLng(results[0]))
@@ -59,12 +58,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser, matchId })
           })
         .catch(error => console.error('Error', error));
       })
-      console.log('dont')
   }, [currentUser])
-
-  useEffect(() => {
-
-  }, [])
 
   return (
     <div className="detailed-route">
@@ -112,15 +106,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser, matchId })
           </div>
         </section>
       </section>
-      {!currentUser ?
-        <button data-cy='request-hitch' className="profile__button btn">
-          Request a Hitch
-        </button>
-      :
-        <button data-cy='add-route-button' className="profile__button btn">
-          Add a Route
-        </button>
-      }
+      <ProfileButton friendStatus={matchedUser?.friendship_status} email={matchedUser?.email}/>
     </div>
   )
 }
