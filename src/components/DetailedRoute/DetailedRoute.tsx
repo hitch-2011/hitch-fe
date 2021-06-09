@@ -1,6 +1,6 @@
 import { useEffect, FC, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getUserByID, requestFriend } from '../../apiCalls';
+import { getUserByID, requestFriend, denyFriend, acceptFriend } from '../../apiCalls';
 import close from '../../assets/images/close.png';
 import MapDisplay from '../Map/Map';
 import Days from '../Days/Days';
@@ -72,6 +72,20 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser, matchId })
       })
   }
 
+  const denyFriendship = () => {
+    if(matchedUser?.friendship_status[1] === 'undefined') {
+      return
+    }
+    denyFriend(Number(userId), Number(matchedUser?.friendship_status[1])).then(response => console.log(response));
+  }
+
+  const acceptFriendship = () => {
+    if(matchedUser?.friendship_status[1] === 'undefined') {
+      return
+    }
+    acceptFriend(Number(userId), Number(matchedUser?.friendship_status[1])).then(response => console.log(response));
+  }
+
   return (
     <div className="detailed-route">
       <section className='header'>
@@ -120,8 +134,10 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser, matchId })
       </section>
       {matchedUser?.friendship_status[0] === 'approve/deny' && 
         <div className='profile__btn__container'>
-          <button className='approve-deny btn' >Approve</button>
-          <button className='approve-deny btn' >Deny</button>
+          <button className='approve-deny btn' onClick={acceptFriendship}>Approve</button>
+          <Link to='matched-routes'>
+            <button className='approve-deny btn' onClick={denyFriendship}>Deny</button>
+          </Link>
         </div>
       }
       {matchedUser?.friendship_status[0] !== 'approve/deny' && 

@@ -103,11 +103,29 @@ export const requestFriend = (currentUserId: number, requestedFriend: number) =>
   return fetch(`${baseURL}/${currentUserId}/friends`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({reciever_id: requestedFriend})
+    body: JSON.stringify({receiver_id: requestedFriend})
   })
     .then(response => response.json())
 }
 
+export const denyFriend = (currentUserId: number, requestedFriend: number) => {
+  return fetch(`${baseURL}/${currentUserId}/friends/${requestedFriend}`, {
+    method: 'DELETE',
+  })
+    .then(response => response.json())
+}
+
+export const acceptFriend = (currentUserId: number, requestedFriend: number) => {
+  return fetch(`${baseURL}/${currentUserId}/friends/${requestedFriend}`, {
+    method: 'PATCH',
+  })
+    .then(response => response.json())
+}
+
+export const getPendingMatches = (currentUserId: number) => {
+  return fetch(`${baseURL}/${currentUserId}/friends/`)
+    .then(response => response.json())
+}
 
 const handleErrors = (response: Response) => {
   if(!response.ok) {
