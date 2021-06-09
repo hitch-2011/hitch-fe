@@ -1,6 +1,6 @@
 import { useEffect, FC, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getUserByID } from '../../apiCalls';
+import { getUserByID, requestFriend } from '../../apiCalls';
 import close from '../../assets/images/close.png';
 import MapDisplay from '../Map/Map';
 import Days from '../Days/Days';
@@ -61,6 +61,17 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser, matchId })
       })
   }, [currentUser])
 
+  const addFriend = () => {
+    if(!matchId) {
+      return
+    }
+    requestFriend(Number(userId), Number(matchId))
+      .then(response => {
+        console.log(response)
+        setMatchedUser(response.data.attributes)
+      })
+  }
+
   return (
     <div className="detailed-route">
       <section className='header'>
@@ -114,7 +125,11 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser, matchId })
         </div>
       }
       {matchedUser?.friendship_status[0] !== 'approve/deny' && 
-        <ProfileButton friendStatus={matchedUser?.friendship_status} email={matchedUser?.email}/>
+        <ProfileButton 
+          friendStatus={matchedUser?.friendship_status} 
+          email={matchedUser?.email}
+          addFriend={addFriend}
+        />
       }
     </div>
   )

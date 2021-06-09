@@ -99,6 +99,16 @@ export const getUserByID = (currentUserId: number, matchId?: number) => {
     .then(response => response.json())
 }
 
+export const requestFriend = (currentUserId: number, requestedFriend: number) => {
+  return fetch(`${baseURL}/${currentUserId}/friends`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({reciever_id: requestedFriend})
+  })
+    .then(response => response.json())
+}
+
+
 const handleErrors = (response: Response) => {
   if(!response.ok) {
     throw new Error(`${response.status}`)

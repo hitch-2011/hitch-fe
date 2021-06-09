@@ -2,10 +2,11 @@ import React, {FC} from 'react';
 
 interface ProfileButtonProps {
   friendStatus?: Array<string | number> | undefined;
-  email?: string | undefined
+  email?: string | undefined;
+  addFriend: () => void;
 }
 
-const ProfileButton:FC<ProfileButtonProps> = ({friendStatus, email}) => {
+const ProfileButton:FC<ProfileButtonProps> = ({friendStatus, email, addFriend}) => {
 
   const text = () => {
     if(!friendStatus) {
@@ -35,6 +36,7 @@ const ProfileButton:FC<ProfileButtonProps> = ({friendStatus, email}) => {
     <button 
       data-cy='request-hitch' 
       className="profile__button btn" 
+      onClick={addFriend}
       disabled={disableButton()}
     >
       {text()}
