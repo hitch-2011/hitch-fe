@@ -94,7 +94,7 @@ export const getMatchedRides = (id: number) => {
 }
 
 export const getUserByID = (currentUserId: number, matchId?: number) => {
-  const matchedId = matchId ? `${matchId}?profile_id=${currentUserId}` : `${currentUserId}?profile_id=${currentUserId}`
+  const matchedId = matchId ? `${currentUserId}?profile_id=${matchId}` : `${currentUserId}?profile_id=${currentUserId}`
   return fetch(`${baseURL}/${matchedId}`)
     .then(response => response.json())
 }

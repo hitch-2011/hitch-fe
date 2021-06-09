@@ -34,7 +34,7 @@ interface UserData {
   ride_days: Array<string>;
   user_rides: Array<RideData>;
   vehicle: VehicleData;
-  friendship_status: string;
+  friendship_status: Array<string | number>;
   email: string;
 }
 
@@ -47,6 +47,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser, matchId })
   useEffect(() => {
     getUserByID(parseInt(userId), matchId ? parseInt(matchId) : undefined)
       .then(response => {
+        console.log(response)
         setMatchedUser(response.data.attributes)
         geocodeByAddress(response.data.attributes.user_rides[0].origin)
           .then(results => getLatLng(results[0]))
@@ -106,7 +107,15 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser, matchId })
           </div>
         </section>
       </section>
-      <ProfileButton friendStatus={matchedUser?.friendship_status} email={matchedUser?.email}/>
+      {matchedUser?.friendship_status[0] === 'approve/deny' && 
+        <div className='profile__btn__container'>
+          <button className='approve-deny btn' >Approve</button>
+          <button className='approve-deny btn' >Deny</button>
+        </div>
+      }
+      {matchedUser?.friendship_status[0] !== 'approve/deny' && 
+        <ProfileButton friendStatus={matchedUser?.friendship_status} email={matchedUser?.email}/>
+      }
     </div>
   )
 }

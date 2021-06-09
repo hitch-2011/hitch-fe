@@ -99,3 +99,12 @@
 // section.route-details div.route-details__map-div div div {
 //   height: 207px;
 // }
+
+.profile__btn__container {
+  @extend .btn-container;
+  padding: 0;
+}
+
+.approve-deny {
+  @extend .signup__btn;
+}
