@@ -8,7 +8,7 @@ import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import ProfilePhoto from '../ProfilePhoto/ProfilePhoto';
 import { formatTime } from '../../utilities/utilities';
 import ProfileButton from '../../components/ProfileButton/ProfileButton';
-import { set } from 'cypress/types/lodash';
+
 
 
 interface DetailedRouteProps {
@@ -49,7 +49,6 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser, matchId })
   useEffect(() => {
     getUserByID(parseInt(userId), matchId ? parseInt(matchId) : undefined)
       .then(response => {
-        console.log(response)
         setMatchedUser(response.data.attributes)
         geocodeByAddress(response.data.attributes.user_rides[0].origin)
           .then(results => getLatLng(results[0]))
@@ -61,7 +60,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser, matchId })
           })
         .catch(error => console.error('Error', error));
       })
-  }, [currentUser, forceUpdate])
+  }, [currentUser, forceUpdate, matchId, userId])
 
   const addFriend = () => {
     if(!matchId) {
