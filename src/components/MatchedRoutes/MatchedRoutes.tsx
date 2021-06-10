@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getMatchedRides, getPendingFriends } from '../../apiCalls';
+import { getMatchedRides } from '../../apiCalls';
 import Days from '../Days/Days';
 import { IoArrowRedoCircleOutline } from 'react-icons/io5';
 import { VscLoading } from 'react-icons/vsc';

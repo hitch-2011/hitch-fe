@@ -66,7 +66,7 @@ describe('Profile user flow', () => {
   });
 
   it('Should allow the user to click on the menu', () => {
-    cy.get('[data-cy=menu]')
+    cy.get('[data-cy="menu"]')
     .click()
     .get('[data-cy=profile-button]')
     .should('exist')

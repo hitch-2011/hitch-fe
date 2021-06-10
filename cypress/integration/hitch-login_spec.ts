@@ -6,7 +6,8 @@ describe('Sign up user flow', () => {
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
       method: "POST",
       body: "good"
-    })   
+    });
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides');
     cy.visit('http://localhost:3000/');
   });
   it('should have an app title', () => {
@@ -31,6 +32,7 @@ describe('User name input', () => {
       body: "good"
 
     })
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides');
     cy.visit('http://localhost:3000/register');
   });
 
@@ -96,7 +98,8 @@ describe('User name input sad paths', () => {
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users', {
       method: "POST",
       body: "good"
-    })
+    });
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides')
     cy.visit('http://localhost:3000/register');
   });
 

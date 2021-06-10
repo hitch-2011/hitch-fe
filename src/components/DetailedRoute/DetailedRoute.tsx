@@ -8,6 +8,7 @@ import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import ProfilePhoto from '../ProfilePhoto/ProfilePhoto';
 import { formatTime } from '../../utilities/utilities';
 import ProfileButton from '../../components/ProfileButton/ProfileButton';
+import { set } from 'cypress/types/lodash';
 
 
 interface DetailedRouteProps {
@@ -43,6 +44,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser, matchId })
   const [matchedUser, setMatchedUser] = useState<UserData>()
   const [originLatLong, setOriginLatLong] = useState({ lat: 0, lng: 0 })
   const [destinationLatLong, setDestinationLatLong] = useState({ lat: 0, lng: 0 })
+  const [forceUpdate, setForceUpdate] = useState(1)
 
   useEffect(() => {
     getUserByID(parseInt(userId), matchId ? parseInt(matchId) : undefined)
@@ -59,7 +61,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser, matchId })
           })
         .catch(error => console.error('Error', error));
       })
-  }, [currentUser])
+  }, [currentUser, forceUpdate])
 
   const addFriend = () => {
     if(!matchId) {
@@ -67,7 +69,6 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser, matchId })
     }
     requestFriend(Number(userId), Number(matchId))
       .then(response => {
-        console.log(response)
         setMatchedUser(response.data.attributes)
       })
   }
@@ -83,8 +84,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser, matchId })
     if(matchedUser?.friendship_status[1] === 'undefined') {
       return
     }
-    acceptFriend(Number(userId), Number(matchedUser?.friendship_status[1])).then(response => console.log(response));
-    //set current user to false? to trigger rerender
+    acceptFriend(Number(userId), Number(matchedUser?.friendship_status[1])).then(() => setForceUpdate(forceUpdate + 1))
   }
 
   return (

@@ -10,8 +10,6 @@ interface PendingProps {
   currentUserId: string
 }
 
-
-
 interface PendingFriend {
   id: string;
   type: string;
@@ -32,13 +30,12 @@ const PendingFriends: FC<PendingProps> = ({currentUserId}) => {
       getPendingFriends(parseInt(currentUserId))
         .then(response => {
           if(!response.message) {
-            console.log(response)
             setPendingFriends(response.data);
           } else if (response.message[0] === "no received requests") {
-            setError('You have no friends nerd')
+            setError('You have no friends request')
           }         
         })
-  }, [])
+  }, [currentUserId])
 
   const friendRequests = pendingFriends.map(friend => {
     const { id, fullname, ridetime, ridedays } = friend.attributes;

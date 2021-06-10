@@ -7,6 +7,7 @@ describe('Profile user flow', () => {
       body: ''
     })
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1?profile_id=1', {fixture: 'profile'})
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides')
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1', {
       method: "POST",
       body: {
