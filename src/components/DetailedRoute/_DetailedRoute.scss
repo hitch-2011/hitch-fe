@@ -85,21 +85,6 @@
   }
 }
 
-.profile__button {
-  @extend .registration__button;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
-.profile__button:disabled {
-  background: $lightGradient;
-}
-
-// section.route-details div.route-details__map-div div div {
-//   height: 207px;
-// }
-
 .profile__btn__container {
   @extend .btn-container;
   padding: 0;

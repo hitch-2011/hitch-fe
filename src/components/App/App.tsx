@@ -77,7 +77,7 @@ const App = () => {
           render={() =>  <MatchedRoutes currentUserId={currentUserId} />}
         />
         <Route
-          exact path="/pending"
+          exact path="/requests"
           render={() => <PendingFriends currentUserId={currentUserId} />}
         />
         <Route

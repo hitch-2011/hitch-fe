@@ -27,17 +27,11 @@ const Menu: FC<MenuProps> = ({ menuIsOpen, toggleMenu, name }) => {
           </Link>
         </div>
         <div className="menu__bar__links">
-          <Link to="/requests" className="menu-link link">
-            <p>Requests</p>
-          </Link>
           <Link to="/matched-routes" className="menu-link link">
             <p>Matched Routes</p>
           </Link>
-          <Link to="/pending" className="menu-link link">
-            <p>Pending Friends</p>
-          </Link>
-          <Link to="/messages" className="menu-link link">
-            <p>Messages</p>
+          <Link to="/requests" className="menu-link link">
+            <p>Requests</p>
           </Link>
         </div>
       </div>  
