@@ -122,7 +122,7 @@ export const acceptFriend = (currentUserId: number, requestedFriend: number) => 
     .then(response => response.json())
 }
 
-export const getPendingMatches = (currentUserId: number) => {
+export const getPendingFriends = (currentUserId: number) => {
   return fetch(`${baseURL}/${currentUserId}/friends/`)
     .then(response => response.json())
 }

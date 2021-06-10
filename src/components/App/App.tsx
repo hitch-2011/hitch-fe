@@ -5,6 +5,7 @@ import Registration from '../Registration/Registration';
 import MatchedRoutes from '../MatchedRoutes/MatchedRoutes';
 import Header from '../Header/Header';
 import DetailedRoute from '../DetailedRoute/DetailedRoute';
+import PendingFriends from '../PendingFriends/PendingFriends';
 require('dotenv').config()
 
 const App = () => {
@@ -73,11 +74,11 @@ const App = () => {
         {!isLoggedIn && <Redirect to="/" />}
         <Route
           exact path="/matched-routes"
-          render={() => <MatchedRoutes currentUserId={currentUserId} />}
+          render={() =>  <MatchedRoutes currentUserId={currentUserId} />}
         />
         <Route
           exact path="/pending"
-          render={() => <MatchedRoutes currentUserId={currentUserId} />}
+          render={() => <PendingFriends currentUserId={currentUserId} />}
         />
         <Route
           exact path='/profile'
