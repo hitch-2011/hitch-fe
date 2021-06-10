@@ -33,8 +33,8 @@ const Menu: FC<MenuProps> = ({ menuIsOpen, toggleMenu, name }) => {
           <Link to="/matched-routes" className="menu-link link">
             <p>Matched Routes</p>
           </Link>
-          <Link to="/pending-routes" className="menu-link link">
-            <p>Pending Routes</p>
+          <Link to="/pending" className="menu-link link">
+            <p>Pending Friends</p>
           </Link>
           <Link to="/messages" className="menu-link link">
             <p>Messages</p>

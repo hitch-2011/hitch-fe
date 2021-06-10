@@ -84,6 +84,7 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser, matchId })
       return
     }
     acceptFriend(Number(userId), Number(matchedUser?.friendship_status[1])).then(response => console.log(response));
+    //set current user to false? to trigger rerender
   }
 
   return (
