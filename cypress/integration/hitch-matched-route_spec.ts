@@ -18,7 +18,7 @@ describe('Profile user flow', () => {
       }
     })
     cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1/rides', {fixture: "matched-rides"})
-    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/2', {fixture: 'profile'})
+    cy.intercept('https://afternoon-journey-49986.herokuapp.com/api/v1/users/1?profile_id=2', {fixture: 'profile'})
     cy.intercept("https://maps.googleapis.com/maps/api/place/js/*")
     .visit('http://localhost:3000');
     cy.get('.login__btn')
@@ -62,11 +62,11 @@ describe('Profile user flow', () => {
 
   it('Should display a button to add a route', () => {
     cy.get('[data-cy=request-hitch]')
-    .contains("Request a Hitch")
+    .contains("Add a Route")
   });
 
   it('Should allow the user to click on the menu', () => {
-    cy.get('[data-cy=menu]')
+    cy.get('[data-cy="menu"]')
     .click()
     .get('[data-cy=profile-button]')
     .should('exist')

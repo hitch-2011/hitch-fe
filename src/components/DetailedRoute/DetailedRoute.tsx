@@ -1,62 +1,91 @@
 import { useEffect, FC, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getUserByID } from '../../apiCalls';
+import { getUserByID, requestFriend, denyFriend, acceptFriend } from '../../apiCalls';
 import close from '../../assets/images/close.png';
 import MapDisplay from '../Map/Map';
 import Days from '../Days/Days';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import ProfilePhoto from '../ProfilePhoto/ProfilePhoto';
 import { formatTime } from '../../utilities/utilities';
+import ProfileButton from '../../components/ProfileButton/ProfileButton';
+import { set } from 'cypress/types/lodash';
 
 
 interface DetailedRouteProps {
-  userId: string
-  currentUser: boolean
+  userId: string;
+  currentUser: boolean;
+  matchId?: string;
 }
 
 interface RideData {
-  destination: string
-  origin: string
-  departure_time: string
-  zipcode_destination: string
-  zipcode_origin: string
+  destination: string;
+  origin: string;
+  departure_time: string;
+  zipcode_destination: string;
+  zipcode_origin: string;
 }
 
 interface VehicleData {
-  make: string
-  model: string
+  make: string;
+  model: string;
 }
 interface UserData {
-  bio: string
-  fullname: string
-  ride_days: Array<string>
-  user_rides: Array<RideData>
-  vehicle: VehicleData
+  bio: string;
+  fullname: string;
+  ride_days: Array<string>;
+  user_rides: Array<RideData>;
+  vehicle: VehicleData;
+  friendship_status: Array<string | number>;
+  email: string;
 }
 
-const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
+const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser, matchId }) => {
 
   const [matchedUser, setMatchedUser] = useState<UserData>()
   const [originLatLong, setOriginLatLong] = useState({ lat: 0, lng: 0 })
   const [destinationLatLong, setDestinationLatLong] = useState({ lat: 0, lng: 0 })
+  const [forceUpdate, setForceUpdate] = useState(1)
 
   useEffect(() => {
-    getUserByID(parseInt(userId))
+    getUserByID(parseInt(userId), matchId ? parseInt(matchId) : undefined)
       .then(response => {
+        console.log(response)
         setMatchedUser(response.data.attributes)
         geocodeByAddress(response.data.attributes.user_rides[0].origin)
           .then(results => getLatLng(results[0]))
-          .then(latLng => {
-            setOriginLatLong(latLng)
-          })
+          .then(latLng => setOriginLatLong(latLng))
         geocodeByAddress(response.data.attributes.user_rides[0].destination)
           .then(results => getLatLng(results[0]))
           .then(latLng => {
             setDestinationLatLong(latLng)
           })
-          .catch(error => console.error('Error', error));
+        .catch(error => console.error('Error', error));
       })
-  }, [userId])
+  }, [currentUser, forceUpdate])
+
+  const addFriend = () => {
+    if(!matchId) {
+      return
+    }
+    requestFriend(Number(userId), Number(matchId))
+      .then(response => {
+        setMatchedUser(response.data.attributes)
+      })
+  }
+
+  const denyFriendship = () => {
+    if(matchedUser?.friendship_status[1] === 'undefined') {
+      return
+    }
+    denyFriend(Number(userId), Number(matchedUser?.friendship_status[1])).then(response => console.log(response));
+  }
+
+  const acceptFriendship = () => {
+    if(matchedUser?.friendship_status[1] === 'undefined') {
+      return
+    }
+    acceptFriend(Number(userId), Number(matchedUser?.friendship_status[1])).then(() => setForceUpdate(forceUpdate + 1))
+  }
 
   return (
     <div className="detailed-route">
@@ -104,14 +133,20 @@ const DetailedRoute: FC<DetailedRouteProps> = ({ userId, currentUser }) => {
           </div>
         </section>
       </section>
-      {!currentUser ?
-        <button data-cy='request-hitch' className="profile__button btn">
-          Request a Hitch
-        </button>
-      :
-        <button data-cy='add-route-button' className="profile__button btn">
-          Add a Route
-        </button>
+      {matchedUser?.friendship_status[0] === 'approve/deny' && 
+        <div className='profile__btn__container'>
+          <button className='approve-deny btn' onClick={acceptFriendship}>Approve</button>
+          <Link to='matched-routes'>
+            <button className='approve-deny btn' onClick={denyFriendship}>Deny</button>
+          </Link>
+        </div>
+      }
+      {matchedUser?.friendship_status[0] !== 'approve/deny' && 
+        <ProfileButton 
+          friendStatus={matchedUser?.friendship_status} 
+          email={matchedUser?.email}
+          addFriend={addFriend}
+        />
       }
     </div>
   )

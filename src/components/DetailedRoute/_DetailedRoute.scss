@@ -19,6 +19,7 @@
     position: fixed;
     right: 15px;
     top: 15px;
+    z-index: 50;
   }
 
   &__close-icon {
@@ -85,13 +86,11 @@
   }
 }
 
-.profile__button {
-  @extend .registration__button;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+.profile__btn__container {
+  @extend .btn-container;
+  padding: 0;
 }
 
-// section.route-details div.route-details__map-div div div {
-//   height: 207px;
-// }
+.approve-deny {
+  @extend .signup__btn;
+}

@@ -18,11 +18,11 @@ interface RouteData {
 }
 
 interface MatchedProps {
-  currentUserId: string
+  currentUserId: string;
 }
 
 
-const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
+const MatchedRoutes: FC<MatchedProps> = ({ currentUserId}) => {
   const [matchedRoutes, setMatchedRoutes] = useState<RouteData[]>([]);
   const [error, setError] = useState('');
 
@@ -32,6 +32,7 @@ const MatchedRoutes: FC<MatchedProps> = ({ currentUserId }) => {
         if (response.data === 'You are our first route in those areas! We will find a hitch for you soon!') {
           setError('No matches found')
         } else {
+          console.log(response)
           setMatchedRoutes(response.data.attributes.matched_routes)
         }
       })

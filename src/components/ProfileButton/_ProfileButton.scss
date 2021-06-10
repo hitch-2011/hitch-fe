@@ -1,0 +1,10 @@
+.profile__button {
+  @extend .registration__button;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.profile__button:disabled {
+  background: $lightGradient;
+}
