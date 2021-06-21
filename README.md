@@ -47,22 +47,40 @@ View the backend repo: [here](https://github.com/hitch-2011/hitch_backend)
 
 
 ## Functionality
-* [Login or Signup](#login-or-signup)
-* [Matched Rides and User Profile](#matched-rides-and-user-profile)
+* [Signup or Explore](#signup-or-explore)
+* [Matched Rides and Request a Hitch](#matched-rides-and-request-a-hitch)
+* [User Profile](#user-profile)
+* [Friend Requests](#friend-requests)
 * [Accessibility](#accessibility)
 * [Error Handling](#error-handling)
 
-#### Login or Signup
-  -  When a user visits the site they are able to signup or login to their profile. The login feature is under development at the moment, and seeded with dummy data for now. This is a great way to demo the application without having to sign up.
+#### Signup or Explore
+  -  When a user visits the site they are able to signup or explore the app. The explore button will eventually be a login feature and is under development at the moment. When clicking the explore button you are given an assumed identity, 'Dominic'. This is a great way to demo the application without having to sign up.
 <p align="center">
   <img src="https://media.giphy.com/media/nqHB70AE5wpVR9o9C8/giphy.gif">
 </p>
 
-#### Matched Rides and User Profile
+#### Matched Rides and Request a Hitch
   - After a user signups or logins in, they are redirected to a matched rides view, which displays all rides within 4 miles of the current users route. Each matched ride is a clickable link and will navigigate to the detailed ride page. 
- - Using the hamburger menu, a user can view their own profile, or when clicking on a matched ride see the route details. This page allows you to see more information on the ride, including a users profile and map of the origin and destination.
+ - Once on another users page, you can 'request a hitch'. The friend status will change to pending until the request is accepted or denied.
 <p align="center">
-  <img alt="giph of matched rides and user profile" src="https://media.giphy.com/media/9wjRWY2FySyyvDEyXo/giphy.gif">
+  <img src="https://media.giphy.com/media/bwrRI1QqOOuCmh25HO/giphy.gif">
+</p>
+
+#### User Profile
+ - Using the hamburger menu, a user can view their own profile, or when clicking on a matched ride see the route details. This page allows you to see more information on the ride, including a users profile and map of the origin and destination.
+
+<p align="center">
+  <img src="https://media.giphy.com/media/rGiqqzn9JG7sNHUGEA/giphy.gif">
+</p>
+
+#### Friend Requests
+- Users can view any pending request they have received from the menu bar.
+- Click on the request will lead you to the users profile where you can view their route details.
+- If the user approves the friend, they will be provided with an email so they can communicate further.
+
+<p align="center">
+  <img src="https://media.giphy.com/media/znmBBknX0h6QWmtceJ/giphy.gif">
 </p>
 
 #### Accessibility 
