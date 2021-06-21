@@ -21,7 +21,7 @@ const Menu: FC<MenuProps> = ({ menuIsOpen, toggleMenu, name }) => {
               alt="Your profile"
             />
           </div>
-          <p className="menu__bar__profile__name">{!name ? 'Billy' : name}</p>
+          <p className="menu__bar__profile__name">{!name ? 'Dominic' : name}</p>
           <Link data-cy='profile-button' to="/profile" className="profile-link link">
             <p>View Profile</p>
           </Link>
